@@ -545,9 +545,12 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         fn=fn or imgName[0]
         if fn:
             self.demoLabel.imgPath = fn
-            self.new_image=Image.open(fn)
-            self.demoLabel.setPx(QPixmap(fn))
-            self.__getImgInfo()
+            try:
+                self.new_image=Image.open(fn)
+                self.demoLabel.setPx(QPixmap(fn))
+                self.__getImgInfo()
+            except Exception as e:
+                self.showError(e.__str__())
 
 
 
