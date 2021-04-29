@@ -1,9 +1,7 @@
-import typing
 
-from PyQt5 import QtCore
-from PyQt5.QtWidgets import QDialog, QWidget
+from PyQt5.QtWidgets import QDialog
 
-from CustomFilter_Ui import Ui_CustomFilterDialog
+from UI.CustomFilter_Ui import Ui_CustomFilterDialog
 
 class CustomFilter(QDialog,Ui_CustomFilterDialog):
     def __init__(self,*args,**kwargs):

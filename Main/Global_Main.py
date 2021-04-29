@@ -13,6 +13,7 @@ global_dict = {
     "RANK_SIZE":3,
     "RANK_LEVEL":3,
     "SAVE_TEMP":0,
+    "CHOPS":0,
 
 }
 
@@ -38,6 +39,19 @@ class MIRROR:
     FLIP_LEFT_RIGHT = 1
     FLIP_TOP_BOTTOM = 2
 
+class CHOPS:
+    ADD1=0
+    ADD2=1
+    SUB1=2
+    SUB2=3
+    AND=4
+    OR=5
+    XOR=6
+    SCREEN=7
+    LIGHTER=8
+    DARKER=9
+    DIFF=10
+    MUL=11
 
 class FILTER:
     GaussianBlur = 0

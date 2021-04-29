@@ -1,15 +1,17 @@
 import os
 
-from PIL import ImageSequence, Image
+
 from PyQt5 import QtGui
-from PyQt5.QtCore import Qt, QRect, QPoint
-from PyQt5.QtGui import QImage, QPixmap, QPainter, QMovie, QPen
+from PyQt5.QtCore import Qt, QRect
+from PyQt5.QtGui import QImage, QPixmap, QPainter, QMovie
 from PyQt5.QtWidgets import QLabel, QApplication
 
-import Global_Main
+from Main import Global_Main
 
 class DemoLabel(QLabel):
 
+
+    drawImg: QImage
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -42,10 +44,32 @@ class DemoLabel(QLabel):
 
     def crop(self, r: QRect):
         self.setPx(self.pixmap.copy(r))
-
+    def setImg(self,img:QImage):
+        self.drawImg = img
+        self.pixmap = QPixmap.fromImage(self.drawImg)
+        self.r.setWidth(self.drawImg.width())
+        self.r.setHeight(self.drawImg.height())
+        self.format = self.imgPath.split('.')[-1]
+        self.setFixedHeight(self.drawImg.height())
+        self.setFixedWidth(self.drawImg.width())
+        self.setGeometry(self.r)
+        self.update()
+        if self.format == 'gif':
+            self.movie = QMovie(self.imgPath)
+            self.setMovie(self.movie)
+            self.movie.start()
+        else:
+            if self.movie:
+                self.movie.stop()
+                # self.setMovie(None)
+                self.movie.deleteLater()
+                self.movie = None
+        if Global_Main.getGlobalValue("SAVE_TEMP"):
+            os.remove(self.imgPath)
     def setPx(self, px: QPixmap):
         self.pixmap=px
         self.drawImg = px.toImage()
+
         self.r.setWidth(self.drawImg.width())
         self.r.setHeight(self.drawImg.height())
         self.format = self.imgPath.split('.')[-1]
@@ -71,12 +95,6 @@ class DemoLabel(QLabel):
     def paintEvent(self, a0: QtGui.QPaintEvent) -> None:
 
         painter = QPainter(self)
-
-        # if self.format=="gif":
-        #     pix=QPixmap(self.pxName)
-        #     painter.drawPixmap(self.r,pix)
-        # else:
-        #     painter.drawImage(0,0,self.drawImg,0,0,self.r.width(),self.r.height());#QPoint()
         painter.drawImage(self.r,self.drawImg)
         QLabel.paintEvent(self,a0)
 

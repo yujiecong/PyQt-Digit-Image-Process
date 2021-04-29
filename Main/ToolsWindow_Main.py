@@ -1,30 +1,30 @@
 import os
 import random
+import datetime
 import time
-from typing import Tuple
+
 
 import numpy as np
-from PIL import Image, ImageFilter, ImageOps, ImageEnhance, ImageStat
+from PIL import Image, ImageFilter, ImageOps, ImageEnhance, ImageStat, ImageChops
 
 import matplotlib.pyplot as plt
 from PIL import ImageDraw
 from PIL import ImageFont
 
-from Main.CustomFilter_Main import CustomFilter
-from Global_Main import CONVERT_MODE, MIRROR, getTempFileName, FILTER
-from Global_Main import getGlobalValue, setGlobalValue
+from .CustomFilter_Main import CustomFilter
+from .Global_Main import CONVERT_MODE, MIRROR, getTempFileName, FILTER, CHOPS
+from .Global_Main import getGlobalValue, setGlobalValue
 
 plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
 plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
 
-from PyQt5.QtCore import Qt, QRect, QThread, pyqtSignal, QTimer, QTime, QObject
-from PyQt5.QtGui import QPixmap, QImage, QFont, QFontInfo
-from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFileDialog, QSizePolicy, QColorDialog, QFontDialog
+from PyQt5.QtCore import Qt, QRect, QThread, pyqtSignal, QObject
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFileDialog, QColorDialog
 from PyQt5.uic.Compiler.qtproxies import QtGui
 
 from Main.ScreenShot_Main import ScreenShowWindow
 from UI.ToolsWindow_Ui import Ui_ToolsWindow
-
 
 class ENHANCE:
     COLOR = 0
@@ -56,7 +56,6 @@ class Convert_Object(QObject):
         self.finished.emit()
         pass
 
-
 class Convert_Thread(QThread):
     """
     线程不安全
@@ -66,12 +65,39 @@ class Convert_Thread(QThread):
     ADD_NOISE_OP = 2
     GS_NOISE_OP = 3
     SALT_NOISE_OP = 4
+    CHOPS_OP=5
+    DEBUG=False
 
-    def __init__(self, new_image, op, parent=None):
+    def thread_logging(func):
+        def wrapper(self, *args, **kwargs):
+            print(f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} entered thread-func **{func.__name__}** args={args} kwargs={kwargs}")
+            t1=time.time()
+            # print(f"[START TIMER]:{t1}")
+            try:
+                if args:
+                    if args[0]==False:
+                        f=func(self,  **kwargs)
+                    else:
+                        f = func(self,*args, **kwargs)
+                else:
+                    f = func(self,*args, **kwargs)
+
+                t2 = time.time()
+                print(f"[THREAD TIME COST]:{t2 - t1}")
+                print(
+                f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} leaved thread-func **{func.__name__}** args={args} kwargs={kwargs}")
+                return f
+            except Exception as e:
+                self.errorFlag=f"{type(self).__name__}->{func.__name__}:{e.__str__()}"
+        return wrapper
+    @thread_logging
+    def __init__(self, new_image, op,other_image=None, parent=None):
         """
         线程不安全的
         """
         super(Convert_Thread, self).__init__(parent)
+
+        self.other_image = other_image
 
         self.mean = getGlobalValue("GS_MEAD")
         self.sigma = getGlobalValue("GS_SIGMA")
@@ -79,11 +105,16 @@ class Convert_Thread(QThread):
         self.proportion = getGlobalValue("NOISE_PROPORTION")
 
         self.new_image = new_image
+
         self.filename = getTempFileName()  # +self.new_image.format
         self.errorFlag = ''
         self.threshold = getGlobalValue("L_THRESHOLD")
-        self.__op = op
+        #烦死了
+        self.scale=0
+        self.offset=0
 
+        self.__op = op
+    @thread_logging
     def run(self):
         if self.__op == self.CONVERT_OP:
             self.convert()
@@ -95,10 +126,12 @@ class Convert_Thread(QThread):
             self.addGaussianNoise()
         elif self.__op == self.SALT_NOISE_OP:
             self.addSaltNoise()
+        elif self.__op==self.CHOPS_OP:
+            self.chops()
         pass
-
+    @thread_logging
     def convert(self):
-        try:
+
             convertIdx = getGlobalValue("CONVERT_IDX")
             if convertIdx == CONVERT_MODE.CONVERT_MODE_1:
                 self.new_image = self.new_image.convert("L")
@@ -107,6 +140,7 @@ class Convert_Thread(QThread):
                     for j in range(self.new_image.width):
                         arr[i][j] = 255 if arr[i][j] >= self.threshold else 0
                 self.new_image = Image.fromarray(arr)
+                # self.new_image = self.new_image.convert("1")
                 # self.new_image = self.new_image.convert("1")
             elif convertIdx == CONVERT_MODE.CONVERT_MODE_L:
                 self.new_image = self.new_image.convert("L")
@@ -149,12 +183,11 @@ class Convert_Thread(QThread):
                 # output_img = cv2.LUT(img, lut)  # 像素灰度值的映射
                 # output_img = np.uint8(output_img + 0.5)
 
-            self.new_image.save(self.filename)
-        except Exception as e:
-            self.errorFlag = e.__str__()
 
+
+    @thread_logging
     def filter(self):
-        try:
+
             filterIdx = getGlobalValue("FILTER_BOX")
             if filterIdx == FILTER.GaussianBlur:
                 self.new_image = self.new_image.filter(ImageFilter.GaussianBlur)
@@ -188,11 +221,10 @@ class Convert_Thread(QThread):
             elif filterIdx == FILTER.MODE:
                 self.new_image = self.new_image.filter(ImageFilter.ModeFilter(getGlobalValue("RANK_SIZE")))
             self.new_image.save(self.filename)
-        except Exception as e:
-            self.errorFlag = e.__str__()
 
+    @thread_logging
     def addRandomNoise(self):
-        try:
+
             arr = np.array(self.new_image)
             rows, cols, dims = arr.shape
             for i in range(self.randomNum):
@@ -202,11 +234,9 @@ class Convert_Thread(QThread):
             new_image = Image.fromarray(arr)
             new_image.save(self.filename)
 
-        except Exception as e:
-            self.errorFlag = e.__str__()
-
+    @thread_logging
     def addSaltNoise(self):
-        # try:
+
         imageArr = np.array(self.new_image)
         # 求得其高宽
 
@@ -235,6 +265,7 @@ class Convert_Thread(QThread):
     #     self.errorFlag = e.__str__()
 
     # pass
+    @thread_logging
     def addGaussianNoise(self):
         imageArr = np.array(self.new_image)
         # 将图片灰度标准化
@@ -251,12 +282,85 @@ class Convert_Thread(QThread):
         # noise = np.uint8(noise*255)
         new_image = Image.fromarray(gaussian_out)
         new_image.save(self.filename)
+    @thread_logging
+    def chops(self):
+            cop=getGlobalValue("CHOPS")
+            if cop==CHOPS.ADD1:
+                new_image=ImageChops.add(self.new_image,self.other_image,self.scale,self.offset)
+            elif cop==CHOPS.ADD2:
+                new_image = ImageChops.add_modulo(self.new_image, self.other_image)
+            elif cop==CHOPS.SUB1:
+                new_image = ImageChops.subtract(self.new_image, self.other_image,self.scale,self.offset)
+            elif cop==CHOPS.SUB2:
+                new_image = ImageChops.subtract_modulo(self.new_image, self.other_image)
+            elif cop==CHOPS.AND:
+                new_image = ImageChops.logical_and(self.new_image, self.other_image)
+            elif cop==CHOPS.OR:
+                new_image = ImageChops.logical_or(self.new_image, self.other_image)
+            elif cop==CHOPS.XOR:
+                new_image = ImageChops.logical_xor(self.new_image, self.other_image)
+            elif cop==CHOPS.SCREEN:
+                new_image = ImageChops.screen(self.new_image, self.other_image)
+            elif cop==CHOPS.LIGHTER:
+                new_image = ImageChops.lighter(self.new_image, self.other_image)
+            elif cop==CHOPS.DARKER:
+                new_image = ImageChops.darker(self.new_image, self.other_image)
+            elif cop==CHOPS.DIFF:
+                new_image = ImageChops.difference(self.new_image, self.other_image)
+            elif cop==CHOPS.MUL:
+                new_image = ImageChops.multiply(self.new_image, self.other_image)
+            new_image.save(self.filename)
 
 
 class ToolsWindow(QMainWindow, Ui_ToolsWindow):
-    initImg = "img/QQ截图20210428202605.png"
+    initImg = "img/lena.bmp"
     FILE_FILTER = "*.BMP *.GIF *.JPG *.JPEG *.PNG *.PBM *.PGM *.PPM *.XBM *.XPM"
 
+    def autoSaveTempFile(func):
+        def wrapper(self, *args, **kwargs):
+            print(f"[AUTO-SAVE]:{datetime.datetime.now()} {type(self).__name__} entered func **{func.__name__}** args={args} kwargs={kwargs}")
+            try:
+                if args:
+                    if args[0]==False:
+                        f=func(self,  **kwargs)
+                    else:
+                        f = func(self,*args, **kwargs)
+                else:
+                    f = func(self,*args, **kwargs)
+                print(f"[SAVE]:{datetime.datetime.now()} {type(self).__name__} start func **__saveTempImg** ")
+                self.__setDemoImg()
+                print(f"[SAVE]:{datetime.datetime.now()} {type(self).__name__} leaved func **__saveTempImg** ")
+                print(f"[INFO]:{datetime.datetime.now()} {type(self).__name__} start func **__getImgInfo** ")
+                self.__getImgInfo()
+                print(f"[INFO]:{datetime.datetime.now()} {type(self).__name__} leaved func **__getImgInfo** ")
+                return f
+            except Exception as e:
+                self.showError(f"{type(self).__name__}->{func.__name__}:{e.__str__()}")
+        return wrapper
+
+    def logging(func):
+        def wrapper(self, *args, **kwargs):
+            print(f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} entered func **{func.__name__}** args={args} kwargs={kwargs}")
+            t1=time.time()
+            try:
+                if args:
+                    if args[0]==False:
+                        f=func(self,  **kwargs)
+                    else:
+                        f = func(self,*args, **kwargs)
+                else:
+                    f = func(self,*args, **kwargs)
+                    t2 = time.time()
+                    print(f"[TIME COST]:func **{func.__name__}** cost {round(t2 - t1,9)}ms")
+                    print(f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} leaved func **{func.__name__}** args={args} kwargs={kwargs}")
+                    return f
+            except Exception as e:
+                self.showError(f"{type(self).__name__}->{func.__name__}:{e.__str__()}")
+        return wrapper
+
+
+
+    @logging
     def __init__(self, *args, **kwargs):
         # 调用父类构造
         super(ToolsWindow, self).__init__(*args, **kwargs)
@@ -275,7 +379,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             os.mkdir(getGlobalValue("TEMP_DIR"))
         self.tempFileName = ''
         """初始化Action"""
-
+    @logging
     def __specificConn(self):
         """
         专门用来绑定 connect
@@ -286,6 +390,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.resizeImgBtn.clicked.connect(self.__resizeImg)
         self.fillImgBtn.clicked.connect(self.__autoFillImg)
         self.saveImgBtn.clicked.connect(self.__saveImg)
+        self.blendBtn.clicked.connect(self.__blendImg)
         self.copyImgBtn.clicked.connect(self.__copyImg)
         self.screenShotWindow.signals_copyImg.connect(self.__crop)
         self.changeRotBtn.clicked.connect(self.__rotateImg)
@@ -293,6 +398,9 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.withdrawBtn.clicked.connect(self.__withdraw)
         self.penBtn.clicked.connect(self.__penDownImg)
         self.penUpBtn.clicked.connect(lambda: self.demoLabel._draw(False))
+        self.expandBtn.clicked.connect(self.__expandImg)
+        self.chopsBtn.clicked.connect(self.__chopsImg)
+
         """图像变换开始"""
         self.changePatternBtn.clicked.connect(self.__convertPattern)
         self.filterBtn.clicked.connect(self.__filterImg)
@@ -316,6 +424,10 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                                                         index: self.thresholdBox.show() if index == CONVERT_MODE.CONVERT_MODE_1
                                                                                            or index == CONVERT_MODE.CONVERT_MODE_GAMA else self.thresholdBox.hide())
         self.patternBox.currentIndexChanged.connect(lambda idx: setGlobalValue("CONVERT_IDX", idx))
+        """图像生成"""
+        self.generateBtn.clicked.connect(self.__generateValidation)
+
+
         """全局参数绑定"""
         self.filterBox.currentIndexChanged.connect(lambda idx: setGlobalValue("FILTER_BOX", idx))
         self.filterBox.currentIndexChanged.connect(lambda idx: self.rankGroupBox.show()
@@ -334,6 +446,12 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
         self.saveTempCheck.stateChanged.connect(lambda f: setGlobalValue("SAVE_TEMP", f))
 
+        self.chopsBox.currentIndexChanged.connect(lambda idx:setGlobalValue("CHOPS", idx))
+        self.chopsBox.currentIndexChanged.connect(lambda idx:self.chopParaWidget.show()
+        if idx==CHOPS.ADD1 or idx==CHOPS.SUB1 else self.chopParaWidget.hide())
+
+        self.new_image=''
+    @logging
     def showError(self, e: str):
         self.stBar.showMessage(e)
         QMessageBox.warning(self, 'error!!!', e)
@@ -344,80 +462,120 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 self.__withdraw()
             elif a0.key() == Qt.Key_N:
                 self.__readImg()
+    def __saveTempImg(self):
+        fn = getTempFileName()
+        self.new_image.save(fn)
+        self.demoLabel.setPx(QPixmap(fn))
+    @logging
+    def __setDemoImg(self):
+        self.demoLabel.setImg(self.new_image.toqimage())
+
 
     """
     图像编辑开始
     """
-
+    @logging
     def __saveImg(self):
-        path = QFileDialog.getSaveFileName(self, "保存路径", ".", self.formatBox.currentText())
-        fn = f"{path[0]}.{path[1]}"
+        path = QFileDialog.getSaveFileName(self, "保存路径", ".", "*."+self.formatBox.currentText())
+        fn = path[0]
+        if not fn:
+            return
+        print(fn)
+        self.new_image.save(fn)
+        # img=Image.fromqimage(self.demoLabel.drawImg)
 
-        self.demolabel.pixmap.save(fn)
-        self.stBar.showMessage("已保存到" + path[0])
-
+        # self.demoLabel.pixmap.save(fn)
+        self.stBar.showMessage("已保存到" + fn)
         pass
 
+    @autoSaveTempFile
+    @logging
+    def __blendImg(self):
+        new_image = self.__convertInit()
+        other = QFileDialog.getOpenFileName(self, "选择另一张图片融合", ".", self.FILE_FILTER)[0]
+        if other=='' or self.blendAlphaEdit.text()=='':
+            return
+        otherImg = Image.open(other)
+        new_image = new_image.convert(otherImg.mode)
+
+        blend = Image.blend(new_image, otherImg, float(self.blendAlphaEdit.text()))
+        self.new_image=blend
+
+    @logging
     def __withdraw(self):
         if self.backup:
             self.demoLabel.setPx(self.backup.pop())
         else:
             QMessageBox.warning(self, '警告', '没东西撤回了亲')
-        pass
 
+    def __getImgInfo(self):
+        if not self.demoLabel.imgPath:
+            return
+        im = Image.open(self.demoLabel.imgPath)
+        arr = np.array(im)
+        if len(arr.shape)==2:
+            width, height = arr.shape
+            channels=1
+        else:
+            width, height, channels = arr.shape
+        self.nameLabel.setText(self.demoLabel.imgPath)
+        self.widthEdit.setText(str(width))
+        self.heightEdit.setText(str(height))
+        self.widthLabel.setText(str(width))
+        self.heightLabel.setText(str(height))
+        self.channelsLabel.setText(str(channels))
+        self.formatLabel.setText(self.demoLabel.format)
+        stat = ImageStat.Stat(im)
+        self.extremaLabel.setText(str(stat._getextrema()))
+        self.pixelsNumLabel.setText(str(stat._getcount()))
+        self.pixelsSumLabel.setText(str(stat._getsum()))
+        self.averageLabel.setText(str(stat._getmean()))
+        self.medianLabel.setText(str(stat._getmedian()))
+        self.rmsLabel.setText(str(stat._getrms()))
+        self.varLabel.setText(str(stat._getvar()))
+        self.stddevLabel.setText(str(stat._getstddev()))
+        # print(self.demoLabel.drawImg.depth(),self.demoLabel.drawImg)
+        self.depthLabel.setText(str(self.demoLabel.drawImg.depth()))
+        self.patternLabel.setText(str(im.mode))
+
+    @logging
     def __readImg(self, fn=None):
-        try:
-            imgName = fn or QFileDialog.getOpenFileName(self, "选择一张图片", "", self.FILE_FILTER)
 
-            self.demoLabel.imgPath= fn or imgName[0]
-
-            self.demoLabel.setPx(QPixmap(fn or imgName[0]))
-            im=Image.fromqimage(self.demoLabel.drawImg)
-            arr = np.array(im)
-            width,height,channels=arr.shape
-            self.widthEdit.setText(str(width))
-            self.heightEdit.setText(str(height))
-            self.widthLabel.setText(str(width))
-            self.heightLabel.setText(str(height))
-            self.channelsLabel.setText(str(channels))
-            self.formatLabel.setText(self.demoLabel.format)
-            stat=ImageStat.Stat(im)
-            self.extremaLabel.setText(str(stat._getextrema()))
-            self.pixelsNumLabel.setText(str(stat._getcount()))
-            self.pixelsSumLabel.setText(str(stat._getsum()))
-            self.averageLabel.setText(str(stat._getmean()))
-            self.medianLabel.setText(str(stat._getmedian()))
-            self.rmsLabel.setText(str(stat._getrms()))
-            self.varLabel.setText(str(stat._getvar()))
-            self.stddevLabel.setText(str(stat._getstddev()))
+        imgName = fn or QFileDialog.getOpenFileName(self, "选择一张图片", "", self.FILE_FILTER)
+        fn=fn or imgName[0]
+        if fn:
+            self.demoLabel.imgPath = fn
+            self.new_image=Image.open(fn)
+            self.demoLabel.setPx(QPixmap(fn))
+            self.__getImgInfo()
 
 
-
-
-
-        except Exception as e:
-            self.showError(e.__str__())
 
     # except Exception as e:
     # QMessageBox.warning(self, '错误的图片格式', "请选择正确的图片,例如:\nBMP GIF JPG JPEG PNG PBM PGM PPM XBM XPM")
     # self.showError("readImg:"+e.__str__())
-
+    @autoSaveTempFile
+    @logging
     def __crop(self, r: QRect):
         self.demoLabel.crop(r)
         self.widthEdit.setText(str(r.width()))
         self.heightEdit.setText(str(r.height()))
         self.show()
 
+
+    @logging
     def __copyImg(self):
         #     将当前图片输入到screenshot
         # 注意要深拷贝
         self.backup.append(self.demoLabel.backup())
-        if self.demolabel.pixmap:
+        if self.demoLabel.pixmap:
             self.hide()
-            self.screenShotWindow.copyImg(self.demolabel.pixmap)
+            self.screenShotWindow.copyImg(self.demoLabel.pixmap)
         else:
             QMessageBox.warning(self, '警告', '图片都没有,你在裁剪nm呢')
 
+
+    @logging
     def __autoFillImg(self):
 
         if not self.demoLabel.hasScaledContents():
@@ -437,22 +595,21 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
             self.demoLabel.setScaledContents(0)
             self.demoLabel.update()
-
+    @autoSaveTempFile
+    @logging
     def __resizeImg(self):
         # 调用screenshot
-        try:
-            self.backup.append(self.demoLabel.backup())
-            self.demoLabel.setPx(
-                self.demolabel.pixmap.scaled(int(self.widthEdit.text()), int(self.heightEdit.text()), Qt.IgnoreAspectRatio,
-                                         Qt.FastTransformation if self.checkBox_2.isChecked() else Qt.SmoothTransformation))
-        except Exception as e:
-            QMessageBox.warning(self, '警告', '不要调皮乱输参数啊亲')
-            self.stBar.showMessage(e.__str__())
+        self.backup.append(self.demoLabel.backup())
+        new_image= self.demoLabel.pixmap.scaled(int(self.widthEdit.text()), int(self.heightEdit.text()),
+                                         Qt.IgnoreAspectRatio,
+                                         Qt.FastTransformation if self.checkBox_2.isChecked() else Qt.SmoothTransformation)
+        self.new_image = new_image
 
+    @autoSaveTempFile
+    @logging
     def __rotateImg(self):
-        img = self.__convertInit()
-        try:
-            new_image = Image.fromqimage(img)
+
+            new_image = self.__convertInit()
             new_image = new_image.rotate(int(self.rotatationEdit.text()))
 
             if self.mirrorBox.currentIndex() == MIRROR.NO_MIRROR:
@@ -461,14 +618,33 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 new_image = new_image.transpose(Image.FLIP_LEFT_RIGHT)
             elif self.mirrorBox.currentIndex() == MIRROR.FLIP_TOP_BOTTOM:
                 new_image = new_image.transpose(Image.FLIP_TOP_BOTTOM)
-            new_image.save(self.tempFileName)
-            self.demoLabel.setPx(QPixmap(self.tempFileName))
+            self.new_image=new_image
 
+    @autoSaveTempFile
+    @logging
+    def __expandImg(self):
 
-        except Exception as e:
-            self.showError(e.__str__())
-        pass
+            new_image = self.__convertInit()
+            size = int(self.expandSizeEdit.text())
+            color = int(self.expandColorEdit.text())
+            new_image = ImageOps.expand(new_image, border=size, fill=color)
+            self.new_image=new_image
 
+    @autoSaveTempFile
+    @logging
+    def __chopsImg(self):
+        new_image = self.__convertInit()
+        other = QFileDialog.getOpenFileName(self, "选择另一张图片操作", ".", self.FILE_FILTER)[0]
+        otherImg=Image.open(other)
+        new_image=new_image.convert(otherImg.mode)
+        thread=Convert_Thread(new_image,Convert_Thread.CHOPS_OP,otherImg)
+        scale=self.scaleEdit.text()
+        thread.scale=1.0 if not scale else float(scale)
+        offset=self.scaleEdit.text()
+        thread.offset = 1 if not scale else int(offset)
+        self.__getConvertThread(thread)
+
+    @logging
     def __penDownImg(self):
         color = QColorDialog.getColor()
         self.demoLabel.drawInit(color)
@@ -482,18 +658,23 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
     图像操作开始
     """
 
+
+    @logging
     def __convertInit(self):
         img = self.demoLabel.drawImg
         if not img:
-            self.stBar.showMessage('没有图片,你在变nm呢?')
+            raise Exception("没有图片,你在变nm呢?")
             # QMessageBox.warning(self,'没有图片','你在变nm呢')
             return
         # 先备份
         self.backup.append(self.demoLabel.backup())
-        return Image.fromqimage(img)
+        #只能是ppm 或者png
+        # return Image.fromqimage(img)
+        return self.new_image
 
+    @autoSaveTempFile
+    @logging
     def __getConvertThread(self, thread):
-        try:
 
             obj = Convert_Object()
             obj.moveToThread(thread)
@@ -506,29 +687,27 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 if thread.errorFlag:
                     self.showError(thread.errorFlag)
                 else:
-                    self.demoLabel.setPx(QPixmap(thread.filename))
+                    self.new_image = thread.new_image
+                    self.demoLabel.setImg(self.new_image.toqimage())
                 thread.deleteLater()
 
             thread.finished.connect(saveImg)
             thread.start()
-        except Exception as e:
-            self.showError(e.__str__())
 
+
+    @logging
     def __convertPattern(self):
-
-        try:
             new_image = self.__convertInit()
             thread = Convert_Thread(new_image, Convert_Thread.CONVERT_OP)
             self.__getConvertThread(thread)
-        except Exception as e:
-            self.showError("convertPattern():" + e.__str__())
 
+    @logging
     def __customFliter(self):
         dia = CustomFilter(self)
         dia.show()
 
         def accepted():
-            try:
+
                 new_image = self.__convertInit()
                 kernal = eval(dia.plainTextEdit.toPlainText().replace("\n", ''))
                 size = 3 if dia.comboBox.currentIndex() == 0 else 5
@@ -537,25 +716,20 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 new_image = new_image.filter(
                     ImageFilter.Kernel((size, size), kernal, None if not scale else float(scale),
                                        0 if not offset else int(offset)))
-                fn = getTempFileName()
-                new_image.save(fn)
-                self.demoLabel.setPx(QPixmap(fn))
-            except Exception as e:
-                self.showError(e.__str__())
+                self.new_image=new_image
+
 
         dia.accepted.connect(accepted)
 
+
+    @logging
     def __filterImg(self):
+        new_image = self.__convertInit()
+        thread = Convert_Thread(new_image, Convert_Thread.FILTER_OP)
+        self.__getConvertThread(thread)
 
-        try:
-            new_image = self.__convertInit()
-            thread = Convert_Thread(new_image, Convert_Thread.FILTER_OP)
-            self.__getConvertThread(thread)
 
-        except Exception as e:
-            self.showError(e.__str__())
-        pass
-
+    @logging
     def __histogramShow(self):
         """
         :return:
@@ -569,44 +743,42 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         任何一幅特定的图像都有唯一的直方图与之对应，但不同的图像可以有相同的直方图。
         如果一幅图像有两个不相连的区域组成，并且每个区域的直方图已知，则整幅图像的直方图是该两个区域的直方图之和
         """
-        try:
-            img = self.demoLabel.drawImg
-            fn = getTempFileName()
-            img.save(fn)
-            new_image = Image.open(fn)
-            # new_image=new_image.convert("RGB")
 
-            r, g, b = new_image.split()
+        img = self.demoLabel.drawImg
+        fn = getTempFileName()
+        img.save(fn)
+        new_image = Image.open(fn)
+        # new_image=new_image.convert("RGB")
 
-            plt.subplot(221)
-            ar = np.array(r).flatten()
-            plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
-            plt.legend(('r'), loc='upper left')
-            plt.subplot(222)
+        r, g, b = new_image.split()
 
-            ag = np.array(g).flatten()
+        plt.subplot(221)
+        ar = np.array(r).flatten()
+        plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
+        plt.legend(('r'), loc='upper left')
+        plt.subplot(222)
 
-            plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
-            plt.legend(('g'), loc='upper left')
-            plt.subplot(223)
-            ab = np.array(b).flatten()
+        ag = np.array(g).flatten()
 
-            plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
-            plt.legend(('b'), loc='upper left')
+        plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
+        plt.legend(('g'), loc='upper left')
+        plt.subplot(223)
+        ab = np.array(b).flatten()
 
-            plt.subplot(224)
-            plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
-            plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
-            plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
-            plt.legend(('r', 'g', 'b'), loc='upper left')
-            plt.title(self.demolabel.pixmapName)
-            plt.xlabel("灰度值(0~255)")
-            plt.ylabel("出现频率")
-            plt.show()
+        plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
+        plt.legend(('b'), loc='upper left')
 
-        except Exception as e:
-            self.showError(e)
+        plt.subplot(224)
+        plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
+        plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
+        plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
+        plt.legend(('r', 'g', 'b'), loc='upper left')
+        plt.title(self.demoLabel.imgPath)
+        plt.xlabel("灰度值(0~255)")
+        plt.ylabel("出现频率")
+        plt.show()
 
+    @logging
     def __histogramBalanced(self):
 
         """
@@ -624,94 +796,91 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         均衡化过程中，必须要保证两个条件：①像素无论怎么映射，一定要保证原来的大小关系不变，较亮的区域，依旧是较亮的，较暗依旧暗，只是对比度增大，绝对不能明暗颠倒
         如果是八位图像，那么像素映射函数的值域应在0和255之间的，不能越界。综合以上两个条件，累积分布函数是个好的选择，因为累积分布函数是单调增函数（控制大小关系），并且值域是0到1（控制越界问题），所以直方图均衡化中使用的是累积分布函数。
         """
-        try:
-            img = self.demoLabel.drawImg
 
-            fn = getTempFileName()
-            img.save(fn)
-            new_image = Image.open(fn)
-            plt.subplot(221)
-            plt.axis('off')
-            plt.title("均衡化前")
-            plt.imshow(new_image)
+        img = self.demoLabel.drawImg
 
-            # new_image=new_image.convert("RGB")
-            plt.subplot(222)
-            plt.xlabel("灰度值(0~255)")
-            plt.ylabel("出现频率")
-            hist, bins = np.histogram(np.array(new_image).flatten(), 256, [0, 256])
-            cdf = hist.cumsum()
-            # 均衡后的cdf
-            cdf_normalized = cdf * hist.max() / cdf.max()
+        fn = getTempFileName()
+        img.save(fn)
+        new_image = Image.open(fn)
+        plt.subplot(221)
+        plt.axis('off')
+        plt.title("均衡化前")
+        plt.imshow(new_image)
 
-            r, g, b = new_image.split()
-            ar = np.array(r).flatten()
-            plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
-            ag = np.array(g).flatten()
-            plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
-            ab = np.array(b).flatten()
-            plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
-            plt.plot(cdf_normalized, color='y')
-            plt.legend(('r', 'g', 'b'), loc='upper left')
+        # new_image=new_image.convert("RGB")
+        plt.subplot(222)
+        plt.xlabel("灰度值(0~255)")
+        plt.ylabel("出现频率")
+        hist, bins = np.histogram(np.array(new_image).flatten(), 256, [0, 256])
+        cdf = hist.cumsum()
+        # 均衡后的cdf
+        cdf_normalized = cdf * hist.max() / cdf.max()
 
-            new_image = ImageOps.equalize(new_image)
+        r, g, b = new_image.split()
+        ar = np.array(r).flatten()
+        plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
+        ag = np.array(g).flatten()
+        plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
+        ab = np.array(b).flatten()
+        plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
+        plt.plot(cdf_normalized, color='y')
+        plt.legend(('cdf', 'r', 'g', 'b'), loc='upper left')
 
-            hist, bins = np.histogram(np.array(new_image).flatten(), 256, [0, 256])
-            cdf = hist.cumsum()
-            # 均衡后的cdf
-            cdf_normalized = cdf * hist.max() / cdf.max()
+        new_image = ImageOps.equalize(new_image)
 
-            plt.subplot(223)
+        hist, bins = np.histogram(np.array(new_image).flatten(), 256, [0, 256])
+        cdf = hist.cumsum()
+        # 均衡后的cdf
+        cdf_normalized = cdf * hist.max() / cdf.max()
 
-            plt.axis('off')
-            plt.title("均衡化后")
-            plt.imshow(new_image)
+        plt.subplot(223)
 
-            plt.subplot(224)
+        plt.axis('off')
+        plt.title("均衡化后")
+        plt.imshow(new_image)
 
-            plt.xlabel("灰度值(0~255)")
-            plt.ylabel("出现频率")
+        plt.subplot(224)
 
-            r, g, b = new_image.split()
+        plt.xlabel("灰度值(0~255)")
+        plt.ylabel("出现频率")
 
-            ar = np.array(r).flatten()
-            plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
-            ag = np.array(g).flatten()
-            plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
-            ab = np.array(b).flatten()
-            plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
-            plt.plot(cdf_normalized, color='y')
-            plt.legend(('cdf', 'r', 'g', 'b'), loc='upper left')
+        r, g, b = new_image.split()
 
-            plt.show()
+        ar = np.array(r).flatten()
+        plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
+        ag = np.array(g).flatten()
+        plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
+        ab = np.array(b).flatten()
+        plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
+        plt.plot(cdf_normalized, color='y')
+        plt.legend(('cdf', 'r', 'g', 'b'), loc='upper left')
 
+        plt.show()
 
-        except Exception as e:
-            self.showError(e)
-
+    @logging
     def __randomNoise(self):
 
         new_image = self.__convertInit()
 
         thread = Convert_Thread(new_image, Convert_Thread.ADD_NOISE_OP)
         self.__getConvertThread(thread)
-
+    @logging
     def __gaussianNoise(self):
 
         new_image = self.__convertInit()
 
         thread = Convert_Thread(new_image, Convert_Thread.GS_NOISE_OP)
         self.__getConvertThread(thread)
-
+    @logging
     def __saltAndPepperNoise(self):
 
         new_image = self.__convertInit()
 
         self.__getConvertThread(Convert_Thread(new_image, Convert_Thread.SALT_NOISE_OP))
-
+    @logging
     def __ffTransform(self):
-        try:
-            img = np.array(Image.fromqimage(self.demoLabel.drawImg).convert("L"))
+
+            img = np.array(self.new_image.convert("L"))
             f = np.fft.fft2(img)
             fshift = np.fft.fftshift(f)  # 将频谱对称轴从左上角移至中心
             magnitude_spectrum = 20 * np.log(np.abs(fshift))
@@ -732,11 +901,10 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             plt.subplot(224), plt.imshow(np.angle(f_ishift), cmap='gray')
             plt.title('fft'), plt.xticks([]), plt.yticks([])
             plt.show()
-        except Exception as e:
-            self.showError("__ffTransform:" + e.__str__())
 
+    @logging
     def __hideInfoInImg(self):
-        try:
+
             color = (255, 255, 255)
             carrier_image = self.__convertInit()
             hide_image = Image.new(carrier_image.mode, carrier_image.size)
@@ -746,14 +914,15 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             plainText = self.hideInfoEdit.toPlainText()
             length = len(plainText)
             # 计算输入信息的字体大小
-            carrier_image_arr=np.array(carrier_image)
+            carrier_image_arr = np.array(carrier_image)
             plt.subplot(421)
             plt.axis("off")
             plt.imshow(carrier_image)
 
             height, width, channels = carrier_image_arr.shape
-            fontSize = self.fontSizeEdit.text() or 20
-            font = ImageFont.truetype("font/msyh.ttc",size=fontSize)
+            size = self.fontSizeEdit.text()
+            fontSize = 20 if size == '' else int(size)
+            font = ImageFont.truetype(r"C:\Windows\Fonts\Arial\arial.ttf", size=fontSize)
 
             # 自动换行
             textList = list(plainText)
@@ -764,7 +933,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                     textList.insert(i, "\n")
                 plainText = ''.join(textList)
 
-            textDraw.text((0, height//3), plainText, fill=color, font=font)
+            textDraw.text((0, height // 3), plainText, fill=color, font=font)
 
             # plt.imshow(hide_image)
             # plt.show()
@@ -779,18 +948,16 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 for j in range(width):
 
                     if tuple(hide_image_arr[i, j]) == color:
-
                         carrier_image_arr[i, j, 0] += 1
             plt.subplot(422)
             plt.axis("off")
             plt.imshow(carrier_image_arr)
 
-            fn = getTempFileName()
-            Image.fromarray(carrier_image_arr).save(fn)
-            self.demoLabel.setPx(QPixmap(fn))
+            self.new_image=Image.fromarray(carrier_image_arr)
+            self.__setDemoImg()
 
-            img=Image.new(carrier_image.mode,carrier_image.size)
-            img=np.array(img)
+            img = Image.new(carrier_image.mode, carrier_image.size)
+            img = np.array(img)
             h, w = img.shape[:2]
             # 新建一张图用来放解出来的信息
             hideInfoImg = np.zeros((h, w, 3), np.uint8)
@@ -813,17 +980,32 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             plt.show()
 
 
-        except Exception as e:
-            self.showError("__hideInfoInImg:" + e.__str__())
 
+    @autoSaveTempFile
+    @logging
+    def __generateValidation(self):
+        self.__convertInit()
+        #创建一个 图片后 加入数字和英文
+        fn=getTempFileName()
+        color = (255, 255, 255)
+        validation = Image.new("RGB", (500,500))
+        textDraw = ImageDraw.Draw(validation)
+        # size = 20
+        fontSize = 20 #if size == '' else int(size)
+        font = ImageFont.truetype(r"C:\Windows\Fonts\Arial\arial.ttf", size=fontSize)
 
+        textDraw.text((50, 50), "abvc", fill=color, font=font)
 
+        self.new_image=validation
+        pass
     """图像增强"""
 
+    @autoSaveTempFile
+    @logging
     def __enhance(self):
-        try:
+
             new_image = self.__convertInit()
-            fn = getTempFileName()
+
             color = ENHANCE.getEnhance(ENHANCE.COLOR, new_image)
             new_image = color.enhance(float(self.colorEdit.text()))
             contrast = ENHANCE.getEnhance(ENHANCE.CONTRAST, new_image)
@@ -832,9 +1014,5 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             new_image = brightness.enhance(float(self.brightnessEdit.text()))
             sharpeness = ENHANCE.getEnhance(ENHANCE.SHARPNESS, new_image)
             new_image = sharpeness.enhance(float(self.sharpnessEdit.text()))
-            new_image.save(fn)
-            self.demoLabel.setPx(QPixmap(fn))
+            self.new_image=new_image
 
-        except Exception as e:
-            self.showError("__enhance :"+e.__str__())
-            # self.showError("不要输入奇怪的东西啊? :" + )
