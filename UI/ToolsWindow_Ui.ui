@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1164</width>
-    <height>774</height>
+    <width>1176</width>
+    <height>793</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -20,7 +20,7 @@
    <property name="mouseTracking">
     <bool>false</bool>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_5" stretch="1,3">
+   <layout class="QVBoxLayout" name="verticalLayout_5" stretch="2,6">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -68,7 +68,7 @@ background-color: rgb(255, 255, 255);
 }</string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="tabWidgetPage1">
           <attribute name="title">
@@ -76,24 +76,27 @@ background-color: rgb(255, 255, 255);
           </attribute>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
            <property name="spacing">
-            <number>0</number>
+            <number>5</number>
            </property>
            <property name="leftMargin">
-            <number>0</number>
+            <number>5</number>
            </property>
            <property name="topMargin">
-            <number>0</number>
+            <number>5</number>
            </property>
            <property name="rightMargin">
-            <number>0</number>
+            <number>5</number>
            </property>
            <property name="bottomMargin">
-            <number>0</number>
+            <number>5</number>
            </property>
            <item>
             <widget class="QScrollArea" name="scrollArea">
              <property name="frameShape">
               <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="verticalScrollBarPolicy">
+              <enum>Qt::ScrollBarAlwaysOff</enum>
              </property>
              <property name="widgetResizable">
               <bool>true</bool>
@@ -103,25 +106,25 @@ background-color: rgb(255, 255, 255);
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>1043</width>
-                <height>157</height>
+                <width>1104</width>
+                <height>135</height>
                </rect>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_12">
                <property name="spacing">
-                <number>10</number>
+                <number>15</number>
                </property>
                <property name="leftMargin">
                 <number>0</number>
                </property>
                <property name="topMargin">
-                <number>0</number>
+                <number>5</number>
                </property>
                <property name="rightMargin">
                 <number>0</number>
                </property>
                <property name="bottomMargin">
-                <number>0</number>
+                <number>5</number>
                </property>
                <item>
                 <widget class="QGroupBox" name="groupBox_11">
@@ -135,20 +138,26 @@ background-color: rgb(255, 255, 255);
                   <string>常用操作</string>
                  </property>
                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
                   <property name="leftMargin">
-                   <number>5</number>
+                   <number>0</number>
                   </property>
                   <property name="topMargin">
-                   <number>5</number>
+                   <number>0</number>
                   </property>
                   <property name="rightMargin">
-                   <number>5</number>
+                   <number>0</number>
                   </property>
                   <property name="bottomMargin">
                    <number>0</number>
                   </property>
                   <item>
                    <layout class="QGridLayout" name="gridLayout">
+                    <property name="spacing">
+                     <number>0</number>
+                    </property>
                     <item row="1" column="0">
                      <widget class="QPushButton" name="copyImgBtn">
                       <property name="sizePolicy">
@@ -159,19 +168,6 @@ background-color: rgb(255, 255, 255);
                       </property>
                       <property name="text">
                        <string>截取图片</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item row="1" column="1">
-                     <widget class="QPushButton" name="saveImgBtn">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="text">
-                       <string>保存图片</string>
                       </property>
                      </widget>
                     </item>
@@ -188,6 +184,19 @@ background-color: rgb(255, 255, 255);
                       </property>
                      </widget>
                     </item>
+                    <item row="1" column="1">
+                     <widget class="QPushButton" name="saveImgBtn">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>保存图片</string>
+                      </property>
+                     </widget>
+                    </item>
                     <item row="0" column="1">
                      <widget class="QPushButton" name="fillImgBtn">
                       <property name="sizePolicy">
@@ -198,6 +207,32 @@ background-color: rgb(255, 255, 255);
                       </property>
                       <property name="text">
                        <string>填充图片</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="2">
+                     <widget class="QPushButton" name="restoreSizeBtn">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>还原大小</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="1" column="2">
+                     <widget class="QPushButton" name="pasteBtn">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="text">
+                       <string>粘贴图片</string>
                       </property>
                      </widget>
                     </item>
@@ -426,6 +461,12 @@ background-color: rgb(255, 255, 255);
                   <property name="leftMargin">
                    <number>0</number>
                   </property>
+                  <property name="topMargin">
+                   <number>0</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>0</number>
+                  </property>
                   <property name="bottomMargin">
                    <number>0</number>
                   </property>
@@ -468,7 +509,7 @@ background-color: rgb(255, 255, 255);
                   <item>
                    <widget class="QLineEdit" name="blendAlphaEdit">
                     <property name="placeholderText">
-                     <string>透明度,必填</string>
+                     <string>透明度,默认0.1</string>
                     </property>
                    </widget>
                   </item>
@@ -704,13 +745,13 @@ background-color: rgb(255, 255, 255);
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>1043</width>
-                <height>157</height>
+                <width>1055</width>
+                <height>162</height>
                </rect>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_9">
                <property name="spacing">
-                <number>0</number>
+                <number>5</number>
                </property>
                <property name="leftMargin">
                 <number>0</number>
@@ -734,27 +775,32 @@ background-color: rgb(255, 255, 255);
                     </property>
                     <item>
                      <property name="text">
-                      <string>二值化</string>
+                      <string>1bit二值化</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>灰度转换</string>
+                      <string>8bit二值化</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>二值转换</string>
+                      <string>灰度化</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>RGB转换</string>
+                      <string>调色盘</string>
                      </property>
                     </item>
                     <item>
                      <property name="text">
-                      <string>RGBA转换</string>
+                      <string>RGB</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>RGBA</string>
                      </property>
                     </item>
                     <item>
@@ -868,7 +914,7 @@ background-color: rgb(255, 255, 255);
                     </item>
                     <item>
                      <property name="text">
-                      <string>普通模糊</string>
+                      <string>均值滤波</string>
                      </property>
                     </item>
                     <item>
@@ -957,6 +1003,22 @@ background-color: rgb(255, 255, 255);
                 </widget>
                </item>
                <item>
+                <widget class="QGroupBox" name="radiusGroupBox">
+                 <property name="title">
+                  <string>平滑半径</string>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_26">
+                  <item>
+                   <widget class="QLineEdit" name="radiusEdit">
+                    <property name="placeholderText">
+                     <string>默认2</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
                 <widget class="QGroupBox" name="rankGroupBox">
                  <property name="title">
                   <string>等级参数</string>
@@ -965,14 +1027,14 @@ background-color: rgb(255, 255, 255);
                   <item>
                    <widget class="QLineEdit" name="sizeEdit">
                     <property name="placeholderText">
-                     <string>size</string>
+                     <string>size 默认 3x3</string>
                     </property>
                    </widget>
                   </item>
                   <item>
                    <widget class="QLineEdit" name="rankEdit">
                     <property name="placeholderText">
-                     <string>rank</string>
+                     <string>rank 默认3</string>
                     </property>
                    </widget>
                   </item>
@@ -1034,14 +1096,14 @@ background-color: rgb(255, 255, 255);
                     <item>
                      <widget class="QLineEdit" name="meanEdit">
                       <property name="placeholderText">
-                       <string>均值</string>
+                       <string>均值 默认0.1</string>
                       </property>
                      </widget>
                     </item>
                     <item>
                      <widget class="QLineEdit" name="sigmaEdit">
                       <property name="placeholderText">
-                       <string>标准差</string>
+                       <string>标准差 默认0.1</string>
                       </property>
                      </widget>
                     </item>
@@ -1110,14 +1172,14 @@ background-color: rgb(255, 255, 255);
                      </size>
                     </property>
                     <property name="plainText">
-                     <string>HELLO WORLD!</string>
+                     <string>I LOVE YOU ❤</string>
                     </property>
                    </widget>
                   </item>
                   <item>
                    <widget class="QLineEdit" name="fontSizeEdit">
                     <property name="placeholderText">
-                     <string>字体大小 10</string>
+                     <string>字体大小 默认50</string>
                     </property>
                    </widget>
                   </item>
@@ -1324,8 +1386,8 @@ background-color: rgb(255, 255, 255);
           <widget class="QPushButton" name="generateBtn">
            <property name="geometry">
             <rect>
-             <x>30</x>
-             <y>30</y>
+             <x>10</x>
+             <y>10</y>
              <width>101</width>
              <height>101</height>
             </rect>
@@ -1368,8 +1430,8 @@ background-color: rgb(255, 255, 255);
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>1043</width>
-                <height>157</height>
+                <width>1055</width>
+                <height>162</height>
                </rect>
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_16">
@@ -1557,6 +1619,13 @@ background-color: rgb(255, 255, 255);
                        </property>
                       </widget>
                      </item>
+                     <item>
+                      <widget class="QLabel" name="label_12">
+                       <property name="text">
+                        <string>图片尺寸</string>
+                       </property>
+                      </widget>
+                     </item>
                     </layout>
                    </widget>
                   </item>
@@ -1601,6 +1670,24 @@ background-color: rgb(255, 255, 255);
                      </item>
                      <item>
                       <widget class="QLabel" name="patternLabel">
+                       <property name="font">
+                        <font>
+                         <family>微软雅黑</family>
+                         <pointsize>10</pointsize>
+                         <weight>75</weight>
+                         <bold>true</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">color: rgb(46, 147, 255);</string>
+                       </property>
+                       <property name="text">
+                        <string>TextLabel</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="sizeLabel">
                        <property name="font">
                         <font>
                          <family>微软雅黑</family>
@@ -1994,6 +2081,9 @@ Ctrl+z</string>
     </item>
     <item>
      <widget class="QScrollArea" name="scrollArea_3">
+      <property name="mouseTracking">
+       <bool>false</bool>
+      </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
       </property>
@@ -2017,9 +2107,12 @@ Ctrl+z</string>
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1164</width>
-         <height>547</height>
+         <width>1176</width>
+         <height>561</height>
         </rect>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <property name="spacing">
@@ -2068,7 +2161,7 @@ Ctrl+z</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1164</width>
+     <width>1176</width>
      <height>23</height>
     </rect>
    </property>

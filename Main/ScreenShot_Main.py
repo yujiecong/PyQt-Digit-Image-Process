@@ -2,7 +2,7 @@ import ctypes
 from ctypes.wintypes import MSG
 
 from PyQt5.QtCore import Qt, QPoint, QRect, QSize, QAbstractNativeEventFilter, pyqtSignal
-from PyQt5.QtGui import QPixmap, QGuiApplication
+from PyQt5.QtGui import QPixmap, QGuiApplication, QImage, QPainter
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.uic.Compiler.qtproxies import QtGui
 
@@ -39,8 +39,10 @@ class ScreenShowWindow(QMainWindow, Ui_MainWindow, QAbstractNativeEventFilter):
         self.hk_start = SystemHotkey()
         self.hk_start.register(('control', 'alt', 'e'), callback=self.slots_StartScreenShot)
         #label选择后给我
+
         self.mainPx.seleted.connect(self.__seletedScreenShow)
         self.hide()
+
 
     def __seletedScreenShow(self,r:QRect):
         #将这个地方截图下来
@@ -48,30 +50,35 @@ class ScreenShowWindow(QMainWindow, Ui_MainWindow, QAbstractNativeEventFilter):
         # self.toolsWindowUi.lineEdit.setText(str(r.width()))
         # self.toolsWindowUi.lineEdit_2.setText(str(r.height()))
         # self.toolsWindowUi.show()
-
+        self.mainPx.screenSHot = False
         self.signals_copyImg.emit(r)
         self.hide()
-        pass
+
 
     def mouseReleaseEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.canResize = self.NO_RESIZE
         self.leftButtonClicked = False
+
     def keyPressEvent(self, a0: QtGui.QKeyEvent) -> None:
         if a0.key() == Qt.Key_Escape:
             self.hide()
+            self.parent().show()
 
     def slots_StartScreenShot(self, other: ctypes.wintypes.MSG):
         self.signal_HotKey.emit('')
-    def copyImg(self,px:QPixmap):
-        self.mainPx.setFixedSize(QSize(px.width(),px.height()))
-        self.mainPx.setPixmap(px)
+
+    def copyImg(self,img:QImage):
+
+        self.mainPx.setImg(img)
         self.show()
+
     def __screenShot(self, s):
         if not self.isVisible():
             px = QGuiApplication.primaryScreen().grabWindow(0);
-            self.mainPx.setPixmap(px)
-            self.move(500, 600)
-            self.window().show()
+            self.mainPx.setImg(px.toImage())
+            self.move(0, 0)
+            self.window().showMaximized()
+            self.mainPx.screenSHot=True
         else:
             self.hide()
 

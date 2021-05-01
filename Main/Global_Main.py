@@ -1,38 +1,7 @@
 import os
 
-global_dict = {
-    "TEMP_DIR":os.getcwd()+ "/cache_img/",
-    "TEMP_FORMAT": 0,
-    "GS_MEAD":1,
-    "GS_SIGMA":1,
-    "RANDOM_NOISE_NUM":1000,
-    "NOISE_PROPORTION":0.1,
-    "CONVERT_IDX":0,
-    "L_THRESHOLD":127,
-    "FILTER_BOX":0,
-    "RANK_SIZE":3,
-    "RANK_LEVEL":3,
-    "SAVE_TEMP":0,
-    "CHOPS":0,
-
-}
-
-
-def setGlobalValue(s: str, v):
-    global_dict[s] = v
-    print(s,v)
-
-
-def getGlobalValue(s: str):
-    return global_dict[s]
-
-
+from PIL import ImageEnhance
 import time
-
-
-def getTempFileName():
-    return f"{getGlobalValue('TEMP_DIR')}{time.time()}.{FORMAT_MODE.modeDict[getGlobalValue('TEMP_FORMAT')]}"
-
 
 class MIRROR:
     NO_MIRROR = 0
@@ -54,6 +23,9 @@ class CHOPS:
     MUL=11
 
 class FILTER:
+    """
+    举一个滤波在我们生活中的应用：美颜的磨皮功能。如果将我们脸上坑坑洼洼比作是噪声的话，那么滤波算法就是来取出这些噪声，使我们自拍的皮肤看起来很光滑。
+    """
     GaussianBlur = 0
     BLUR = 1
     EDGE_ENHANCE = 2
@@ -72,7 +44,8 @@ class FILTER:
 
 
 class CONVERT_MODE:
-    CONVERT_MODE_1 = 0
+    CONVERT_MODE_1bit = 0
+    CONVERT_MODE_8bit=-1
     CONVERT_MODE_L = 1
     CONVERT_MODE_P = 2
     CONVERT_MODE_RGB = 3
@@ -87,14 +60,28 @@ class CONVERT_MODE:
 
 
 class FORMAT_MODE:
-    FORMAT_JPG = 0
-    FORMAT_PNG = 1
-    FORMAT_PPM = 2
-    FORMAT_GIF = 3
 
     modeDict = {
-        FORMAT_JPG: "jpg",
-        FORMAT_PNG: "png",
-        FORMAT_PPM: "ppm",
-        FORMAT_GIF: "gif",
+        "jpg": 0,
+        "bmp": 1,
+        "png": 2,
+        "ppm": 3,
+        "gif": 4,
     }
+
+class ENHANCE:
+    COLOR = 0
+    CONTRAST = 1
+    BRIGHTNESS = 2
+    SHARPNESS = 3
+
+    @staticmethod
+    def getEnhance(mode, img):
+        if mode == ENHANCE.COLOR:
+            return ImageEnhance.Color(img)
+        elif mode == ENHANCE.CONTRAST:
+            return ImageEnhance.Contrast(img)
+        elif mode == ENHANCE.BRIGHTNESS:
+            return ImageEnhance.Brightness(img)
+        elif mode == ENHANCE.SHARPNESS:
+            return ImageEnhance.Sharpness(img)

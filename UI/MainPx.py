@@ -1,13 +1,15 @@
 from typing import Union
 
 from PyQt5.QtCore import Qt, QPoint, QRect, pyqtSignal
-from PyQt5.QtGui import QPainter
+from PyQt5.QtGui import QPainter, QImage
 from PyQt5.QtWidgets import QLabel
 from PyQt5.uic.Compiler.qtproxies import QtGui
 
 
 class MainPx(QLabel):
     seleted = pyqtSignal(QRect)
+
+    signals_ScreenShot = pyqtSignal(QImage)
     # 调整边界的触发值
     resizewidth: int
     # 全局鼠标坐标
@@ -38,14 +40,20 @@ class MainPx(QLabel):
         self.rightBottomPoint = QPoint(0, 0)
         self.interceptFinish = False
 
+        self.r=QRect()
+        self.drawImg=QImage()
+
+        self.screenSHot=False
+    def setImg(self,img):
+        # self.r=r
+        self.drawImg=img
+        self.update()
     def paintEvent(self, a0: QtGui.QPaintEvent) -> None:
-        # if not self.pixmap():
-        #     return
+
         painter = QPainter(self)
-        painter.drawPixmap(self.rect(), self.pixmap())
+        painter.drawImage(self.drawImg.rect(), self.drawImg)
         painter.setPen(Qt.red)
-        # self.interceptRect=QRect(self.startPoint,self.mousePos)
-        # print(self.interceptRect)
+
         painter.drawRect(self.interceptRect)
 
 
@@ -60,22 +68,31 @@ class MainPx(QLabel):
     def mouseDoubleClickEvent(self, a0: QtGui.QMouseEvent) -> None:
         msx,msy=self.interceptRect.bottomRight().x(),self.interceptRect.bottomRight().y()
         spx,spy=self.interceptRect.topLeft().x(),self.interceptRect.topLeft().y()
-
-        if msx>spx:
-            if  msy>spy:
-                self.seleted.emit(QRect(spx,spy,msx-spx,msy-spy))
+        if not self.screenSHot:
+            if msx>spx:
+                if  msy>spy:
+                    self.seleted.emit(QRect(spx,spy,msx-spx,msy-spy))
+                else:
+                    self.seleted.emit(QRect(msx,msy,msx-spx,spy-spy))
             else:
-                self.seleted.emit(QRect(msx,msy,msx-spx,spy-spy))
+                if msy > spy:
+                    self.seleted.emit(QRect(msx,spy,spx-msx,msy-spy))
+                else:
+                    self.seleted.emit(QRect(self.mousePos,self.startPoint))
         else:
-            if msy > spy:
-                self.seleted.emit(QRect(msx,spy,spx-msx,msy-spy))
+            if msx > spx:
+                if msy > spy:
+                    self.signals_ScreenShot.emit(self.drawImg.copy(QRect(spx, spy, msx - spx, msy - spy)))
+                else:
+                    self.signals_ScreenShot.emit(self.drawImg.copy(QRect(msx, msy, msx - spx, spy - spy)))
             else:
-                self.seleted.emit(QRect(self.mousePos,self.startPoint))
+                if msy > spy:
+                    self.signals_ScreenShot.emit(self.drawImg.copy(QRect(msx, spy, spx - msx, msy - spy)))
+                else:
+                    self.signals_ScreenShot.emit(self.drawImg.copy(QRect(self.mousePos, self.startPoint)))
     def mouseReleaseEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.leftButtonClicked = False
-        # 选取完毕 截图
-        # 传给上面
-        #
+
         if self.startPoint != self.mousePos:
             self.interceptFinish = True
 
@@ -159,9 +176,9 @@ class MainPx(QLabel):
             else:
                 self.interceptRect=QRect(self.startPoint,self.mousePos)
         else:
-            if self.interceptFinish:
-                self.canResize = self.__canItResize(a0.pos())
-                self.__setMouseCursor()
+
+            self.canResize = self.__canItResize(a0.pos())
+            self.__setMouseCursor()
 
     def __canItResize(self, pos: QPoint):
         """
