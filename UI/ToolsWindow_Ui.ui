@@ -68,7 +68,7 @@ background-color: rgb(255, 255, 255);
 }</string>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="tabWidgetPage1">
           <attribute name="title">
@@ -1383,18 +1383,96 @@ background-color: rgb(255, 255, 255);
           <attribute name="title">
            <string>图像生成</string>
           </attribute>
-          <widget class="QPushButton" name="generateBtn">
+          <widget class="QGroupBox" name="groupBox_18">
            <property name="geometry">
             <rect>
              <x>10</x>
              <y>10</y>
-             <width>101</width>
-             <height>101</height>
+             <width>391</width>
+             <height>141</height>
             </rect>
            </property>
-           <property name="text">
-            <string>随机生成验证码</string>
+           <property name="title">
+            <string>验证码生成</string>
            </property>
+           <widget class="QPushButton" name="generateBtn">
+            <property name="geometry">
+             <rect>
+              <x>140</x>
+              <y>100</y>
+              <width>111</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>随机生成验证码</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="vdWidthEdit">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>20</y>
+              <width>113</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="placeholderText">
+             <string>宽度 默认128</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="vdHeightEdit">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>50</y>
+              <width>113</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="placeholderText">
+             <string>高度 默认64</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="vdTextEdit">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>80</y>
+              <width>113</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="placeholderText">
+             <string>文本 默认随机</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="vdFontEdit">
+            <property name="geometry">
+             <rect>
+              <x>140</x>
+              <y>20</y>
+              <width>113</width>
+              <height>20</height>
+             </rect>
+            </property>
+            <property name="placeholderText">
+             <string>字体大小 默认30</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="vdFontBtn">
+            <property name="geometry">
+             <rect>
+              <x>140</x>
+              <y>50</y>
+              <width>121</width>
+              <height>21</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>选择字体 默认arial</string>
+            </property>
+           </widget>
           </widget>
          </widget>
          <widget class="QWidget" name="tab_4">
@@ -2070,6 +2148,13 @@ Ctrl+z</string>
             </property>
             <property name="checked">
              <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="autoStretchBox">
+            <property name="text">
+             <string>自动拉伸</string>
             </property>
            </widget>
           </item>

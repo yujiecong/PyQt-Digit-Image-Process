@@ -142,6 +142,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.penUpBtn.clicked.connect(self.__penUpImg)
         self.expandBtn.clicked.connect(self.__expandImg)
         self.chopsBtn.clicked.connect(self.__chopsImg)
+        self.screenShotWindow.signals_ScreenShot.connect(self.__screenShot)
         def updateInfo(r):
             self.sizeLabel.setText(f"({r.width()},{r.height()})")
 
@@ -300,7 +301,8 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             if not self.getGlobalValue("SAVE_TEMP"):
                 os.remove(fn)
             self.obj=None
-            # self.demoLabel.setRestore()
+            if self.autoStretchBox.isChecked():
+                self.demoLabel.setRestore()
         else:
             QMessageBox.warning(self, '警告', '没东西撤回了亲')
 
@@ -386,15 +388,17 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         fn = self.getTempFileName()
 
         self.new_image.save(fn)
-        # self.demoLabel.setImg(QPixmap(fn).toImage())
+
         self.demoLabel.setImg(QImage(fn),fn)
 
-        # if not self.getGlobalValue("SAVE_TEMP"):
+
         if not self.getGlobalValue("SAVE_TEMP"):
             os.remove(fn)
         if self.obj:
             self.obj.deleteLater()
             self.obj=None
+        if self.autoStretchBox.isChecked():
+            self.demoLabel.setRestore()
 
     @logging
     def __threadSetImg(self):
@@ -418,15 +422,25 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         fn=self.getTempFileName()
         self.demoLabel.drawImg.copy(r).save(fn)
         self.show()
-        self.new_image = Image.open(fn)
+        self.new_image = Image.open(fn).copy()
         self.demoLabel.setImg(QImage(fn),fn)
+        if not self.getGlobalValue("SAVE_TEMP"):
+            os.remove(fn)
 
-        self.demoLabel.setRestore()
 
     @logging
     def __screenShot(self,img):
+        self.show()
+        self.screenShotWindow.hide()
         self.__convertInit()
-        self.demoLabel.setImg(img)
+        fn=self.getTempFileName()
+        img.save(fn)
+        self.new_image=Image.open(fn).copy()
+        self.demoLabel.setImg(img,fn)
+        if not self.getGlobalValue("SAVE_TEMP"):
+            os.remove(fn)
+        if self.autoStretchBox.isChecked():
+            self.demoLabel.setRestore()
 
 
     @logging
@@ -911,18 +925,22 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
         text=''.join([random.choice(_char) for i in range(4)]) if text=="" else text
 
-        validation = Image.new("RGB", (w, h),(255,255,255))
+        validation = Image.new("RGB", (w, h),(0,43,56))
         textDraw = ImageDraw.Draw(validation)
         # size = 20
         fontSize = self.vdFontEdit.text()  # if size == '' else int(size)
-        fontSize = 10 if fontSize=="" else int(fontSize)
+        fontSize = 30 if fontSize=="" else int(fontSize)
         font = ImageFont.truetype(self.vdFontPath, size=fontSize)
 
-        interval=abs(w-len(text)*fontSize)//len(text)-fontSize//2
+        xinterval=abs(w-len(text)*(fontSize//5))//(len(text)+1)
+
+        yinterval=abs(h-len(text))//2-fontSize//2
+
         for i in range(len(text)):
-            textDraw.text((i*(interval), 0), text[i], fill=(random.randint(0,255),random.randint(0,255),random.randint(0,255)), font=font)
+            textDraw.text(((i+1)*(xinterval), yinterval), text[i], fill=(random.randint(100,255),random.randint(100,255),random.randint(100,255)), font=font)
+
         self.new_image = validation
-        pass
+
     """图像增强"""
 
     @autoSaveTempFile

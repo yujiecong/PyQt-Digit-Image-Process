@@ -79,6 +79,7 @@ class MainPx(QLabel):
                     self.seleted.emit(QRect(msx,spy,spx-msx,msy-spy))
                 else:
                     self.seleted.emit(QRect(self.mousePos,self.startPoint))
+
         else:
             if msx > spx:
                 if msy > spy:
@@ -90,6 +91,9 @@ class MainPx(QLabel):
                     self.signals_ScreenShot.emit(self.drawImg.copy(QRect(msx, spy, spx - msx, msy - spy)))
                 else:
                     self.signals_ScreenShot.emit(self.drawImg.copy(QRect(self.mousePos, self.startPoint)))
+        self.interceptFinish = False
+        self.interceptRect = QRect()
+        self.update()
     def mouseReleaseEvent(self, a0: QtGui.QMouseEvent) -> None:
         self.leftButtonClicked = False
 

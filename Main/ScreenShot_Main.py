@@ -3,7 +3,7 @@ from ctypes.wintypes import MSG
 
 from PyQt5.QtCore import Qt, QPoint, QRect, QSize, QAbstractNativeEventFilter, pyqtSignal
 from PyQt5.QtGui import QPixmap, QGuiApplication, QImage, QPainter
-from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic.Compiler.qtproxies import QtGui
 
 from UI.ScreenShot_Ui import Ui_MainWindow
@@ -14,7 +14,7 @@ class ScreenShowWindow(QMainWindow, Ui_MainWindow, QAbstractNativeEventFilter):
 
     signals_copyImg=pyqtSignal(QRect)
     signal_HotKey = pyqtSignal(str)
-
+    signals_ScreenShot=pyqtSignal(QImage)
     def __init__(self, *args, **kwargs):
         # 调用父类构造
         super(ScreenShowWindow, self).__init__(*args, **kwargs)
@@ -39,7 +39,7 @@ class ScreenShowWindow(QMainWindow, Ui_MainWindow, QAbstractNativeEventFilter):
         self.hk_start = SystemHotkey()
         self.hk_start.register(('control', 'alt', 'e'), callback=self.slots_StartScreenShot)
         #label选择后给我
-
+        self.mainPx.signals_ScreenShot.connect(self.signals_ScreenShot.emit)
         self.mainPx.seleted.connect(self.__seletedScreenShow)
         self.hide()
 
@@ -70,7 +70,11 @@ class ScreenShowWindow(QMainWindow, Ui_MainWindow, QAbstractNativeEventFilter):
     def copyImg(self,img:QImage):
 
         self.mainPx.setImg(img)
+        dep=QApplication.desktop()
+        print((dep.width()-img.width())/2,(dep.height()-img.height())/2)
+        self.move((dep.width()-img.width())/2,(dep.height()-img.height())/2)
         self.show()
+
 
     def __screenShot(self, s):
         if not self.isVisible():
