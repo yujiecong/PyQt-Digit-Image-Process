@@ -1,5 +1,6 @@
 import os
 import datetime
+import random
 import time
 
 import numpy as np
@@ -49,12 +50,10 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                         f = func(self, *args, **kwargs)
                 else:
                     f = func(self, *args, **kwargs)
-                print(f"[SAVE]:{datetime.datetime.now()} {type(self).__name__} start func **__setDemoImg** ")
+
                 self.__setDemoImg()
-                print(f"[SAVE]:{datetime.datetime.now()} {type(self).__name__} leaved func **__setDemoImg** ")
-                print(f"[INFO]:{datetime.datetime.now()} {type(self).__name__} start func **__getImgInfo** ")
                 self.__getImgInfo()
-                print(f"[INFO]:{datetime.datetime.now()} {type(self).__name__} leaved func **__getImgInfo** ")
+
                 return f
             # except Exception as e:
             #     self.showError(f"{type(self).__name__}->{func.__name__}:{e.__str__()}")
@@ -98,6 +97,8 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.customDialog = CustomFilter(self)
         self.obj=None
         self.tempFn=''
+
+        self.vdFontPath=r"C:\Windows\Fonts\Arial\arial.ttf"
         """临时图片格式"""
         # TEMP_FORMAT = self.formatBox.currentIndex()
         self.__specificConn()
@@ -226,6 +227,9 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.chopsBox.currentIndexChanged.connect(lambda idx: self.chopParaWidget.show()
         if idx == CHOPS.ADD1 or idx == CHOPS.SUB1 else self.chopParaWidget.hide())
 
+        self.vdFontBtn.clicked.connect(self.__choiceVdFont)
+
+
         self.new_image = ''
 
     @logging
@@ -285,22 +289,24 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
     @logging
     def __withdraw(self):
+
         if self.backup:
             img=self.backup.pop()
             fn=self.getTempFileName()
             img.save(fn)
-            self.new_image=img.copy()
-            # self.tempFn=fn
+            self.new_image=Image.open(fn).copy()
             self.demoLabel.setImg(QImage(fn),fn)
+
             if not self.getGlobalValue("SAVE_TEMP"):
                 os.remove(fn)
             self.obj=None
+            # self.demoLabel.setRestore()
         else:
             QMessageBox.warning(self, '警告', '没东西撤回了亲')
 
     @logging
     def __getImgInfo(self):
-
+        print(self.new_image)
         im = self.new_image
 
         arr = np.array(im)
@@ -312,10 +318,10 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             width, height, channels = arr.shape
         # self.nameLabel.setText(self.demoLabel.imgPath)
 
-        self.widthLabel.setText(str(width))
-        self.heightLabel.setText(str(height))
+        self.widthLabel.setText(str(height))
+        self.heightLabel.setText(str(width))
         self.channelsLabel.setText(str(channels))
-        self.nameLabel.setText(self.demoLabel.imgPath.split('/')[-1])
+        self.nameLabel.setText(self.demoLabel.imgPath.split('\\')[-1])
         self.formatLabel.setText(self.demoLabel.format)
         stat = ImageStat.Stat(im)
         self.extremaLabel.setText(str(stat._getextrema()))
@@ -347,6 +353,9 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             # self.__image2QImg(Image.open(fn))
             self.new_image=Image.open(fn)
             self.demoLabel.setImg(QImage(fn),fn)
+
+            if self.backup:
+                self.__convertInit()
             self.formatBox.setCurrentIndex(FORMAT_MODE.modeDict[self.demoLabel.format])
             self.widthEdit.setText(str(self.demoLabel.drawImg.width()))
             self.heightEdit.setText(str(self.demoLabel.drawImg.height()))
@@ -360,8 +369,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             # QMessageBox.warning(self,'没有图片','你在变nm呢')
             return
         # 先备份
-        self.backup.append(self.demoLabel.backup())
-
+        self.backup.append(self.new_image.copy())
         fn=self.getTempFileName()
         img.save(fn)
         im=Image.open(fn).copy()
@@ -759,12 +767,9 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         img = np.array(self.new_image.convert("L"))
         f = np.fft.fft2(img)
 
-        plt.subplot(321), plt.imshow(np.abs(f)*255, cmap='gray'),plt.title("未中心化")
-        #中心化
         fshift = np.fft.fftshift(f)  # 将频谱对称轴从左上角移至中心
-        plt.subplot(322), plt.imshow(np.abs(fshift)*255, cmap='gray'),plt.title("中心化")
-        magnitude_spectrum = 20 * np.log(np.abs(fshift))
 
+        magnitude_spectrum = 20 * np.log(np.abs(fshift))
         rows, cols = img.shape
         crow, ccol = int(rows / 2), int(cols / 2)
         fshift[crow - 30:crow + 30, ccol - 30:ccol + 30] = 0
@@ -773,13 +778,13 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         img_back = np.fft.ifft2(f_ishift)
         img_back = np.abs(img_back)
 
-        plt.subplot(323), plt.imshow(img, cmap='gray')
+        plt.subplot(221), plt.imshow(img, cmap='gray')
         plt.title('输入图'), plt.xticks([]), plt.yticks([])
-        plt.subplot(324), plt.imshow(magnitude_spectrum, cmap='gray')
+        plt.subplot(222), plt.imshow(magnitude_spectrum, cmap='gray')
         plt.title('幅度谱'), plt.xticks([]), plt.yticks([])
-        plt.subplot(325), plt.imshow(img_back, cmap='gray')  # 恢复图像
+        plt.subplot(223), plt.imshow(img_back, cmap='gray')  # 恢复图像
         plt.title('fft'), plt.xticks([]), plt.yticks([])
-        plt.subplot(326), plt.imshow(np.angle(f_ishift), cmap='gray')
+        plt.subplot(224), plt.imshow(np.angle(f_ishift), cmap='gray')
         plt.title('相位谱'), plt.xticks([]), plt.yticks([])
         plt.show()
 
@@ -886,25 +891,38 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         plt.title("还原的信息")
         plt.imshow(hideInfoImg)
         plt.show()
+    def __choiceVdFont(self):
+        self.vdFontPath=QFileDialog.getOpenFileName(self,"选择一个字体","C:\Windows\Fonts")
+
 
     @autoSaveTempFile
     @logging
     def __generateValidation(self):
         self.__convertInit()
         # 创建一个 图片后 加入数字和英文
+        w=self.vdWidthEdit.text()
+        w=128 if w=="" else int(w)
+        h=self.vdHeightEdit.text()
+        h=64 if h=="" else int(h)
 
-        color = (255, 255, 255)
-        validation = Image.new("RGB", (500, 500))
+        text=self.vdTextEdit.text()
+
+        _char=[chr(i) for i in range(ord('A'),ord('Z')+1)]+[str(i) for i in range(10)]
+
+        text=''.join([random.choice(_char) for i in range(4)]) if text=="" else text
+
+        validation = Image.new("RGB", (w, h),(255,255,255))
         textDraw = ImageDraw.Draw(validation)
         # size = 20
-        fontSize = 20  # if size == '' else int(size)
-        font = ImageFont.truetype(r"C:\Windows\Fonts\Arial\arial.ttf", size=fontSize)
+        fontSize = self.vdFontEdit.text()  # if size == '' else int(size)
+        fontSize = 10 if fontSize=="" else int(fontSize)
+        font = ImageFont.truetype(self.vdFontPath, size=fontSize)
 
-        textDraw.text((50, 50), "abvc", fill=color, font=font)
-
+        interval=abs(w-len(text)*fontSize)//len(text)-fontSize//2
+        for i in range(len(text)):
+            textDraw.text((i*(interval), 0), text[i], fill=(random.randint(0,255),random.randint(0,255),random.randint(0,255)), font=font)
         self.new_image = validation
         pass
-
     """图像增强"""
 
     @autoSaveTempFile
