@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="navigation">
+    <file>heartbroken.svg</file>
+    <file>heart.svg</file>
+    <file>heart2.svg</file>
+    <file>arrow down.svg</file>
+    <file>classify.svg</file>
+    <file>edit,post.svg</file>
+    <file>look,eye.svg</file>
+    <file>mine,profile,me.svg</file>
+    <file>photo.svg</file>
+  </qresource>
+</RCC>

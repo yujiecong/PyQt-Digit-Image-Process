@@ -37,12 +37,12 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
     }
 
 
-    def autoSaveTempFile(func):
+    def AutoSet(func):
         def autosave(self, *args, **kwargs):
 
             # try:
                 print(
-                    f"[AUTO-SAVE]:{datetime.datetime.now()} {type(self).__name__} entered func **{func.__name__}** args={args} kwargs={kwargs}")
+                    f"[AUTO-SET]:{datetime.datetime.now()} {type(self).__name__} entered func **{func.__name__}** args={args} kwargs={kwargs}")
                 if args:
                     if args[0] == False:
                         f = func(self, **kwargs)
@@ -75,7 +75,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 else:
                     f = func(self, *args, **kwargs)
                 t2 = time.time()
-                print(f"[TIME COST]:func **{func.__name__}** cost {round(t2 - t1, 9)}ms")
+                print(f"[TIME COST]:func **{func.__name__}** cost {t2 - t1} s")
                 print(
                     f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} leaved func **{func.__name__}** args={args} kwargs={kwargs}")
                 return f
@@ -98,7 +98,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.obj=None
         self.tempFn=''
 
-        self.vdFontPath=r"C:\Windows\Fonts\Arial\arial.ttf"
+
         """临时图片格式"""
         # TEMP_FORMAT = self.formatBox.currentIndex()
         self.__specificConn()
@@ -109,7 +109,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         if not os.path.exists(self.getGlobalValue("TEMP_DIR")):
             os.mkdir(self.getGlobalValue("TEMP_DIR"))
         self.tempFileName = ''
-        """初始化Action"""
+   
     def setGlobalValue(self,s: str, v):
         self.global_dict[s] = v
 
@@ -131,6 +131,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.fillImgBtn.clicked.connect(self.__autoFillImg)
         self.saveImgBtn.clicked.connect(self.__saveImg)
         self.blendBtn.clicked.connect(self.__blendImg)
+        self.alphaCompositeBtn.clicked.connect(self.__alphaCompositeImg)
         self.copyImgBtn.clicked.connect(self.__copyImg)
 
         self.screenShotWindow.signals_copyImg.connect(self.__crop)
@@ -143,6 +144,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.expandBtn.clicked.connect(self.__expandImg)
         self.chopsBtn.clicked.connect(self.__chopsImg)
         self.screenShotWindow.signals_ScreenShot.connect(self.__screenShot)
+        self.pasteBtn.clicked.connect(self.__pasteImg)
         def updateInfo(r):
             self.sizeLabel.setText(f"({r.width()},{r.height()})")
 
@@ -165,8 +167,8 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         """图像增强"""
         self.enhanceBtn.clicked.connect(self.__enhance)
         """"""
-        self.actionopen_file.triggered.connect(self.__readImg)
-        self.actionsave_file.triggered.connect(self.__saveImg)
+        # self.actionopen_file.triggered.connect(self.__readImg)
+        # self.actionsave_file.triggered.connect(self.__saveImg)
 
         # self.formatBox.currentIndexChanged.connect(lambda: self.setGlobalValue("TEMP_FORMAT", self.formatBox.currentIndex()))
         "二值化时出现阈值"
@@ -192,7 +194,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 if self.randomEdit.text()!="":
                     Convert_Object.setGlobalValue("RANDOM_NOISE_NUM", eval(self.randomEdit.text()))
                 if  self.meanEdit.text()!="":
-                    # print(self.meanEdit.text())
+
                     Convert_Object.setGlobalValue("GS_MEAD", eval(self.meanEdit.text()))
                 if  self.sigmaEdit.text()!="":
                     Convert_Object.setGlobalValue("GS_SIGMA", eval(self.sigmaEdit.text()))
@@ -228,7 +230,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.chopsBox.currentIndexChanged.connect(lambda idx: self.chopParaWidget.show()
         if idx == CHOPS.ADD1 or idx == CHOPS.SUB1 else self.chopParaWidget.hide())
 
-        self.vdFontBtn.clicked.connect(self.__choiceVdFont)
+
 
 
         self.new_image = ''
@@ -265,7 +267,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         fn = path[0]
         if not fn:
             return
-        # print(fn)
+
         self.new_image.save(fn)
         # img=Image.fromqimage(self.demoLabel.drawImg)
 
@@ -273,19 +275,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.stBar.showMessage("已保存到" + fn)
         pass
 
-    @autoSaveTempFile
-    @logging
-    def __blendImg(self):
-        new_image = self.__convertInit()
-        other = QFileDialog.getOpenFileName(self, "选择另一张图片融合", ".", self.FILE_FILTER)[0]
-        if other == '' or self.blendAlphaEdit.text() == '':
-            return
-        otherImg = Image.open(other)
 
-        otherImg = otherImg.convert(new_image.mode).resize(new_image.size)
-        print(otherImg,new_image)
-        blend = Image.blend(new_image, otherImg, float(self.blendAlphaEdit.text() if self.blendAlphaEdit.text()!="" else 0.1))
-        self.new_image = blend
 
 
     @logging
@@ -308,7 +298,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
     @logging
     def __getImgInfo(self):
-        print(self.new_image)
+
         im = self.new_image
 
         arr = np.array(im)
@@ -334,7 +324,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.rmsLabel.setText(str(stat._getrms()))
         self.varLabel.setText(str(stat._getvar()))
         self.stddevLabel.setText(str(stat._getstddev()))
-        # print(self.demoLabel.drawImg.depth(),self.demoLabel.drawImg)
+
         self.depthLabel.setText(str(self.demoLabel.drawImg.depth()))
         self.patternLabel.setText(str(im.mode))
         self.sizeLabel.setText(f"({width},{height})")
@@ -402,7 +392,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
     @logging
     def __threadSetImg(self):
-        print(self.obj.new_image)
+
         self.new_image = self.obj.new_image.copy()
         self.__setDemoImg()
 
@@ -474,7 +464,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             self.demoLabel.setScaledContents(0)
             self.demoLabel.update()
 
-    @autoSaveTempFile
+    @AutoSet
     @logging
     def __resizeImg(self):
         # 调用screenshot
@@ -489,7 +479,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.new_image = img.copy()
         self.tempFn=fn
 
-    @autoSaveTempFile
+    @AutoSet
     @logging
     def __rotateImg(self):
 
@@ -504,7 +494,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             new_image = new_image.transpose(Image.FLIP_TOP_BOTTOM)
         self.new_image = new_image
 
-    @autoSaveTempFile
+    @AutoSet
     @logging
     def __expandImg(self):
 
@@ -513,7 +503,45 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         color = int(self.expandColorEdit.text() if self.expandSizeEdit.text()!="" else 0)
         new_image = ImageOps.expand(new_image, border=size, fill=color)
         self.new_image = new_image
+    @AutoSet
+    @logging
+    def __pasteImg(self):
 
+        pastePos=self.pasteEdit.text()
+        pastePos=(0,0) if pastePos=="" else eval(pastePos)
+
+        new_image = self.__convertInit()
+
+        other = QFileDialog.getOpenFileName(self, "选择另一张图片融合", ".", self.FILE_FILTER)[0]
+        if other == '':
+            return
+        otherImg = Image.open(other)
+        otherImg = otherImg.convert(new_image.mode)
+        new_image.paste( otherImg, pastePos,mask=None)
+        self.new_image = new_image
+
+    @AutoSet
+    @logging
+    def __alphaCompositeImg(self):
+        new_image = self.__convertInit()
+        other = QFileDialog.getOpenFileName(self, "选择另一张图片融合", ".", self.FILE_FILTER)[0]
+        if other == '':
+            return
+        otherImg = Image.open(other)
+        otherImg = otherImg.convert(new_image.mode).resize(new_image.size)
+        composite = Image.alpha_composite(new_image, otherImg)
+        self.new_image = composite
+    @AutoSet
+    @logging
+    def __blendImg(self):
+        new_image = self.__convertInit()
+        other = QFileDialog.getOpenFileName(self, "选择另一张图片融合", ".", self.FILE_FILTER)[0]
+        if other == '' or self.blendAlphaEdit.text() == '':
+            return
+        otherImg = Image.open(other)
+        otherImg = otherImg.convert(new_image.mode).resize(new_image.size)
+        blend = Image.blend(new_image, otherImg, float(self.blendAlphaEdit.text() if self.blendAlphaEdit.text()!="" else 0.1))
+        self.new_image = blend
 
     @logging
     def __chopsImg(self):
@@ -522,7 +550,8 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         if other=="":
             return
         otherImg = Image.open(other)
-        new_image = new_image.convert(otherImg.mode)
+        otherImg = otherImg.convert(new_image.mode).resize(new_image.size)
+
         thread = Convert_Object(new_image, Convert_Object.CHOPS_OP, otherImg)
         scale = self.scaleEdit.text()
         thread.scale = 1.0 if not scale else float(scale)
@@ -905,11 +934,10 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         plt.title("还原的信息")
         plt.imshow(hideInfoImg)
         plt.show()
-    def __choiceVdFont(self):
-        self.vdFontPath=QFileDialog.getOpenFileName(self,"选择一个字体","C:\Windows\Fonts")
 
 
-    @autoSaveTempFile
+
+    @AutoSet
     @logging
     def __generateValidation(self):
         self.__convertInit()
@@ -918,32 +946,40 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         w=128 if w=="" else int(w)
         h=self.vdHeightEdit.text()
         h=64 if h=="" else int(h)
-
+        bg=(0,43,56)
         text=self.vdTextEdit.text()
 
         _char=[chr(i) for i in range(ord('A'),ord('Z')+1)]+[str(i) for i in range(10)]
 
         text=''.join([random.choice(_char) for i in range(4)]) if text=="" else text
 
-        validation = Image.new("RGB", (w, h),(0,43,56))
-        textDraw = ImageDraw.Draw(validation)
+        validation = Image.new("RGB", (w, h),bg)
+
         # size = 20
         fontSize = self.vdFontEdit.text()  # if size == '' else int(size)
         fontSize = 30 if fontSize=="" else int(fontSize)
-        font = ImageFont.truetype(self.vdFontPath, size=fontSize)
+        vdFontPath = r"C:\Windows\Fonts\Arial\arial.ttf" if self.vdFontPathEdit.text()=="" else self.vdFontPathEdit.text()
 
-        xinterval=abs(w-len(text)*(fontSize//5))//(len(text)+1)
+
+        font = ImageFont.truetype(vdFontPath, size=fontSize)
+
+        xinterval=abs(w-len(text)*(fontSize//4))//(len(text))+fontSize//3
 
         yinterval=abs(h-len(text))//2-fontSize//2
 
         for i in range(len(text)):
-            textDraw.text(((i+1)*(xinterval), yinterval), text[i], fill=(random.randint(100,255),random.randint(100,255),random.randint(100,255)), font=font)
+            ever = Image.new("RGB", (fontSize, fontSize),bg)
+            textDraw = ImageDraw.Draw(ever)
+            textDraw.text((0,0) ,text[i], fill=(random.randint(100,255),random.randint(100,255),random.randint(100,255)), font=font)
+            ever=ever.rotate(random.randint(-30,30),expand=True,fillcolor=bg)
+
+            validation.paste(ever,((i)*(int(xinterval)), yinterval))
 
         self.new_image = validation
 
     """图像增强"""
 
-    @autoSaveTempFile
+    @AutoSet
     @logging
     def __enhance(self):
 

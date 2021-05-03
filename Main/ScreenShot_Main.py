@@ -1,8 +1,8 @@
 import ctypes
 from ctypes.wintypes import MSG
 
-from PyQt5.QtCore import Qt, QPoint, QRect, QSize, QAbstractNativeEventFilter, pyqtSignal
-from PyQt5.QtGui import QPixmap, QGuiApplication, QImage, QPainter
+from PyQt5.QtCore import Qt, QPoint, QRect, pyqtSignal
+from PyQt5.QtGui import QGuiApplication, QImage, QPainter
 from PyQt5.QtWidgets import QMainWindow, QApplication
 from PyQt5.uic.Compiler.qtproxies import QtGui
 
@@ -10,7 +10,7 @@ from UI.ScreenShot_Ui import Ui_MainWindow
 from system_hotkey import SystemHotkey
 
 
-class ScreenShowWindow(QMainWindow, Ui_MainWindow, QAbstractNativeEventFilter):
+class ScreenShowWindow(QMainWindow, Ui_MainWindow):
 
     signals_copyImg=pyqtSignal(QRect)
     signal_HotKey = pyqtSignal(str)
