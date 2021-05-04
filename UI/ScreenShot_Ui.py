@@ -18,9 +18,11 @@ class Ui_MainWindow(object):
         MainWindow.setMouseTracking(True)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setMouseTracking(True)
+        self.centralwidget.setStyleSheet("\n"
+"border:2px solid red;")
         self.centralwidget.setObjectName("centralwidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout.setContentsMargins(5, 5, 5, 5)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setSpacing(0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.mainPx = MainPx(self.centralwidget)

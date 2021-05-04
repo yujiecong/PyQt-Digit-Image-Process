@@ -179,6 +179,7 @@ class Convert_Object(QObject):
             # output_img = cv2.LUT(img, lut)  # 像素灰度值的映射
             # output_img = np.uint8(output_img + 0.5)
 
+
     @thread_logging
     def filter(self):
 

@@ -1,13 +1,15 @@
 <RCC>
   <qresource prefix="navigation">
+    <file>鱼.svg</file>
     <file>heartbroken.svg</file>
     <file>heart.svg</file>
-    <file>heart2.svg</file>
     <file>arrow down.svg</file>
-    <file>classify.svg</file>
-    <file>edit,post.svg</file>
-    <file>look,eye.svg</file>
-    <file>mine,profile,me.svg</file>
-    <file>photo.svg</file>
+    <file>流程.svg</file>
+    <file>签字.svg</file>
+    <file>windows.svg</file>
+    <file>数据对比.svg</file>
+    <file>智慧大脑2.svg</file>
+    <file>close.svg</file>
+    <file>转换.svg</file>
   </qresource>
 </RCC>

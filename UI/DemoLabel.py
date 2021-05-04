@@ -132,7 +132,8 @@ class DemoLabel(QLabel):
         painter.drawImage(self.r, self.drawImg)
         # painter.drawPixmap(self.r,QPixmap(self.drawImg))
         # print(a0)
-        # QLabel.paintEvent(self, a0)
+        if self.format=="gif":
+            QLabel.paintEvent(self, a0)
 
         # 当放大倍数很大时,尝试在每一个点上画一个rgb值
 

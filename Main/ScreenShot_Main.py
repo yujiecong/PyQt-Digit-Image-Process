@@ -71,7 +71,7 @@ class ScreenShowWindow(QMainWindow, Ui_MainWindow):
 
         self.mainPx.setImg(img)
         dep=QApplication.desktop()
-        print((dep.width()-img.width())/2,(dep.height()-img.height())/2)
+
         self.move((dep.width()-img.width())/2,(dep.height()-img.height())/2)
         self.show()
 
