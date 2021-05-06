@@ -43,7 +43,7 @@
  [],
  False,
  False,
- 1620124259,
+ 1620318132,
  [('run.exe',
    'd:\\ccrepository\\zhku\\digit-img-process\\venv\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',
    'EXECUTABLE')])

@@ -14,7 +14,7 @@ Types if import:
 IMPORTANT: Do NOT post this list to the issue-tracker. Use it as a basis for
            yourself tracking down the missing module. Thanks!
 
-missing module named org - imported by copy (optional)
+missing module named 'org.python' - imported by copy (optional), xml.sax (delayed, conditional), setuptools.sandbox (conditional)
 missing module named pwd - imported by posixpath (delayed, conditional), shutil (optional), tarfile (optional), http.server (delayed, optional), webbrowser (delayed), pathlib (delayed, conditional, optional), distutils.util (delayed, conditional, optional), distutils.archive_util (optional), netrc (delayed, conditional), getpass (delayed)
 missing module named urllib.pathname2url - imported by urllib (conditional), PyInstaller.lib.modulegraph._compat (conditional)
 missing module named termios - imported by tty (top-level), getpass (optional)
@@ -27,11 +27,12 @@ missing module named _winreg - imported by platform (delayed, optional), pkg_res
 missing module named _frozen_importlib_external - imported by importlib._bootstrap (delayed), importlib (optional), importlib.abc (optional)
 excluded module named _frozen_importlib - imported by importlib (optional), importlib.abc (optional), PyInstaller.loader.pyimod02_archive (delayed)
 missing module named readline - imported by cmd (delayed, conditional, optional), code (delayed, conditional, optional), pdb (delayed, optional)
-missing module named 'org.python' - imported by pickle (optional), xml.sax (delayed, conditional), setuptools.sandbox (conditional)
+missing module named org - imported by pickle (optional)
 missing module named grp - imported by shutil (optional), tarfile (optional), pathlib (delayed), distutils.archive_util (optional)
 missing module named posix - imported by os (conditional, optional)
 missing module named resource - imported by posix (top-level)
 missing module named DemoLabel - imported by UI.ToolsWindow_Ui (top-level)
+missing module named ChartView - imported by UI.ToolsWindow_Ui (top-level)
 missing module named 'Xlib.display' - imported by system_hotkey.system_hotkey (conditional, optional)
 missing module named Xlib - imported by system_hotkey.system_hotkey (conditional, optional)
 missing module named xcffib - imported by system_hotkey.xpybutil_keybind (top-level), system_hotkey.system_hotkey (conditional, optional)
@@ -154,7 +155,7 @@ missing module named matplotlib.axes.Axes - imported by matplotlib.axes (delayed
 missing module named pytest - imported by matplotlib (delayed, optional)
 missing module named certifi - imported by matplotlib (delayed, optional)
 missing module named _dummy_threading - imported by dummy_threading (optional)
-missing module named olefile - imported by PIL.FpxImagePlugin (top-level), PIL.MicImagePlugin (top-level)
+missing module named olefile - imported by PIL.MicImagePlugin (top-level), PIL.FpxImagePlugin (top-level)
 missing module named 'PySide2.QtGui' - imported by PIL.ImageQt (conditional, optional)
 missing module named 'PySide6.QtGui' - imported by PIL.ImageQt (conditional, optional)
 missing module named PySide6 - imported by PIL.ImageQt (conditional, optional)
