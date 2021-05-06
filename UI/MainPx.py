@@ -2,7 +2,7 @@ from typing import Union
 
 from PyQt5.QtCore import Qt, QPoint, QRect, pyqtSignal
 from PyQt5.QtGui import QPainter, QImage
-from PyQt5.QtWidgets import QLabel
+from PyQt5.QtWidgets import QLabel, QWidget
 from PyQt5.uic.Compiler.qtproxies import QtGui
 
 
@@ -43,6 +43,9 @@ class MainPx(QLabel):
         self.r=QRect()
         self.drawImg=QImage()
 
+
+
+
         self.screenSHot=False
     def setImg(self,img):
         # self.r=r
@@ -52,7 +55,7 @@ class MainPx(QLabel):
 
         painter = QPainter(self)
         painter.drawImage(self.drawImg.rect(), self.drawImg)
-        painter.setPen(Qt.red)
+        painter.setPen(Qt.blue)
 
         painter.drawRect(self.interceptRect)
 
@@ -99,6 +102,7 @@ class MainPx(QLabel):
 
         if self.startPoint != self.mousePos:
             self.interceptFinish = True
+
 
 
     def __setMouseCursor(self, ):

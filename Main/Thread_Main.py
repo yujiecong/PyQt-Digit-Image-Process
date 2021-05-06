@@ -69,6 +69,7 @@ class Convert_Object(QObject):
 
     @staticmethod
     def setGlobalValue(k,v):
+
         Convert_Object.para[k]=v
 
 
@@ -130,15 +131,14 @@ class Convert_Object(QObject):
                     arr[i][j] = 255 if arr[i][j] >= self.threshold else 0
             self.new_image = Image.fromarray(arr)
 
-        elif convertIdx==Global_Main.CONVERT_MODE.CONVERT_MODE_8bit:
-            self.new_image = self.new_image.convert("1")
-
         elif convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_L:
             self.new_image = self.new_image.convert("L")
         elif convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_P:
             self.new_image = self.new_image.convert("P")
         elif convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_RGB:
+            print(self.new_image)
             self.new_image = self.new_image.convert("RGB")
+            print(self.new_image)
         elif convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_RGBA:
             self.new_image = self.new_image.convert("RGBA")
         elif convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_CMYK:
@@ -151,6 +151,7 @@ class Convert_Object(QObject):
             self.new_image = self.new_image.convert("F")
         elif convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_REVERSE:
             arr = np.array(self.new_image)
+
             if len(arr.shape) >= 3:
                 height, width, channels = arr.shape
                 for i in range(height):

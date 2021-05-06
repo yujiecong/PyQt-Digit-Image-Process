@@ -15,8 +15,7 @@ from Thread_Main import Convert_Object
 from .CustomFilter_Main import CustomFilter
 from .Global_Main import CONVERT_MODE, MIRROR, FILTER, CHOPS, ENHANCE, FORMAT_MODE
 
-plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
-plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
+
 
 from PyQt5.QtCore import Qt, QRect, QThread
 from PyQt5.QtGui import QImage, QColor
@@ -32,7 +31,6 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
     FILE_FILTER = "*.BMP *.GIF *.JPG *.JPEG *.PNG *.PBM *.PGM *.PPM *.XBM *.XPM"
     global_dict = {
         "TEMP_DIR": os.getcwd() + "/cache_img/",
-
         "SAVE_TEMP": 0,
     }
 
@@ -62,7 +60,6 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
     def logging(func):
         def wrapper(self, *args, **kwargs):
-
             try:
                 print(
                     f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} entered func **{func.__name__}** args={args} kwargs={kwargs}")
@@ -81,7 +78,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 return f
             except Exception as e:
                 self.showError(f"{type(self).__name__}->{func.__name__}:{e.__str__()}")
-
+                self.__withdraw()
         return wrapper
 
 
@@ -99,7 +96,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         # self.setWindowOpacity(1)
         self.setWindowTitle("图像蕴含着许多你不知道的事^^ By - Yjc")
 
-        self.tempFn=''
+
 
 
         """临时图片格式"""
@@ -108,11 +105,10 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
         """初始化一个测试图片"""
 
-        # self.__readImg(self.initImg)
+        self.__readImg(self.initImg)
         if not os.path.exists(self.getGlobalValue("TEMP_DIR")):
             os.mkdir(self.getGlobalValue("TEMP_DIR"))
         self.tempFileName = ''
-   
     def setGlobalValue(self,s: str, v):
         self.global_dict[s] = v
 
@@ -176,7 +172,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.ArnoldBtn_2.clicked.connect(self.__DeArnoldImg)
         self.customDialog.accepted.connect(self.__customizeFilter)
         """图像增强"""
-        self.enhanceBtn.clicked.connect(self.__enhance)
+        self.enhanceBtn.clicked.connect(self.__enhanceImg)
         """"""
         # self.actionopen_file.triggered.connect(self.__readImg)
         # self.actionsave_file.triggered.connect(self.__saveImg)
@@ -270,6 +266,9 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             self.scrollArea.verticalScrollBar().setValue(self.label_67.y())
         elif a0.key() == Qt.Key_F5:
             self.scrollArea.verticalScrollBar().setValue(self.label_69.y())
+        elif a0.key()==Qt.Key_Space:
+            self.dockWidget.show() if not self.dockWidget.isVisible() else self.dockWidget.hide()
+            self.dockWidget_2.show() if not self.dockWidget_2.isVisible() else self.dockWidget_2.hide()
 
 
 
@@ -342,6 +341,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.pixelsSumLabel.setText(str(stat._getsum()))
 
         self.averageLabel.setText(str(stat._getmean()))
+
         #根据平均像素 设置背景颜色
         if len(stat._getmean())>=3:
             rgb=stat._getmean()[:3]
@@ -368,6 +368,26 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 %s
             }
             """%rgba)
+            # print(arr[:,:,0])
+            # print(arr[:,:,1])
+            # print(arr[:,:,2])
+            self.rwidget.show()
+            self.gwidget.show()
+            self.bwidget.show()
+
+            self.rwidget.canvas.figure.clear()
+            self.gwidget.canvas.figure.clear()
+            self.bwidget.canvas.figure.clear()
+            self.graywidget.canvas.figure.clear()
+            # self.graywidget.canvas.axes.clear()
+
+            self.rwidget.canvas.plotr(arr[:,:,0][0])
+            self.gwidget.canvas.plotg(arr[:,:,1][0])
+            self.bwidget.canvas.plotb(arr[:,:,2][0])
+            self.graywidget.canvas.plotgray(np.array(im.convert('L'))[0])
+            # self.rwidget.canvas.setFixedWidth(self.dockWidget.width())
+            # self.gwidget.canvas.setFixedWidth(self.dockWidget.width())
+            # self.bwidget.canvas.setFixedWidth(self.dockWidget.width())
         #     QWidget#scrollAreaWidgetContents{\nbackground-color: rgba(255, 255, 255,200);\n}
         else:
             g=stat._getmean()[0]
@@ -393,6 +413,13 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 %s
             }
             """ % ga)
+
+            self.rwidget.hide()
+            self.gwidget.hide()
+            self.bwidget.hide()
+
+            self.graywidget.canvas.figure.clear()
+            self.graywidget.canvas.plotgray(arr[0])
 
         self.medianLabel.setText(str(stat._getmedian()))
         self.rmsLabel.setText(str(stat._getrms()))
@@ -447,8 +474,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         """
         线程结束时 保存一个临时的图片 然后读进去
         """
-        if self.tempFn!="":
-            os.remove(self.tempFn)
+
         fn = self.getTempFileName()
 
         self.new_image.save(fn)
@@ -468,7 +494,9 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
     def __threadSetImg(self):
 
         self.new_image = self.obj.new_image.copy()
+
         self.__setDemoImg()
+        self.__getImgInfo()
 
 
     # except Exception as e:
@@ -551,7 +579,8 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         new_image.save(fn)
         img=Image.open(fn)
         self.new_image = img.copy()
-        self.tempFn=fn
+        if not self.getGlobalValue("SAVE_TEMP"):
+            os.remove(fn)
 
     @AutoSet
     @logging
@@ -642,12 +671,13 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.new_image=Image.open(fn)
         img=QImage(fn).copy()
         self.demoLabel.setImg(img,fn)
-        self.tempFn=fn
+        if not self.getGlobalValue("SAVE_TEMP"):
+            os.remove(fn)
     @logging
     def __penDownImg(self):
         self.__convertInit()
         color = QColorDialog.getColor()
-        self.demoLabel.drawInit(color)
+        self.demoLabel.draw=False
 
 
     """
@@ -672,6 +702,10 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
     @logging
     def __convertPattern(self):
+        if self.patternBox.currentIndex()==CONVERT_MODE.CONVERT_MODE_RGB:
+            self.formatBox.setCurrentIndex(FORMAT_MODE.modeDict["jpg"])
+        elif self.patternBox.currentIndex()==CONVERT_MODE.CONVERT_MODE_RGBA:
+            self.formatBox.setCurrentIndex(FORMAT_MODE.modeDict["png"])
         new_image = self.__convertInit()
         thread = Convert_Object(new_image, Convert_Object.CONVERT_OP)
         thread.filename=self.getTempFileName()
@@ -762,7 +796,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         plt.xlabel("灰度值(0~255)")
         plt.ylabel("出现频率")
         plt.show()
-
+    @AutoSet
     @logging
     def __histogramBalanced(self):
         """
@@ -779,14 +813,15 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         均衡化过程中，必须要保证两个条件：①像素无论怎么映射，一定要保证原来的大小关系不变，较亮的区域，依旧是较亮的，较暗依旧暗，只是对比度增大，绝对不能明暗颠倒
         如果是八位图像，那么像素映射函数的值域应在0和255之间的，不能越界。综合以上两个条件，累积分布函数是个好的选择，因为累积分布函数是单调增函数（控制大小关系），并且值域是0到1（控制越界问题），所以直方图均衡化中使用的是累积分布函数。
         """
+
         new_image = self.__convertInit()
         channels = int(self.channelsLabel.text())
-
         if channels >= 3:
             if channels == 3:
                 r, g, b = new_image.split()
             else:
                 r, g, b, a = new_image.split()
+
 
         plt.subplot(221)
         plt.axis('off')
@@ -825,7 +860,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         plt.axis('off')
         plt.title("均衡化后")
         plt.imshow(new_image, cmap='gray')
-
+        self.new_image=new_image
         hist, bins = np.histogram(np.array(new_image).flatten(), 256, [0, 256])
         cdf = hist.cumsum()
         # 均衡后的cdf
@@ -909,7 +944,11 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
     def __hideInfoInImg(self):
 
         carrier_image = self.__convertInit()
-        hide_image = Image.new(carrier_image.mode, carrier_image.size,color=(0,0,0))
+        print(carrier_image)
+        if carrier_image.mode=="L":
+            hide_image = Image.new(carrier_image.mode, carrier_image.size)
+        else:
+            hide_image = Image.new(carrier_image.mode, carrier_image.size,color=(0,0,0))
 
         textDraw = ImageDraw.Draw(hide_image)
         # 计算要写入的大小
@@ -937,7 +976,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                 textList.insert(i, "\n")
             plainText = ''.join(textList)
         if channels >= 3:
-            color = (255, 255, 255)
+            color = (123, 12, 200)
         else:
             color = 100
         textDraw.text((0, height // 3), plainText, font=font, fill=color)
@@ -950,6 +989,10 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                     # 把整幅图的B通道全设置为偶数
                     if carrier_image_arr[i, j, 0] % 2 == 1:
                         carrier_image_arr[i, j, 0] -= 1
+                    if carrier_image_arr[i, j, 1] % 2 == 1:
+                        carrier_image_arr[i, j, 1] -= 1
+                    if carrier_image_arr[i, j, 1] % 2 == 1:
+                        carrier_image_arr[i, j, 1] -= 1
         else:
             for i in range(height):
                 for j in range(width):
@@ -965,8 +1008,12 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         if channels >= 3:
             for i in range(height):
                 for j in range(width):
-                    if tuple(hide_image_arr[i, j,:3]) == color:
+                    if hide_image_arr[i, j,0]== color[0]:
                         carrier_image_arr[i, j, 0] += 1
+                    if hide_image_arr[i, j,1] == color[1]:
+                        carrier_image_arr[i, j, 1] += 1
+                    if hide_image_arr[i, j,2] == color[2]:
+                        carrier_image_arr[i, j, 2] += 1
         else:
             for i in range(height):
                 for j in range(width):
@@ -1071,7 +1118,8 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         w=128 if w=="" else int(w)
         h=self.vdHeightEdit.text()
         h=64 if h=="" else int(h)
-        bg=(0,43,56)
+        bg=self.vdBgEdit.text()
+        bg=tuple(np.random.randint(255,size=3))
         text=self.vdTextEdit.text()
 
         _char=[chr(i) for i in range(ord('A'),ord('Z')+1)]+[str(i) for i in range(10)]
@@ -1095,7 +1143,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         for i in range(len(text)):
             ever = Image.new("RGB", (fontSize, fontSize),bg)
             textDraw = ImageDraw.Draw(ever)
-            textDraw.text((0,0) ,text[i], fill=(random.randint(100,255),random.randint(100,255),random.randint(100,255)), font=font)
+            textDraw.text((0,0) ,text[i], fill=(tuple(np.random.randint(100,255,size=3))), font=font)
             ever=ever.rotate(random.randint(-30,30),expand=True,fillcolor=bg)
 
             validation.paste(ever,((i)*(int(xinterval)), yinterval))
@@ -1106,16 +1154,24 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
     @AutoSet
     @logging
-    def __enhance(self):
+    def __enhanceImg(self):
 
         new_image = self.__convertInit()
 
         color = ENHANCE.getEnhance(ENHANCE.COLOR, new_image)
-        new_image = color.enhance(float(self.colorEdit.text()))
+        c=self.colorEdit.text()
+        c=1. if c=="" else float(c)
+        new_image = color.enhance(c)
         contrast = ENHANCE.getEnhance(ENHANCE.CONTRAST, new_image)
-        new_image = contrast.enhance(float(self.contrastEdit.text()))
+        c=self.contrastEdit.text()
+        c=1. if c=="" else float(c)
+        new_image = contrast.enhance(c)
         brightness = ENHANCE.getEnhance(ENHANCE.BRIGHTNESS, new_image)
-        new_image = brightness.enhance(float(self.brightnessEdit.text()))
+        c=self.brightnessEdit.text()
+        c=1. if c=="" else float(c)
+        new_image = brightness.enhance(c)
         sharpeness = ENHANCE.getEnhance(ENHANCE.SHARPNESS, new_image)
-        new_image = sharpeness.enhance(float(self.sharpnessEdit.text()))
+        c=self.sharpnessEdit.text()
+        c=1. if c=="" else float(c)
+        new_image = sharpeness.enhance(c)
         self.new_image = new_image

@@ -21,6 +21,7 @@ class ScreenShowWindow(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.__toolInit()
 
+
     def __del__(self):
         self.deleteLater()
 
@@ -73,6 +74,7 @@ class ScreenShowWindow(QMainWindow, Ui_MainWindow):
         dep=QApplication.desktop()
 
         self.move((dep.width()-img.width())/2,(dep.height()-img.height())/2)
+        self.setFixedSize(img.size())
         self.show()
 
 
@@ -81,7 +83,9 @@ class ScreenShowWindow(QMainWindow, Ui_MainWindow):
             px = QGuiApplication.primaryScreen().grabWindow(0);
             self.mainPx.setImg(px.toImage())
             self.move(0, 0)
+
             self.window().showMaximized()
+
             self.mainPx.screenSHot=True
         else:
             self.hide()

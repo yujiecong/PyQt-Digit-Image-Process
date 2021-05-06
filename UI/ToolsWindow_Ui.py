@@ -30,10 +30,10 @@ class Ui_ToolsWindow(object):
         self.centralwidget = QtWidgets.QWidget(ToolsWindow)
         self.centralwidget.setMouseTracking(False)
         self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_7.setSpacing(0)
-        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.verticalLayout_25 = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_25.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_25.setSpacing(0)
+        self.verticalLayout_25.setObjectName("verticalLayout_25")
         self.frame = QtWidgets.QFrame(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -60,7 +60,7 @@ class Ui_ToolsWindow(object):
         self.scrollArea_3.setAlignment(QtCore.Qt.AlignCenter)
         self.scrollArea_3.setObjectName("scrollArea_3")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 953, 638))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 626, 638))
         self.scrollAreaWidgetContents_3.setMouseTracking(True)
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents_3)
@@ -80,13 +80,13 @@ class Ui_ToolsWindow(object):
         self.horizontalLayout_2.addWidget(self.demoLabel)
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
         self.horizontalLayout_4.addWidget(self.scrollArea_3)
-        self.horizontalLayout_7.addWidget(self.frame)
-        self.horizontalLayout_7.setStretch(0, 4)
+        self.verticalLayout_25.addWidget(self.frame)
         ToolsWindow.setCentralWidget(self.centralwidget)
         self.stBar = QtWidgets.QStatusBar(ToolsWindow)
         self.stBar.setObjectName("stBar")
         ToolsWindow.setStatusBar(self.stBar)
         self.dockWidget = QtWidgets.QDockWidget(ToolsWindow)
+        self.dockWidget.setMinimumSize(QtCore.QSize(0, 0))
         self.dockWidget.setStyleSheet("QDockWidget {\n"
 "    border: 1px solid lightgray;\n"
 "    titlebar-close-icon: url(:/navigation/close.svg);\n"
@@ -98,8 +98,6 @@ class Ui_ToolsWindow(object):
 "QDockWidget::title {\n"
 "    text-align: left; /* align the text to the left */\n"
 "    background: lightgray;\n"
-"\n"
-"\n"
 "}\n"
 "\n"
 "\n"
@@ -378,7 +376,7 @@ class Ui_ToolsWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 240, 6032))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -5587, 250, 6179))
         self.scrollAreaWidgetContents.setStyleSheet("QWidget#scrollAreaWidgetContents{\n"
 "background-color: rgba(255, 255, 255,200);\n"
 "    \n"
@@ -760,7 +758,8 @@ class Ui_ToolsWindow(object):
 "}\n"
 "QCheckBox::indicator:checked {\n"
 "   \n"
-"    border-image: url(:/navigation/heart2.svg);\n"
+"    \n"
+"    border-image: url(:/navigation/heart.svg);\n"
 "}\n"
 "\n"
 "")
@@ -1319,7 +1318,6 @@ class Ui_ToolsWindow(object):
 "")
         self.patternBox.setFrame(False)
         self.patternBox.setObjectName("patternBox")
-        self.patternBox.addItem("")
         self.patternBox.addItem("")
         self.patternBox.addItem("")
         self.patternBox.addItem("")
@@ -2625,6 +2623,19 @@ class Ui_ToolsWindow(object):
 "}")
         self.vdTextEdit.setObjectName("vdTextEdit")
         self.verticalLayout_12.addWidget(self.vdTextEdit)
+        self.vdBgEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.vdBgEdit.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-radius:10px;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.vdBgEdit.setObjectName("vdBgEdit")
+        self.verticalLayout_12.addWidget(self.vdBgEdit)
         self.vdFontEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.vdFontEdit.setStyleSheet("QLineEdit {\n"
 "    border:none;\n"
@@ -3034,10 +3045,85 @@ class Ui_ToolsWindow(object):
         self.horizontalLayout_21.addWidget(self.rmsLabel)
         self.verticalLayout_21.addLayout(self.horizontalLayout_21)
         self.verticalLayout_2.addLayout(self.verticalLayout_21)
+        self.label_72 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_72.setFont(font)
+        self.label_72.setObjectName("label_72")
+        self.verticalLayout_2.addWidget(self.label_72)
+        self.label_73 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(26)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_73.setFont(font)
+        self.label_73.setObjectName("label_73")
+        self.verticalLayout_2.addWidget(self.label_73)
+        self.label_74 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        font = QtGui.QFont()
+        font.setFamily("微软雅黑")
+        font.setPointSize(10)
+        self.label_74.setFont(font)
+        self.label_74.setWordWrap(True)
+        self.label_74.setObjectName("label_74")
+        self.verticalLayout_2.addWidget(self.label_74)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout_14.addWidget(self.scrollArea)
         self.dockWidget.setWidget(self.dockWidgetContents)
         ToolsWindow.addDockWidget(QtCore.Qt.DockWidgetArea(1), self.dockWidget)
+        self.dockWidget_2 = QtWidgets.QDockWidget(ToolsWindow)
+        self.dockWidget_2.setStyleSheet("QDockWidget {\n"
+"    border: 1px solid lightgray;\n"
+"    titlebar-close-icon: url(:/navigation/close.svg);\n"
+"    titlebar-normal-icon: url(:/navigation/windows.svg);\n"
+"    font: 75 10pt \"微软雅黑\";\n"
+"\n"
+"}\n"
+"\n"
+"QDockWidget::title {\n"
+"    text-align: left; /* align the text to the left */\n"
+"    background: lightgray;\n"
+"}\n"
+"\n"
+"\n"
+"")
+        self.dockWidget_2.setObjectName("dockWidget_2")
+        self.dockWidgetContents_3 = QtWidgets.QWidget()
+        self.dockWidgetContents_3.setObjectName("dockWidgetContents_3")
+        self.verticalLayout_28 = QtWidgets.QVBoxLayout(self.dockWidgetContents_3)
+        self.verticalLayout_28.setObjectName("verticalLayout_28")
+        self.scrollArea_2 = QtWidgets.QScrollArea(self.dockWidgetContents_3)
+        self.scrollArea_2.setWidgetResizable(True)
+        self.scrollArea_2.setObjectName("scrollArea_2")
+        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, -445, 274, 1036))
+        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
+        self.verticalLayout_29 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
+        self.verticalLayout_29.setObjectName("verticalLayout_29")
+        self.rwidget = ChartWidget(self.scrollAreaWidgetContents_2)
+        self.rwidget.setMinimumSize(QtCore.QSize(220, 250))
+        self.rwidget.setObjectName("rwidget")
+        self.verticalLayout_29.addWidget(self.rwidget)
+        self.gwidget = ChartWidget(self.scrollAreaWidgetContents_2)
+        self.gwidget.setMinimumSize(QtCore.QSize(220, 250))
+        self.gwidget.setObjectName("gwidget")
+        self.verticalLayout_29.addWidget(self.gwidget)
+        self.bwidget = ChartWidget(self.scrollAreaWidgetContents_2)
+        self.bwidget.setMinimumSize(QtCore.QSize(220, 250))
+        self.bwidget.setObjectName("bwidget")
+        self.verticalLayout_29.addWidget(self.bwidget)
+        self.graywidget = ChartWidget(self.scrollAreaWidgetContents_2)
+        self.graywidget.setMinimumSize(QtCore.QSize(220, 250))
+        self.graywidget.setObjectName("graywidget")
+        self.verticalLayout_29.addWidget(self.graywidget)
+        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
+        self.verticalLayout_28.addWidget(self.scrollArea_2)
+        self.dockWidget_2.setWidget(self.dockWidgetContents_3)
+        ToolsWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.dockWidget_2)
         self.actionopen_file = QtWidgets.QAction(ToolsWindow)
         self.actionopen_file.setObjectName("actionopen_file")
         self.actionsave_file = QtWidgets.QAction(ToolsWindow)
@@ -3049,7 +3135,7 @@ class Ui_ToolsWindow(object):
     def retranslateUi(self, ToolsWindow):
         _translate = QtCore.QCoreApplication.translate
         ToolsWindow.setWindowTitle(_translate("ToolsWindow", "MainWindow"))
-        self.dockWidget.setWindowTitle(_translate("ToolsWindow", "浮动界面"))
+        self.dockWidget.setWindowTitle(_translate("ToolsWindow", "图像操作界面"))
         self.label_17.setText(_translate("ToolsWindow", "图像编辑"))
         self.label_18.setText(_translate("ToolsWindow", "Image editing yes."))
         self.label_19.setText(_translate("ToolsWindow", "在此之前,你可以先读取一张照片,展开一段旅程,或者使用快捷键Ctrl+Alt+E全屏截图"))
@@ -3103,20 +3189,19 @@ class Ui_ToolsWindow(object):
         self.label_36.setText(_translate("ToolsWindow", "Image Converting Yes."))
         self.label_56.setText(_translate("ToolsWindow", "也许,你应该多角度看一张图片"))
         self.patternBox.setItemText(0, _translate("ToolsWindow", "1bit二值化"))
-        self.patternBox.setItemText(1, _translate("ToolsWindow", "8bit二值化"))
-        self.patternBox.setItemText(2, _translate("ToolsWindow", "灰度化"))
-        self.patternBox.setItemText(3, _translate("ToolsWindow", "调色盘"))
-        self.patternBox.setItemText(4, _translate("ToolsWindow", "RGB"))
-        self.patternBox.setItemText(5, _translate("ToolsWindow", "RGBA"))
-        self.patternBox.setItemText(6, _translate("ToolsWindow", "CMYK"))
-        self.patternBox.setItemText(7, _translate("ToolsWindow", "YCbCr"))
-        self.patternBox.setItemText(8, _translate("ToolsWindow", "I"))
-        self.patternBox.setItemText(9, _translate("ToolsWindow", "F"))
-        self.patternBox.setItemText(10, _translate("ToolsWindow", "图像反转"))
-        self.patternBox.setItemText(11, _translate("ToolsWindow", "对数变换"))
-        self.patternBox.setItemText(12, _translate("ToolsWindow", "伽马变换"))
+        self.patternBox.setItemText(1, _translate("ToolsWindow", "灰度化"))
+        self.patternBox.setItemText(2, _translate("ToolsWindow", "调色盘"))
+        self.patternBox.setItemText(3, _translate("ToolsWindow", "RGB"))
+        self.patternBox.setItemText(4, _translate("ToolsWindow", "RGBA"))
+        self.patternBox.setItemText(5, _translate("ToolsWindow", "CMYK"))
+        self.patternBox.setItemText(6, _translate("ToolsWindow", "YCbCr"))
+        self.patternBox.setItemText(7, _translate("ToolsWindow", "I"))
+        self.patternBox.setItemText(8, _translate("ToolsWindow", "F"))
+        self.patternBox.setItemText(9, _translate("ToolsWindow", "图像反转"))
+        self.patternBox.setItemText(10, _translate("ToolsWindow", "对数变换"))
+        self.patternBox.setItemText(11, _translate("ToolsWindow", "伽马变换"))
         self.thresholdBox.setTitle(_translate("ToolsWindow", "阈值"))
-        self.changePatternBtn.setText(_translate("ToolsWindow", "图像旋转"))
+        self.changePatternBtn.setText(_translate("ToolsWindow", "图像变换"))
         self.label_42.setText(_translate("ToolsWindow", "图像噪声"))
         self.randomEdit.setPlaceholderText(_translate("ToolsWindow", "默认5000个像素点"))
         self.randomNoiseBtn.setText(_translate("ToolsWindow", "随机噪声"))
@@ -3208,6 +3293,7 @@ class Ui_ToolsWindow(object):
         self.vdWidthEdit.setPlaceholderText(_translate("ToolsWindow", "宽度 默认128"))
         self.vdHeightEdit.setPlaceholderText(_translate("ToolsWindow", "高度 默认64"))
         self.vdTextEdit.setPlaceholderText(_translate("ToolsWindow", "文本 默认随机"))
+        self.vdBgEdit.setPlaceholderText(_translate("ToolsWindow", "背景颜色 默认随机"))
         self.vdFontEdit.setPlaceholderText(_translate("ToolsWindow", "字体大小 默认30"))
         self.generateBtn.setText(_translate("ToolsWindow", "验证码生成"))
         self.label_69.setText(_translate("ToolsWindow", "图像信息"))
@@ -3245,7 +3331,12 @@ class Ui_ToolsWindow(object):
         self.stddevLabel.setText(_translate("ToolsWindow", "TextLabel"))
         self.label_16.setText(_translate("ToolsWindow", "均方根"))
         self.rmsLabel.setText(_translate("ToolsWindow", "TextLabel"))
+        self.label_72.setText(_translate("ToolsWindow", "Image Visualization Yes."))
+        self.label_73.setText(_translate("ToolsWindow", "图像可视化"))
+        self.label_74.setText(_translate("ToolsWindow", "图像 其实就是一个多个通道的波"))
+        self.dockWidget_2.setWindowTitle(_translate("ToolsWindow", "可视化界面"))
         self.actionopen_file.setText(_translate("ToolsWindow", "打开文件"))
         self.actionsave_file.setText(_translate("ToolsWindow", "保存文件"))
+from ChartView import ChartWidget
 from DemoLabel import DemoLabel
 import assets.btn_rc
