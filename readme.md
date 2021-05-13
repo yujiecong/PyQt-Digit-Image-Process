@@ -35,7 +35,6 @@
 请确保你有安装
 
 - numpy
-- matplotlib
 - pillow
 - system_hotkey
 - pyqt5
@@ -50,9 +49,7 @@ git clone https://github.com/yujiecong/PyQt-Digit-Image-Process.git
 
 ## 示例
 
-![1620117117334](readme.assets/1620117117334.png)
-
-![1620117131486](readme.assets/1620117131486.png)
+![1620914303682](readme.assets/1620914303682.png)
 
 ## 相关仓库
 
