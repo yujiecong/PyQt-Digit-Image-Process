@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1235</width>
-    <height>660</height>
+    <height>656</height>
    </rect>
   </property>
   <property name="mouseTracking">
@@ -41,7 +41,7 @@
    <property name="mouseTracking">
     <bool>false</bool>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_25">
+   <layout class="QHBoxLayout" name="horizontalLayout_7">
     <property name="spacing">
      <number>0</number>
     </property>
@@ -64,6 +64,9 @@
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::NoFrame</enum>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <property name="spacing">
@@ -115,8 +118,8 @@
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>626</width>
-            <height>638</height>
+            <width>635</width>
+            <height>634</height>
            </rect>
           </property>
           <property name="mouseTracking">
@@ -167,35 +170,21 @@
    </layout>
   </widget>
   <widget class="QStatusBar" name="stBar"/>
-  <widget class="QDockWidget" name="dockWidget">
+  <widget class="MyDockWidget" name="dockWidget">
    <property name="minimumSize">
     <size>
-     <width>0</width>
-     <height>0</height>
+     <width>188</width>
+     <height>225</height>
     </size>
    </property>
    <property name="styleSheet">
-    <string notr="true">QDockWidget {
-    border: 1px solid lightgray;
-    titlebar-close-icon: url(:/navigation/close.svg);
-    titlebar-normal-icon: url(:/navigation/windows.svg);
-	font: 75 10pt &quot;微软雅黑&quot;;
-
-}
-
-QDockWidget::title {
-    text-align: left; /* align the text to the left */
-    background: lightgray;
-}
-
-
-</string>
+    <string notr="true"/>
    </property>
    <property name="floating">
     <bool>false</bool>
    </property>
    <property name="windowTitle">
-    <string>图像操作界面</string>
+    <string/>
    </property>
    <attribute name="dockWidgetArea">
     <number>1</number>
@@ -217,346 +206,6 @@ QDockWidget::title {
      <property name="bottomMargin">
       <number>0</number>
      </property>
-     <item>
-      <widget class="QWidget" name="W" native="true">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_16">
-        <property name="spacing">
-         <number>0</number>
-        </property>
-        <property name="leftMargin">
-         <number>0</number>
-        </property>
-        <property name="topMargin">
-         <number>0</number>
-        </property>
-        <property name="rightMargin">
-         <number>0</number>
-        </property>
-        <property name="bottomMargin">
-         <number>0</number>
-        </property>
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QPushButton" name="jump2EditingBtn">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-    border: none;
-    border-radius: 15px;
-    background-color: transparent;
-
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
-}
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}
-QPushButton:open { /* when the button has its menu open */
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton::menu-indicator {
-    image: url(menu_indicator.png);
-    subcontrol-origin: padding;
-    subcontrol-position: bottom right;
-}
-
-QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {
-    position: relative;
-    top: 2px; left: 2px; /* shift the arrow by 2 px */
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../assets/btn.qrc">
-            <normaloff>:/navigation/签字.svg</normaloff>:/navigation/签字.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QPushButton" name="jump2ConvertBtn">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-    border: none;
-    border-radius: 15px;
-    background-color: transparent;
-
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
-}
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}
-QPushButton:open { /* when the button has its menu open */
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton::menu-indicator {
-    image: url(menu_indicator.png);
-    subcontrol-origin: padding;
-    subcontrol-position: bottom right;
-}
-
-QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {
-    position: relative;
-    top: 2px; left: 2px; /* shift the arrow by 2 px */
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../assets/btn.qrc">
-            <normaloff>:/navigation/转换.svg</normaloff>:/navigation/转换.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QPushButton" name="jump2EnhanceBtn">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-    border: none;
-    border-radius: 15px;
-    background-color: transparent;
-
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
-}
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}
-QPushButton:open { /* when the button has its menu open */
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton::menu-indicator {
-    image: url(menu_indicator.png);
-    subcontrol-origin: padding;
-    subcontrol-position: bottom right;
-}
-
-QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {
-    position: relative;
-    top: 2px; left: 2px; /* shift the arrow by 2 px */
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../assets/btn.qrc">
-            <normaloff>:/navigation/智慧大脑2.svg</normaloff>:/navigation/智慧大脑2.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item alignment="Qt::AlignHCenter">
-         <widget class="QPushButton" name="jump2GenerateBtn">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-    border: none;
-    border-radius: 15px;
-    background-color: transparent;
-
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
-}
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}
-QPushButton:open { /* when the button has its menu open */
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton::menu-indicator {
-    image: url(menu_indicator.png);
-    subcontrol-origin: padding;
-    subcontrol-position: bottom right;
-}
-
-QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {
-    position: relative;
-    top: 2px; left: 2px; /* shift the arrow by 2 px */
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../assets/btn.qrc">
-            <normaloff>:/navigation/流程.svg</normaloff>:/navigation/流程.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="jump2InfoBtn">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="styleSheet">
-           <string notr="true">QPushButton {
-    border: none;
-    border-radius: 15px;
-    background-color: transparent;
-
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
-}
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}
-QPushButton:open { /* when the button has its menu open */
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton::menu-indicator {
-    image: url(menu_indicator.png);
-    subcontrol-origin: padding;
-    subcontrol-position: bottom right;
-}
-
-QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {
-    position: relative;
-    top: 2px; left: 2px; /* shift the arrow by 2 px */
-}</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="icon">
-           <iconset resource="../assets/btn.qrc">
-            <normaloff>:/navigation/数据对比.svg</normaloff>:/navigation/数据对比.svg</iconset>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>32</width>
-            <height>32</height>
-           </size>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </item>
      <item>
       <widget class="QScrollArea" name="scrollArea">
        <property name="sizePolicy">
@@ -587,9 +236,9 @@ QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-5587</y>
-          <width>250</width>
-          <height>6179</height>
+          <y>-3111</y>
+          <width>323</width>
+          <height>6337</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -1172,28 +821,35 @@ QPushButton:default {
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
            <property name="styleSheet">
             <string notr="true">QCheckBox {
-    spacing: 5px;
+
 	background-color: rgb(44,49,61);
 	color: rgb(248, 248, 248);
 	font: 11pt &quot;微软雅黑&quot;;
-	padding-left:30px;
+	padding-left:50px;
 	border-radius:10px;
+
 }
 
 QCheckBox::indicator {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
 
 }
 QCheckBox::indicator:unchecked {
-	border-image: url(:/navigation/heartbroken.svg);
+	
+	border-image: url(:/navigation/未勾选.svg);
 }
 QCheckBox::indicator:checked {
    
-	
-	border-image: url(:/navigation/heart.svg);
+	border-image: url(:/navigation/已勾选.svg);
 }
 
 </string>
@@ -1207,22 +863,6 @@ QCheckBox::indicator:checked {
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_32">
-           <property name="font">
-            <font>
-             <family>微软雅黑</family>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>你想看看每次都还原图片原本大小是什么样子的吗</string>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QCheckBox" name="autoStretchBox">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
@@ -1230,28 +870,35 @@ QCheckBox::indicator:checked {
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
            <property name="styleSheet">
             <string notr="true">QCheckBox {
-    spacing: 5px;
+
 	background-color: rgb(44,49,61);
 	color: rgb(248, 248, 248);
 	font: 11pt &quot;微软雅黑&quot;;
-	padding-left:30px;
+	padding-left:50px;
 	border-radius:10px;
+
 }
 
 QCheckBox::indicator {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
 
 }
 QCheckBox::indicator:unchecked {
-	border-image: url(:/navigation/heartbroken.svg);
+	
+	border-image: url(:/navigation/未勾选.svg);
 }
 QCheckBox::indicator:checked {
    
-	
-	border-image: url(:/navigation/heart.svg);
+	border-image: url(:/navigation/已勾选.svg);
 }
 
 </string>
@@ -1375,28 +1022,34 @@ QCheckBox::indicator:checked {
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox {
-    spacing: 5px;
+
 	background-color: rgb(44,49,61);
 	color: rgb(248, 248, 248);
-	font: 8pt &quot;微软雅黑&quot;;
-	padding-left:5px;
+	font: 9pt &quot;微软雅黑&quot;;
+	padding-left:10px;
 	border-radius:10px;
 }
 
 QCheckBox::indicator {
-    width: 32px;
-    height: 32px;
+    width: 16px;
+    height: 16px;
 
 }
 QCheckBox::indicator:unchecked {
-	border-image: url(:/navigation/heartbroken.svg);
+	
+	border-image: url(:/navigation/未勾选.svg);
 }
 QCheckBox::indicator:checked {
    
-	
-	border-image: url(:/navigation/heart.svg);
+	border-image: url(:/navigation/已勾选.svg);
 }
 
 </string>
@@ -1406,6 +1059,9 @@ QCheckBox::indicator:checked {
                </property>
                <property name="checked">
                 <bool>false</bool>
+               </property>
+               <property name="autoExclusive">
+                <bool>true</bool>
                </property>
               </widget>
              </item>
@@ -1417,28 +1073,34 @@ QCheckBox::indicator:checked {
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>30</height>
+                </size>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QCheckBox {
-    spacing: 5px;
+
 	background-color: rgb(44,49,61);
 	color: rgb(248, 248, 248);
-	font: 8pt &quot;微软雅黑&quot;;
-	padding-left:5px;
+	font: 9pt &quot;微软雅黑&quot;;
+	padding-left:10px;
 	border-radius:10px;
 }
 
 QCheckBox::indicator {
-    width: 32px;
-    height: 32px;
+    width: 16px;
+    height: 16px;
 
 }
 QCheckBox::indicator:unchecked {
-	border-image: url(:/navigation/heartbroken.svg);
+	
+	border-image: url(:/navigation/未勾选.svg);
 }
 QCheckBox::indicator:checked {
    
-	
-	border-image: url(:/navigation/heart.svg);
+	border-image: url(:/navigation/已勾选.svg);
 }
 
 </string>
@@ -1447,6 +1109,9 @@ QCheckBox::indicator:checked {
                 <string>   最近邻插值</string>
                </property>
                <property name="checked">
+                <bool>true</bool>
+               </property>
+               <property name="autoExclusive">
                 <bool>true</bool>
                </property>
               </widget>
@@ -2017,6 +1682,9 @@ QPushButton:default {
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
              <property name="styleSheet">
               <string notr="true">QComboBox {
     border:1px solid black;
@@ -2048,17 +1716,17 @@ QComboBox::down-arrow {
              </property>
              <item>
               <property name="text">
-               <string>1bit二值化</string>
+               <string>1</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>灰度化</string>
+               <string>L</string>
               </property>
              </item>
              <item>
               <property name="text">
-               <string>调色盘</string>
+               <string>P</string>
               </property>
              </item>
              <item>
@@ -2106,6 +1774,53 @@ QComboBox::down-arrow {
                <string>伽马变换</string>
               </property>
              </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QGroupBox" name="gammaGroupBox">
+             <property name="title">
+              <string>伽马参数 s=cr^y</string>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_30">
+              <item>
+               <widget class="QLineEdit" name="gammaclineEdit">
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit {
+    border:none;
+	border-radius:10px;
+    border-bottom:1px solid rgb(154, 154, 154);
+    padding: 0 8px;
+    background: white;
+    selection-background-color: darkgray;
+	font: 75 12pt &quot;微软雅黑&quot;;
+
+}</string>
+                </property>
+                <property name="placeholderText">
+                 <string>伽马常数 默认为1</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLineEdit" name="gammalineEdit">
+                <property name="styleSheet">
+                 <string notr="true">QLineEdit {
+    border:none;
+	border-radius:10px;
+    border-bottom:1px solid rgb(154, 154, 154);
+    padding: 0 8px;
+    background: white;
+    selection-background-color: darkgray;
+	font: 75 12pt &quot;微软雅黑&quot;;
+
+}</string>
+                </property>
+                <property name="placeholderText">
+                 <string>伽马值</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
             </widget>
            </item>
            <item>
@@ -2188,6 +1903,430 @@ QPushButton:default {
             <string>图像变换</string>
            </property>
           </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="newModelineEdit">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    border:none;
+	border-radius:10px;
+    border-bottom:1px solid rgb(154, 154, 154);
+    padding: 0 8px;
+    background: white;
+    selection-background-color: darkgray;
+	font: 75 12pt &quot;微软雅黑&quot;;
+
+}</string>
+           </property>
+           <property name="placeholderText">
+            <string>Image 格式 默认与上面格式相同</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="newWidthlineEdit_3">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    border:none;
+	border-radius:10px;
+    border-bottom:1px solid rgb(154, 154, 154);
+    padding: 0 8px;
+    background: white;
+    selection-background-color: darkgray;
+	font: 75 12pt &quot;微软雅黑&quot;;
+
+}</string>
+           </property>
+           <property name="placeholderText">
+            <string>新图片宽度 默认128</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="newHeightlineEdit_4">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    border:none;
+	border-radius:10px;
+    border-bottom:1px solid rgb(154, 154, 154);
+    padding: 0 8px;
+    background: white;
+    selection-background-color: darkgray;
+	font: 75 12pt &quot;微软雅黑&quot;;
+
+}</string>
+           </property>
+           <property name="placeholderText">
+            <string>新图片高度 默认128</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="newBglineEdit_5">
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    border:none;
+	border-radius:10px;
+    border-bottom:1px solid rgb(154, 154, 154);
+    padding: 0 8px;
+    background: white;
+    selection-background-color: darkgray;
+	font: 75 12pt &quot;微软雅黑&quot;;
+
+}</string>
+           </property>
+           <property name="placeholderText">
+            <string>新图片填充色 默认(0,0,0)</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="newImgBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(100, 100, 100);
+
+	font: 12pt &quot;微软雅黑&quot;;
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+           </property>
+           <property name="text">
+            <string>图像创建</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_44">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel{
+	
+	border:none;
+	border-bottom:1px solid black;
+	font: 75 16pt &quot;微软雅黑&quot;;
+}</string>
+           </property>
+           <property name="text">
+            <string>图像滤波</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_31">
+           <property name="spacing">
+            <number>10</number>
+           </property>
+           <item>
+            <widget class="QComboBox" name="filterBox">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QComboBox {
+    border:1px solid black;
+    padding: 1px 30px 1px 3px;
+	border-radius:10px;
+	font: 75 italic 15pt &quot;Arial&quot;;
+	background-color: rgb(255, 255, 255);
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 15px;
+
+    border-left-width: 1px;
+    border-left-color: darkgray;
+    border-left-style: solid; /* just a single line */
+    border-top-right-radius: 3px; /* same radius as the QComboBox */
+    border-bottom-right-radius: 3px;
+}
+QComboBox::down-arrow {
+
+	border-image: url(:/navigation/arrow down.svg);
+}
+</string>
+             </property>
+             <item>
+              <property name="text">
+               <string>高斯模糊</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>均值滤波</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>边缘增强</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>边缘检测</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>浮雕</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>轮廓</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>锐化</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>平滑</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>细节</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>等级</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>中值滤波</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>最小滤波</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>最大滤波</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>模式滤波</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_27">
+             <item>
+              <widget class="QGroupBox" name="radiusGroupBox">
+               <property name="title">
+                <string>平滑半径</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_26">
+                <item>
+                 <widget class="QLineEdit" name="radiusEdit">
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit {
+    border:none;
+	border-radius:10px;
+    border-bottom:1px solid rgb(154, 154, 154);
+    padding: 0 8px;
+    background: white;
+    selection-background-color: darkgray;
+	font: 75 12pt &quot;微软雅黑&quot;;
+
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>平滑半径 默认2</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="convCoreBox">
+               <property name="title">
+                <string>卷积核尺寸</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_13">
+                <item>
+                 <widget class="QLineEdit" name="sizeEdit">
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit {
+    border:none;
+	border-radius:10px;
+    border-bottom:1px solid rgb(154, 154, 154);
+    padding: 0 8px;
+    background: white;
+    selection-background-color: darkgray;
+	font: 75 12pt &quot;微软雅黑&quot;;
+
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>size 默认 3x3</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="rankGroupBox">
+               <property name="title">
+                <string>等级参数</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_8">
+                <item>
+                 <widget class="QLineEdit" name="rankEdit">
+                  <property name="styleSheet">
+                   <string notr="true">QLineEdit {
+    border:none;
+	border-radius:10px;
+    border-bottom:1px solid rgb(154, 154, 154);
+    padding: 0 8px;
+    background: white;
+    selection-background-color: darkgray;
+	font: 75 12pt &quot;微软雅黑&quot;;
+
+}</string>
+                  </property>
+                  <property name="placeholderText">
+                   <string>rank 默认3</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="filterBtn">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(100, 100, 100);
+
+	font: 12pt &quot;微软雅黑&quot;;
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+             </property>
+             <property name="text">
+              <string>开始滤波</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="customFilterBtn">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(100, 100, 100);
+
+	font: 12pt &quot;微软雅黑&quot;;
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+             </property>
+             <property name="text">
+              <string>自定义卷积核</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
           <widget class="QLabel" name="label_42">
@@ -2473,305 +2612,6 @@ QPushButton:default {
            </property>
            <property name="text">
             <string>椒盐噪声</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_44">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel{
-	
-	border:none;
-	border-bottom:1px solid black;
-	font: 75 16pt &quot;微软雅黑&quot;;
-}</string>
-           </property>
-           <property name="text">
-            <string>图像滤波</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_27">
-           <item>
-            <widget class="QComboBox" name="filterBox">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">QComboBox {
-    border:1px solid black;
-    padding: 1px 30px 1px 3px;
-	border-radius:10px;
-	font: 75 italic 15pt &quot;Arial&quot;;
-	background-color: rgb(255, 255, 255);
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 15px;
-
-    border-left-width: 1px;
-    border-left-color: darkgray;
-    border-left-style: solid; /* just a single line */
-    border-top-right-radius: 3px; /* same radius as the QComboBox */
-    border-bottom-right-radius: 3px;
-}
-QComboBox::down-arrow {
-
-	border-image: url(:/navigation/arrow down.svg);
-}
-</string>
-             </property>
-             <item>
-              <property name="text">
-               <string>高斯模糊</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>均值滤波</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>边缘增强</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>边缘检测</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>浮雕</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>轮廓</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>锐化</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>平滑</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>细节</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>等级</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>中值滤波</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>最小滤波</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>最大滤波</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>模式滤波</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item>
-            <widget class="QGroupBox" name="radiusGroupBox">
-             <property name="title">
-              <string>平滑半径</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_26">
-              <item>
-               <widget class="QLineEdit" name="radiusEdit">
-                <property name="styleSheet">
-                 <string notr="true">QLineEdit {
-    border:none;
-	border-radius:10px;
-    border-bottom:1px solid rgb(154, 154, 154);
-    padding: 0 8px;
-    background: white;
-    selection-background-color: darkgray;
-	font: 75 12pt &quot;微软雅黑&quot;;
-
-}</string>
-                </property>
-                <property name="placeholderText">
-                 <string>平滑半径 默认2</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QGroupBox" name="convCoreBox">
-             <property name="title">
-              <string>卷积核尺寸</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_13">
-              <item>
-               <widget class="QLineEdit" name="sizeEdit">
-                <property name="styleSheet">
-                 <string notr="true">QLineEdit {
-    border:none;
-	border-radius:10px;
-    border-bottom:1px solid rgb(154, 154, 154);
-    padding: 0 8px;
-    background: white;
-    selection-background-color: darkgray;
-	font: 75 12pt &quot;微软雅黑&quot;;
-
-}</string>
-                </property>
-                <property name="placeholderText">
-                 <string>size 默认 3x3</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QGroupBox" name="rankGroupBox">
-             <property name="title">
-              <string>等级参数</string>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_8">
-              <item>
-               <widget class="QLineEdit" name="rankEdit">
-                <property name="styleSheet">
-                 <string notr="true">QLineEdit {
-    border:none;
-	border-radius:10px;
-    border-bottom:1px solid rgb(154, 154, 154);
-    padding: 0 8px;
-    background: white;
-    selection-background-color: darkgray;
-	font: 75 12pt &quot;微软雅黑&quot;;
-
-}</string>
-                </property>
-                <property name="placeholderText">
-                 <string>rank 默认3</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <widget class="QPushButton" name="customFilterBtn">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-    border: none;
-    border-radius: 20px;
-    background-color: rgb(100, 100, 100);
-
-	font: 12pt &quot;微软雅黑&quot;;
-	color: rgb(255, 255, 255);
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
-}
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
-           </property>
-           <property name="text">
-            <string>自定义卷积核</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="filterBtn">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-    border: none;
-    border-radius: 20px;
-    background-color: rgb(100, 100, 100);
-
-	font: 12pt &quot;微软雅黑&quot;;
-	color: rgb(255, 255, 255);
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
-}
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
-           </property>
-           <property name="text">
-            <string>开始滤波</string>
            </property>
           </widget>
          </item>
@@ -3334,7 +3174,7 @@ QPushButton:default {
 </string>
              </property>
              <property name="plainText">
-              <string>I LOVE YOU ❤</string>
+              <string>我爱你有种左灯右行的冲突</string>
              </property>
             </widget>
            </item>
@@ -3353,6 +3193,24 @@ QPushButton:default {
              </property>
              <property name="placeholderText">
               <string>字体大小 默认50</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit">
+             <property name="styleSheet">
+              <string notr="true">QLineEdit {
+    border:none;
+    border-bottom:1px solid rgb(154, 154, 154);
+    padding: 0 8px;
+    background: white;
+    selection-background-color: darkgray;
+	font: 75 12pt &quot;微软雅黑&quot;;
+
+}</string>
+             </property>
+             <property name="placeholderText">
+              <string>字体路径,默认微软雅黑</string>
              </property>
             </widget>
            </item>
@@ -3396,7 +3254,49 @@ QPushButton:default {
 }</string>
            </property>
            <property name="text">
-            <string>隐藏</string>
+            <string>图片隐写</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="deHideInfoBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(100, 100, 100);
+
+	font: 12pt &quot;微软雅黑&quot;;
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+           </property>
+           <property name="text">
+            <string>图片解密</string>
            </property>
           </widget>
          </item>
@@ -3616,48 +3516,6 @@ QPushButton:default {
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="histogramBtn">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-    border: none;
-    border-radius: 20px;
-    background-color: rgb(100, 100, 100);
-
-	font: 12pt &quot;微软雅黑&quot;;
-	color: rgb(255, 255, 255);
-}
-
-QPushButton:pressed {
-    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
-}
-
-QPushButton:flat {
-    border: none; /* no border for a flat push button */
-}
-
-QPushButton:default {
-    border-color: navy; /* make the default button prominent */
-}</string>
-           </property>
-           <property name="text">
-            <string>图像直方图</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QPushButton" name="histogramBalancedBtn">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -3774,7 +3632,49 @@ QPushButton:default {
 }</string>
            </property>
            <property name="text">
-            <string>图像频域变换</string>
+            <string>图像fft</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="ifftBtn">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(100, 100, 100);
+
+	font: 12pt &quot;微软雅黑&quot;;
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+           </property>
+           <property name="text">
+            <string>图像ifft</string>
            </property>
           </widget>
          </item>
@@ -4070,11 +3970,12 @@ QPushButton:default {
              <property name="styleSheet">
               <string notr="true">QLineEdit {
     border:none;
+	border-radius:10px;
     border-bottom:1px solid rgb(154, 154, 154);
     padding: 0 8px;
     background: white;
     selection-background-color: darkgray;
-	font: 75 8pt &quot;微软雅黑&quot;;
+	font: 75 10pt &quot;微软雅黑&quot;;
 
 }</string>
              </property>
@@ -4309,7 +4210,7 @@ QPushButton:default {
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(46, 147, 255);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>TextLabel</string>
@@ -4344,7 +4245,7 @@ QPushButton:default {
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(46, 147, 255);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>TextLabel</string>
@@ -4379,7 +4280,7 @@ QPushButton:default {
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(46, 147, 255);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>TextLabel</string>
@@ -4414,7 +4315,7 @@ QPushButton:default {
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(46, 147, 255);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>TextLabel</string>
@@ -4453,7 +4354,7 @@ QPushButton:default {
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(46, 147, 255);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>TextLabel</string>
@@ -4488,7 +4389,7 @@ QPushButton:default {
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(46, 147, 255);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>TextLabel</string>
@@ -4523,7 +4424,7 @@ QPushButton:default {
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(46, 147, 255);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>TextLabel</string>
@@ -4558,7 +4459,7 @@ QPushButton:default {
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">color: rgb(46, 147, 255);</string>
+                <string notr="true"/>
                </property>
                <property name="text">
                 <string>TextLabel</string>
@@ -4884,52 +4785,6 @@ QPushButton:default {
            </item>
           </layout>
          </item>
-         <item>
-          <widget class="QLabel" name="label_72">
-           <property name="font">
-            <font>
-             <family>微软雅黑</family>
-             <pointsize>14</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>Image Visualization Yes.</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_73">
-           <property name="font">
-            <font>
-             <family>微软雅黑</family>
-             <pointsize>26</pointsize>
-             <weight>75</weight>
-             <bold>true</bold>
-            </font>
-           </property>
-           <property name="text">
-            <string>图像可视化</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="label_74">
-           <property name="font">
-            <font>
-             <family>微软雅黑</family>
-             <pointsize>10</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>图像 其实就是一个多个通道的波</string>
-           </property>
-           <property name="wordWrap">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
         </layout>
        </widget>
       </widget>
@@ -4937,89 +4792,120 @@ QPushButton:default {
     </layout>
    </widget>
   </widget>
-  <widget class="QDockWidget" name="dockWidget_2">
+  <widget class="MyDockWidget" name="dockWidget_2">
    <property name="styleSheet">
-    <string notr="true">QDockWidget {
-    border: 1px solid lightgray;
-    titlebar-close-icon: url(:/navigation/close.svg);
-    titlebar-normal-icon: url(:/navigation/windows.svg);
-	font: 75 10pt &quot;微软雅黑&quot;;
-
-}
-
-QDockWidget::title {
-    text-align: left; /* align the text to the left */
-    background: lightgray;
-}
-
-
-</string>
+    <string notr="true"/>
    </property>
    <property name="windowTitle">
-    <string>可视化界面</string>
+    <string/>
    </property>
    <attribute name="dockWidgetArea">
     <number>2</number>
    </attribute>
    <widget class="QWidget" name="dockWidgetContents_3">
-    <layout class="QVBoxLayout" name="verticalLayout_28">
+    <layout class="QVBoxLayout" name="verticalLayout_28" stretch="1,1">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QScrollArea" name="scrollArea_2">
-       <property name="widgetResizable">
-        <bool>true</bool>
+      <widget class="ChartWidget2D" name="graphicsView_3">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
        </property>
-       <widget class="QWidget" name="scrollAreaWidgetContents_2">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>-445</y>
-          <width>274</width>
-          <height>1036</height>
-         </rect>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="ChartWidget2D" name="graphicsView_6">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::NoFocus</enum>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::NoFrame</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="MyDockWidget" name="dockWidget_3">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="windowTitle">
+    <string/>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2">
+    <layout class="QVBoxLayout" name="verticalLayout_25">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <widget class="ChartWidget3D" name="_3DWidget" native="true">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>300</height>
+        </size>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_29">
+        <property name="spacing">
+         <number>0</number>
         </property>
-        <layout class="QVBoxLayout" name="verticalLayout_29">
-         <item>
-          <widget class="ChartWidget" name="rwidget" native="true">
-           <property name="minimumSize">
-            <size>
-             <width>220</width>
-             <height>250</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="ChartWidget" name="gwidget" native="true">
-           <property name="minimumSize">
-            <size>
-             <width>220</width>
-             <height>250</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="ChartWidget" name="bwidget" native="true">
-           <property name="minimumSize">
-            <size>
-             <width>220</width>
-             <height>250</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="ChartWidget" name="graywidget" native="true">
-           <property name="minimumSize">
-            <size>
-             <width>220</width>
-             <height>250</height>
-            </size>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
+        <property name="leftMargin">
+         <number>0</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="rightMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+       </layout>
       </widget>
      </item>
     </layout>
@@ -5043,9 +4929,20 @@ QDockWidget::title {
    <header location="global">DemoLabel.h</header>
   </customwidget>
   <customwidget>
-   <class>ChartWidget</class>
+   <class>ChartWidget2D</class>
+   <extends>QGraphicsView</extends>
+   <header>ChartWidget2D.h</header>
+  </customwidget>
+  <customwidget>
+   <class>MyDockWidget</class>
+   <extends>QDockWidget</extends>
+   <header>MyDockWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ChartWidget3D</class>
    <extends>QWidget</extends>
-   <header location="global">ChartView.h</header>
+   <header>ChartWidget3D.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

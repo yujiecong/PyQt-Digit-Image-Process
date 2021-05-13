@@ -2,23 +2,20 @@ import os
 import datetime
 import random
 import time
-
+import pyqtgraph as pg
 import numpy as np
 from PIL import Image, ImageFilter, ImageOps, ImageStat
 
-import matplotlib.pyplot as plt
 from PIL import ImageDraw
 from PIL import ImageFont
 
-
 from Thread_Main import Convert_Object
 from .CustomFilter_Main import CustomFilter
-from .Global_Main import CONVERT_MODE, MIRROR, FILTER, CHOPS, ENHANCE, FORMAT_MODE
-
+from .Global_Main import CONVERT_MODE, MIRROR, FILTER, ENHANCE, FORMAT_MODE
 
 
 from PyQt5.QtCore import Qt, QRect, QThread
-from PyQt5.QtGui import QImage, QColor
+from PyQt5.QtGui import QImage, QImageIOHandler
 from PyQt5.QtWidgets import QMainWindow, QMessageBox, QFileDialog, QColorDialog
 from PyQt5.uic.Compiler.qtproxies import QtGui
 
@@ -27,20 +24,25 @@ from UI.ToolsWindow_Ui import Ui_ToolsWindow
 
 class ToolsWindow(QMainWindow, Ui_ToolsWindow):
     obj: None #用于 线程的obj
-    initImg = "img/QQ截图20210428202605.png"
+    initImg = "img/QQ图片20210510115737.jpg"
     FILE_FILTER = "*.BMP *.GIF *.JPG *.JPEG *.PNG *.PBM *.PGM *.PPM *.XBM *.XPM"
     global_dict = {
         "TEMP_DIR": os.getcwd() + "/cache_img/",
         "SAVE_TEMP": 0,
+        "FFT_DIR":os.getcwd() + "/fft_img/",
     }
+    ERROR_LOG=''
 
 
     def AutoSet(func):
         def autosave(self, *args, **kwargs):
 
             try:
+                debug=f"[AUTO-SET]:{datetime.datetime.now()} {type(self).__name__} entered func **{func.__name__}** args={args} kwargs={kwargs}\n"
+                self.ERROR_LOG+=debug
                 print(
-                    f"[AUTO-SET]:{datetime.datetime.now()} {type(self).__name__} entered func **{func.__name__}** args={args} kwargs={kwargs}")
+                    debug
+                    )
                 if args:
                     if args[0] == False:
                         f = func(self, **kwargs)
@@ -50,19 +52,23 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                     f = func(self, *args, **kwargs)
 
                 self.__setDemoImg()
-                self.__getImgInfo()
+                self.__UpdateImgInfo()
 
                 return f
             except Exception as e:
-                self.showError(f"{type(self).__name__}->{func.__name__}:{e.__str__()}")
+                debug=f"{type(self).__name__}->{func.__name__}:{e.__str__()}\n"
+                self.ERROR_LOG+=debug
+                self.showError(debug)
 
         return autosave
 
     def logging(func):
         def wrapper(self, *args, **kwargs):
             try:
-                print(
-                    f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} entered func **{func.__name__}** args={args} kwargs={kwargs}")
+                debug=f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} entered func **{func.__name__}** args={args} kwargs={kwargs} \n"
+                self.ERROR_LOG+=debug
+                print(debug
+                    )
                 t1 = time.time()
                 if args:
                     if args[0] == False:
@@ -73,11 +79,14 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                     f = func(self, *args, **kwargs)
                 t2 = time.time()
                 print(f"[TIME COST]:func **{func.__name__}** cost {t2 - t1} s")
-                print(
-                    f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} leaved func **{func.__name__}** args={args} kwargs={kwargs}")
+                debug=f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} leaved func **{func.__name__}** args={args} kwargs={kwargs} \n"
+                print(debug)
+                self.ERROR_LOG+=debug
                 return f
             except Exception as e:
-                self.showError(f"{type(self).__name__}->{func.__name__}:{e.__str__()}")
+                err=f"{type(self).__name__}->{func.__name__}:{e.__str__()}\n"
+                self.ERROR_LOG+=err
+                self.showError(err)
                 self.__withdraw()
         return wrapper
 
@@ -93,6 +102,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.screenShotWindow = ScreenShowWindow(self)
         self.customDialog = CustomFilter(self)
         self.obj=None
+
         # self.setWindowOpacity(1)
         self.setWindowTitle("图像蕴含着许多你不知道的事^^ By - Yjc")
 
@@ -108,6 +118,8 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.__readImg(self.initImg)
         if not os.path.exists(self.getGlobalValue("TEMP_DIR")):
             os.mkdir(self.getGlobalValue("TEMP_DIR"))
+        if not os.path.exists(self.getGlobalValue("FFT_DIR")):
+            os.mkdir(self.getGlobalValue("FFT_DIR"))
         self.tempFileName = ''
     def setGlobalValue(self,s: str, v):
         self.global_dict[s] = v
@@ -124,12 +136,13 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         专门用来绑定 connect
         :return:
         """
-        """跳转按钮绑定"""
-        self.jump2EditingBtn.clicked.connect(lambda :self.scrollArea.verticalScrollBar().setValue(self.label_17.y()))
-        self.jump2ConvertBtn.clicked.connect(lambda :self.scrollArea.verticalScrollBar().setValue(self.label_57.y()))
-        self.jump2EnhanceBtn.clicked.connect(lambda :self.scrollArea.verticalScrollBar().setValue(self.label_58.y()))
-        self.jump2GenerateBtn.clicked.connect(lambda :self.scrollArea.verticalScrollBar().setValue(self.label_67.y()))
-        self.jump2InfoBtn.clicked.connect(lambda :self.scrollArea.verticalScrollBar().setValue(self.label_69.y()))
+        # self.dockWidget_2.resize.connect(self.__resizeDock)
+        """可视化"""
+        self.graphicsView_3.plot.setTitle("图像RGB通道直方图")
+
+        self.graphicsView_6.plot.setTitle("图像灰度直方图")
+
+
         """图像编辑开始"""
         self.readImgBtn.clicked.connect(self.__readImg)
         self.resizeImgBtn.clicked.connect(self.__resizeImg)
@@ -150,6 +163,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.chopsBtn.clicked.connect(self.__chopsImg)
         self.screenShotWindow.signals_ScreenShot.connect(self.__screenShot)
         self.pasteBtn.clicked.connect(self.__pasteImg)
+
         def updateInfo(r):
             self.sizeLabel.setText(f"({r.width()},{r.height()})")
 
@@ -158,19 +172,26 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
 
         """图像变换开始"""
+        self.newImgBtn.clicked.connect(self.__createNewImg)
         self.changePatternBtn.clicked.connect(self.__convertPattern)
         self.filterBtn.clicked.connect(self.__filterImg)
-        self.histogramBtn.clicked.connect(self.__histogramShow)
+
         self.histogramBalancedBtn.clicked.connect(self.__histogramBalanced)
         self.customFilterBtn.clicked.connect(self.__customFliter)
         self.randomNoiseBtn.clicked.connect(self.__randomNoise)
         self.gaussianNoiseBtn.clicked.connect(self.__gaussianNoise)
         self.saltNoiseBtn.clicked.connect(self.__saltAndPepperNoise)
         self.fftBtn.clicked.connect(self.__ffTransform)
+        self.ifftBtn.clicked.connect(self.__iffTransform)
+        # self.angleBtn.clicked.connect(self.__phaseImg)
+
         self.hideInfoBtn.clicked.connect(self.__hideInfoInImg)
+        self.deHideInfoBtn.clicked.connect(self.deHideInfoImg)
         self.ArnoldBtn.clicked.connect(self.__ArnoldImg)
         self.ArnoldBtn_2.clicked.connect(self.__DeArnoldImg)
         self.customDialog.accepted.connect(self.__customizeFilter)
+
+
         """图像增强"""
         self.enhanceBtn.clicked.connect(self.__enhanceImg)
         """"""
@@ -179,20 +200,27 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
         # self.formatBox.currentIndexChanged.connect(lambda: self.setGlobalValue("TEMP_FORMAT", self.formatBox.currentIndex()))
         "二值化时出现阈值"
+        self.patternBox.currentIndexChanged.connect(lambda idx:self.gammaGroupBox.show() if idx==CONVERT_MODE.CONVERT_MODE_GAMA else self.gammaGroupBox.hide())
+
         self.patternBox.currentIndexChanged.connect(lambda
                                                         index: self.thresholdBox.show() if index == CONVERT_MODE.CONVERT_MODE_1bit
-                                                                                           or index == CONVERT_MODE.CONVERT_MODE_GAMA else self.thresholdBox.hide())
+                                                                                            else self.thresholdBox.hide())
         self.patternBox.currentIndexChanged.connect(lambda idx: Convert_Object.setGlobalValue("CONVERT_IDX", idx))
         """图像生成"""
         self.generateBtn.clicked.connect(self.__generateValidation)
 
         """全局参数绑定"""
-        self.filterBox.currentIndexChanged.connect(lambda idx: Convert_Object.setGlobalValue("FILTER_BOX", idx))
-        self.filterBox.currentIndexChanged.connect(lambda idx: self.radiusGroupBox.show() if idx == FILTER.GaussianBlur  else self.radiusGroupBox.hide())
-        self.filterBox.currentIndexChanged.connect(lambda idx: self.rankEdit.show() if idx == FILTER.RANK  else self.rankEdit.hide())
-        self.filterBox.currentIndexChanged.connect(lambda idx: self.convCoreBox.show() if idx == FILTER.RANK or idx == FILTER.MAX or idx == FILTER.MEDIAN or idx == FILTER.MIN
-           or idx == FILTER.MODE else self.convCoreBox.hide())
-        self.filterBox.currentIndexChanged.connect(lambda idx: self.rankGroupBox.show()if idx == FILTER.RANK else self.rankGroupBox.hide())
+        self.convCoreBox.hide()
+        self.gammaGroupBox.hide()
+        def filterChanged(idx,self):
+            Convert_Object.setGlobalValue("FILTER_BOX", idx)
+            self.radiusGroupBox.show() if idx == FILTER.GaussianBlur else self.radiusGroupBox.hide()
+            self.rankEdit.show() if idx == FILTER.RANK else self.rankEdit.hide()
+            self.convCoreBox.show() if idx == FILTER.RANK or idx == FILTER.MAX or idx == FILTER.MEDIAN or idx == FILTER.MIN or idx == FILTER.MODE else self.convCoreBox.hide()
+            self.rankGroupBox.show() if idx == FILTER.RANK else self.rankGroupBox.hide()
+
+
+        self.filterBox.currentIndexChanged.connect(lambda idx: filterChanged(idx,self))
 
         def editingFinished():
             try:
@@ -211,11 +239,15 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                     Convert_Object.setGlobalValue("RANK_LEVEL", eval(self.rankEdit.text()))
                 if self.radiusEdit.text()!="":
                     Convert_Object.setGlobalValue("BLUR_RADIUS", eval(self.radiusEdit.text()))
-
+                if self.gammaclineEdit.text()!="":
+                    Convert_Object.setGlobalValue("GAMA_C",eval(self.gammaclineEdit.text()))
+                if self.gammalineEdit.text()!="":
+                    Convert_Object.setGlobalValue("GAMMA",eval(self.gammalineEdit.text()))
 
             except Exception as e:
                 self.showError("注意不要乱输参数")
-
+        self.gammalineEdit.editingFinished.connect(editingFinished)
+        self.gammaclineEdit.editingFinished.connect(editingFinished)
         self.radiusEdit.editingFinished.connect(editingFinished)
         self.randomEdit.editingFinished.connect(editingFinished)
         self.meanEdit.editingFinished.connect(editingFinished)
@@ -231,17 +263,26 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
         self.saveTempCheck.stateChanged.connect(lambda f: self.setGlobalValue("SAVE_TEMP", f))
 
-        self.chopsBox.currentIndexChanged.connect(lambda idx: self.setGlobalValue("CHOPS", idx))
-
-
-
+        self.chopsBox.currentIndexChanged.connect(lambda idx: Convert_Object.setGlobalValue("CHOPS", idx))
         self.new_image = ''
 
-    @logging
-    def showError(self, e: str):
-        self.stBar.showMessage(e)
-        QMessageBox.warning(self, 'error!!!', e)
 
+    def showError(self, e: str):
+
+        QMessageBox.warning(self, '出错了!请联系开发者日志已经记录在当前当前目录的logs下,请联系开发者', e)
+        if not os.path.exists("logs/"):
+            os.mkdir("logs/")
+        with open(f"logs/error-{time.time()}.txt",'a')as f:
+            f.write(self.ERROR_LOG)
+        self.ERROR_LOG=''
+    # def __resizeDock(self):
+    #     self.graphicsView.plot.setFixedWidth(self.dockWidget_2.width())
+    #     self.graphicsView.plot.setFixedHeight(self.graphicsView.height())
+    #
+    #     self.graphicsView_2.plot.setFixedWidth(self.dockWidget_2.width())
+    #     self.graphicsView_2.plot.setFixedHeight(self.graphicsView_2.height())
+        # self.graphicsView.plot.setFixedHeight(self.graphicsView.height())
+        # self.graphicsView_2.plot.setFixedHeight(self.graphicsView.height())
     def keyPressEvent(self, a0: QtGui.QKeyEvent) -> None:
         if a0.modifiers() == Qt.ControlModifier:
             if a0.key() == Qt.Key_Z:
@@ -269,7 +310,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         elif a0.key()==Qt.Key_Space:
             self.dockWidget.show() if not self.dockWidget.isVisible() else self.dockWidget.hide()
             self.dockWidget_2.show() if not self.dockWidget_2.isVisible() else self.dockWidget_2.hide()
-
+        # QMainWindow.keyPressEvent(self,a0)
 
 
 
@@ -312,130 +353,138 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             self.obj=None
             if self.autoStretchBox.isChecked():
                 self.demoLabel.setRestore()
-            self.__getImgInfo()
+            self.__UpdateImgInfo()
         else:
             QMessageBox.warning(self, '警告', '没东西撤回了亲')
 
     @logging
-    def __getImgInfo(self):
+    def __UpdateImgInfo(self):
 
-        im = self.new_image
 
-        arr = np.array(im)
+        self.obj = Convert_Object(self.new_image, Convert_Object.UPDATE_OP,parent=self)
+        self.thr = QThread(self)
+        self.obj.moveToThread(self.thr)
+        def deleteObj():
+            self.thr.exit(0)
+            self.obj.deleteLater()
+            self.obj=None
+        self.obj.finished.connect(deleteObj)
+        self.thr.start()
+        self.thr.started.connect(self.obj.run)
+        # self.new_image = self.obj.new_image.copy()
 
-        if len(arr.shape) == 2:
-            width, height = arr.shape
-            channels = 1
-        else:
-            width, height, channels = arr.shape
-        # self.nameLabel.setText(self.demoLabel.imgPath)
+        # im = self.new_image
+        #
+        # arr = np.array(im)
+        #
+        # if len(arr.shape) == 2:
+        #     width, height = arr.shape
+        #     channels = 1
+        # else:
+        #     width, height, channels = arr.shape
+        # # self.nameLabel.setText(self.demoLabel.imgPath)
+        #
+        # self.widthLabel.setText(str(height))
+        # self.heightLabel.setText(str(width))
+        # self.channelsLabel.setText(str(channels))
+        # self.nameLabel.setText(self.demoLabel.imgPath.split('/')[-1])
+        # self.formatLabel.setText(self.demoLabel.format)
+        # stat = ImageStat.Stat(im)
+        # self.extremaLabel.setText(str(stat._getextrema()))
+        # self.pixelsNumLabel.setText(str(stat._getcount()))
+        # self.pixelsSumLabel.setText(str(stat._getsum()))
+        #
+        # self.averageLabel.setText(str(stat._getmean()))
+        #
+        # # if np.mean(stat._getmean())<30:
+        # #     self._3DWidget.w.setBackgroundColor((222,222,222))
+        #
+        # #根据平均rgb 设置背景颜色
+        # if len(stat._getmean())>=3:
+        #     rgb=stat._getmean()[:3]
+        #
+        #     rgb=list(map(int,rgb))
+        #
+        #     fontColor = (255 - rgb[0], 255 -rgb[1], 222)
+        #
+        #     rgba=f"background-color:rgba{(rgb[0],rgb[1],rgb[2],233)};"
+        #     self.scrollAreaWidgetContents_3.setStyleSheet(rgba)
+        #     style="QWidget#scrollAreaWidgetContents{%s}QLabel{%s}"%(rgba,f"color:rgb{fontColor};")
+        #     self.scrollAreaWidgetContents.setStyleSheet(style)
+        #     self.stBar.setStyleSheet(rgba+f"color:rgb{fontColor};")
+        #
+        #     self.scrollArea.setStyleSheet("QScrollBar:vertical{%s}"%rgba)
+        #     dockstyle="""
+        #     QDockWidget::title {
+        #         %s
+        #     }
+        #     """%rgba
+        #     self.dockWidget.setStyleSheet(dockstyle)
+        #     self.dockWidget_2.setStyleSheet(dockstyle)
+        #     self.dockWidget_3.setStyleSheet(dockstyle)
+        #     # self._3DWidget.w.setBackgroundColor(rgb)
+        #     # self.centralwidget.setStyleSheet(rgba)
+        #
+        #
+        # else:
+        #     g=stat._getmean()[0]
+        #     g=int(g)
+        #     # self._3DWidget.w.setBackgroundColor((g, g, g,100))
+        #     self.scrollAreaWidgetContents_3.setStyleSheet(f"background-color:rgba{(g, g, g,100)}")
+        #     ga=f"background-color:rgba{(255-g, 255-g, 255-g,100)}"
+        #     style="QWidget#scrollAreaWidgetContents{%s}QLabel{%s}"%(ga,f"color:rgb{ga};")
+        #     self.scrollAreaWidgetContents.setStyleSheet(style)
+        #     self.scrollArea.setStyleSheet("QScrollBar:vertical{%s}" % ga)
+        #     self.stBar.setStyleSheet(ga)
+        #
+        #     docks="""
+        #     QDockWidget::title {
+        #         %s
+        #     }
+        #     """ % ga
+        #     self.dockWidget.setStyleSheet(docks)
+        #     self.dockWidget_2.setStyleSheet(docks)
+        #     self.dockWidget_3.setStyleSheet(docks)
+        # self._3DWidget.w.clear()
+        # self._3DWidget.setData(im)
+        #
+        # self.medianLabel.setText(str(stat._getmedian()))
+        # self.rmsLabel.setText(str(stat._getrms()))
+        # self.varLabel.setText(str(stat._getvar()))
+        # self.stddevLabel.setText(str(stat._getstddev()))
+        #
+        # self.depthLabel.setText(str(self.demoLabel.drawImg.depth()))
+        # self.patternLabel.setText(str(im.mode))
+        # self.sizeLabel.setText(f"({width},{height})")
+        #
+        #
+        #
+        #
+        #
+        # hist =im.histogram() #np.reciprocal(np.array(),dtype=)
+        # # im.getpi
+        # if channels >= 3:
+        #
+        #     self.graphicsView_6.hide()
+        #     self.graphicsView_3.show()
+        #     self.graphicsView_3.plot.clear()
+        #     self.graphicsView_3.plot.setXRange(0, 256)
+        #     self.graphicsView_3.setData(hist[:256],'r')
+        #     self.graphicsView_3.setData(hist[256:512],'g')
+        #     self.graphicsView_3.setData(hist[512:768],'b')
+        #
+        #
+        # elif channels == 1:
+        #     self.graphicsView_3.hide()
+        #     self.graphicsView_6.show()
+        #     self.graphicsView_6.plot.clear()
+        #     self.graphicsView_6.plot.setXRange(0, 256)
+        #
+        #     self.graphicsView_6.setData(hist,(200,200,200))
 
-        self.widthLabel.setText(str(height))
-        self.heightLabel.setText(str(width))
-        self.channelsLabel.setText(str(channels))
-        self.nameLabel.setText(self.demoLabel.imgPath.split('/')[-1])
-        self.formatLabel.setText(self.demoLabel.format)
-        stat = ImageStat.Stat(im)
-        self.extremaLabel.setText(str(stat._getextrema()))
-        self.pixelsNumLabel.setText(str(stat._getcount()))
-        self.pixelsSumLabel.setText(str(stat._getsum()))
 
-        self.averageLabel.setText(str(stat._getmean()))
 
-        #根据平均像素 设置背景颜色
-        if len(stat._getmean())>=3:
-            rgb=stat._getmean()[:3]
-            rgb=list(map(int,rgb))
-            self.scrollAreaWidgetContents_3.setStyleSheet(f"background-color:rgba{(rgb[0],rgb[1],rgb[2],100)}")
-            fontColor = (255 - rgb[0], 255 -rgb[1], 255 - rgb[2])
-            rgba=f"background-color:rgba{(rgb[0],rgb[1],rgb[2],100)};"
-            style="QWidget#scrollAreaWidgetContents{%s}QLabel{%s}"%(rgba,f"color:rgb{fontColor};")
-            self.scrollAreaWidgetContents.setStyleSheet(style)
-            self.stBar.setStyleSheet(rgba+f"color:rgb{fontColor};")
-            self.W.setStyleSheet(rgba)
-            self.scrollArea.setStyleSheet("QScrollBar:vertical{%s}"%rgba)
-            self.dockWidget.setStyleSheet("""
-                        QDockWidget {
-                border: 1px solid lightgray;
-                titlebar-close-icon: url(:/navigation/close.svg);
-                titlebar-normal-icon: url(:/navigation/windows.svg);
-                font: 75 10pt "微软雅黑";
-            
-            }
-            
-            QDockWidget::title {
-                text-align: left; 
-                %s
-            }
-            """%rgba)
-            # print(arr[:,:,0])
-            # print(arr[:,:,1])
-            # print(arr[:,:,2])
-            self.rwidget.show()
-            self.gwidget.show()
-            self.bwidget.show()
-
-            self.rwidget.canvas.figure.clear()
-            self.gwidget.canvas.figure.clear()
-            self.bwidget.canvas.figure.clear()
-            self.graywidget.canvas.figure.clear()
-            # self.graywidget.canvas.axes.clear()
-
-            self.rwidget.canvas.plotr(arr[:,:,0][0])
-            self.gwidget.canvas.plotg(arr[:,:,1][0])
-            self.bwidget.canvas.plotb(arr[:,:,2][0])
-            self.graywidget.canvas.plotgray(np.array(im.convert('L'))[0])
-            # self.rwidget.canvas.setFixedWidth(self.dockWidget.width())
-            # self.gwidget.canvas.setFixedWidth(self.dockWidget.width())
-            # self.bwidget.canvas.setFixedWidth(self.dockWidget.width())
-        #     QWidget#scrollAreaWidgetContents{\nbackground-color: rgba(255, 255, 255,200);\n}
-        else:
-            g=stat._getmean()[0]
-            g=int(g)
-            self.scrollAreaWidgetContents_3.setStyleSheet(f"background-color:rgba{(g, g, g,100)}")
-            ga=f"background-color:rgba{(255-g, 255-g, 255-g,100)}"
-            style="QWidget#scrollAreaWidgetContents{%s}QLabel{%s}"%(ga,f"color:rgb{ga};")
-            self.scrollAreaWidgetContents.setStyleSheet(style)
-            self.scrollArea.setStyleSheet("QScrollBar:vertical{%s}" % ga)
-            self.stBar.setStyleSheet(ga)
-            self.W.setStyleSheet(ga)
-            self.dockWidget.setStyleSheet("""
-                        QDockWidget {
-                border: 1px solid lightgray;
-                titlebar-close-icon: url(:/navigation/close.svg);
-                titlebar-normal-icon: url(:/navigation/windows.svg);
-                font: 75 10pt "微软雅黑";
-
-            }
-
-            QDockWidget::title {
-                text-align: left; 
-                %s
-            }
-            """ % ga)
-
-            self.rwidget.hide()
-            self.gwidget.hide()
-            self.bwidget.hide()
-
-            self.graywidget.canvas.figure.clear()
-            self.graywidget.canvas.plotgray(arr[0])
-
-        self.medianLabel.setText(str(stat._getmedian()))
-        self.rmsLabel.setText(str(stat._getrms()))
-        self.varLabel.setText(str(stat._getvar()))
-        self.stddevLabel.setText(str(stat._getstddev()))
-
-        self.depthLabel.setText(str(self.demoLabel.drawImg.depth()))
-        self.patternLabel.setText(str(im.mode))
-        self.sizeLabel.setText(f"({width},{height})")
-    def __image2QImg(self,img:Image):
-        # 默认是32位RGB
-        fmt=QImage.Format_RGB32
-
-        self.new_image = img.toqimage().convertToFormat(fmt)
-        # pass
-    # @logging
+    @logging
     def __readImg(self, fn=None):
 
         imgPath = fn or QFileDialog.getOpenFileName(self, "选择一张图片", "", self.FILE_FILTER)
@@ -443,7 +492,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         if fn:
             self.demoLabel.first=1
             self.demoLabel.imgPath = fn
-            # self.__image2QImg(Image.open(fn))
+
             self.new_image=Image.open(fn)
             self.demoLabel.setImg(QImage(fn),fn)
 
@@ -453,7 +502,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             self.widthEdit.setText(str(self.demoLabel.drawImg.width()))
             self.heightEdit.setText(str(self.demoLabel.drawImg.height()))
 
-            self.__getImgInfo()
+            self.__UpdateImgInfo()
     @logging
     def __convertInit(self):
         img = self.demoLabel.drawImg
@@ -478,8 +527,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         fn = self.getTempFileName()
 
         self.new_image.save(fn)
-
-        self.demoLabel.setImg(QImage(fn),fn)
+        self.demoLabel.setImg(QImage(fn), fn)
 
 
         if not self.getGlobalValue("SAVE_TEMP"):
@@ -494,9 +542,12 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
     def __threadSetImg(self):
 
         self.new_image = self.obj.new_image.copy()
-
+        self.thr.exit(0)
+        self.obj.deleteLater()
+        self.obj=None
         self.__setDemoImg()
-        self.__getImgInfo()
+        self.__UpdateImgInfo()
+
 
 
     # except Exception as e:
@@ -518,7 +569,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.demoLabel.setImg(QImage(fn),fn)
         if not self.getGlobalValue("SAVE_TEMP"):
             os.remove(fn)
-        self.__getImgInfo()
+        self.__UpdateImgInfo()
 
     @logging
     def __screenShot(self,img):
@@ -533,7 +584,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             os.remove(fn)
         if self.autoStretchBox.isChecked():
             self.demoLabel.setRestore()
-        self.__getImgInfo()
+        self.__UpdateImgInfo()
 
     @logging
     def __copyImg(self):
@@ -666,19 +717,34 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         if not self.demoLabel.draw:
             self.showError("你需要先拿起画笔 画!")
             return
+        self.demoLabel.draw=False
         fn=self.getTempFileName()
         self.demoLabel.drawImg.save(fn)
-        self.new_image=Image.open(fn)
-        img=QImage(fn).copy()
-        self.demoLabel.setImg(img,fn)
+        self.new_image=Image.open(fn).copy()
+
+
         if not self.getGlobalValue("SAVE_TEMP"):
             os.remove(fn)
+        self.__setDemoImg()
+        self.__UpdateImgInfo()
     @logging
     def __penDownImg(self):
         self.__convertInit()
         color = QColorDialog.getColor()
-        self.demoLabel.draw=False
+        self.demoLabel.drawInit(color)
+    @AutoSet
+    @logging
+    def __createNewImg(self):
+        newmode=self.patternBox.currentText() if self.newModelineEdit.text()=="" else self.newModelineEdit.text()
 
+        newWidth=128 if self.newWidthlineEdit_3.text()=="" else int(self.newWidthlineEdit_3.text())
+        newHeight=128 if self.newHeightlineEdit_4.text()=="" else int(self.newHeightlineEdit_4.text())
+        if newmode=="L" or newmode=="1":
+            newBg=0 if self.newBglineEdit_5.text()=="" else eval(self.newBglineEdit_5.text())
+        else:
+            newBg = (0,0,0) if self.newBglineEdit_5.text() == "" else eval(self.newBglineEdit_5.text())
+
+        self.new_image=Image.new(newmode,(newHeight,newWidth),newBg)
 
     """
     图像编辑结束
@@ -710,7 +776,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         thread = Convert_Object(new_image, Convert_Object.CONVERT_OP)
         thread.filename=self.getTempFileName()
         self.__getConvertThread(thread)
-
+    @AutoSet
     @logging
     def __customizeFilter(self):
         new_image = self.__convertInit()
@@ -724,7 +790,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                                0 if not offset else int(offset)))
         self.customDialog.plainTextEdit.setPlainText(self.customDialog.plainTextEdit.toPlainText())
         self.new_image = new_image
-        self.__setDemoImg()
+
 
     @logging
     def __customFliter(self):
@@ -737,65 +803,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         thread = Convert_Object(new_image, Convert_Object.FILTER_OP)
         self.__getConvertThread(thread)
 
-    # @logging
-    def __histogramShow(self):
-        """
-        :return:
-        """
-        """
-        灰度直方图是灰度级的函数，描述的是图像中具有该灰度级的像元的个数。确定图像像元的灰度值范围，
-        以适当的灰度间隔为单位将其划分为若干等级，以横轴表示灰度级，
-        以纵轴表示每一灰度级具有的像元数或该像元数占总像元数的比例值，做出的条形统计图即为灰度直方图。
-        
-        直方图反映了图像中的灰度分布规律。它描述每个灰度级具有的像元个数，但不包含这些像元在图像中的位置信息。
-        任何一幅特定的图像都有唯一的直方图与之对应，但不同的图像可以有相同的直方图。
-        如果一幅图像有两个不相连的区域组成，并且每个区域的直方图已知，则整幅图像的直方图是该两个区域的直方图之和
-        """
 
-        new_image = self.__convertInit()
-        # new_image=new_image.convert("RGB")
-
-        channels = int(self.channelsLabel.text())
-        if channels >= 3:
-            if channels == 3:
-                r, g, b = new_image.split()
-            else:
-                r, g, b, a = new_image.split()
-
-            plt.subplot(221)
-            ar = np.array(r).flatten()
-            plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
-            plt.legend(('r'), loc='upper left')
-            plt.subplot(222)
-
-            ag = np.array(g).flatten()
-
-            plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
-            plt.legend(('g'), loc='upper left')
-            plt.subplot(223)
-            ab = np.array(b).flatten()
-
-            plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
-            plt.legend(('b'), loc='upper left')
-
-            plt.subplot(224)
-            plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
-            plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
-            plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
-            plt.legend(('r', 'g', 'b'), loc='upper left')
-
-        elif channels == 1:
-
-            ar = np.array(new_image).flatten()
-
-            plt.subplot(111)
-            plt.hist(ar, 256, [0, 256], facecolor='grey', edgecolor='grey')
-
-            plt.legend(('grey'), loc='upper left')
-        plt.title(self.demoLabel.imgPath.split('/')[-1])
-        plt.xlabel("灰度值(0~255)")
-        plt.ylabel("出现频率")
-        plt.show()
     @AutoSet
     @logging
     def __histogramBalanced(self):
@@ -815,81 +823,9 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         """
 
         new_image = self.__convertInit()
-        channels = int(self.channelsLabel.text())
-        if channels >= 3:
-            if channels == 3:
-                r, g, b = new_image.split()
-            else:
-                r, g, b, a = new_image.split()
-
-
-        plt.subplot(221)
-        plt.axis('off')
-        plt.title("均衡化前")
-        plt.imshow(new_image, cmap="gray")
-
-        plt.subplot(222)
-        plt.xlabel("灰度值(0~255)")
-        plt.ylabel("出现频率")
-        if channels >= 3:
-            ar = np.array(r).flatten()
-            plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
-            ag = np.array(g).flatten()
-            plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
-            ab = np.array(b).flatten()
-            plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
-        else:
-            agr = np.array(new_image).flatten()
-            plt.hist(agr, 256, [0, 256], facecolor='gray', edgecolor='gray')
-
-        hist, bins = np.histogram(np.array(new_image).flatten(), 256, [0, 256])
-        cdf = hist.cumsum()
-
-        # 均衡前的cdf
-        cdf_normalized = cdf * hist.max() / cdf.max()
-
-        plt.plot(cdf_normalized, color='y')
-
-        if channels >= 3:
-            plt.legend(('cdf', 'r', 'g', 'b'), loc='upper left')
-        else:
-            plt.legend(('cdf', 'gray'), loc='upper left')
-
         new_image = ImageOps.equalize(new_image)
-        plt.subplot(223)
-        plt.axis('off')
-        plt.title("均衡化后")
-        plt.imshow(new_image, cmap='gray')
         self.new_image=new_image
-        hist, bins = np.histogram(np.array(new_image).flatten(), 256, [0, 256])
-        cdf = hist.cumsum()
-        # 均衡后的cdf
-        cdf_normalized = cdf * hist.max() / cdf.max()
 
-        plt.subplot(224)
-        plt.xlabel("灰度值(0~255)")
-        plt.ylabel("出现频率")
-
-        if channels >= 3:
-            if channels == 3:
-                r, g, b = new_image.split()
-            else:
-                r, g, b, a = new_image.split()
-        if channels >= 3:
-            ar = np.array(r).flatten()
-            plt.hist(ar, 256, [0, 256], facecolor='r', edgecolor='r')
-            ag = np.array(g).flatten()
-            plt.hist(ag, 256, [0, 256], facecolor='g', edgecolor='g')
-            ab = np.array(b).flatten()
-            plt.hist(ab, 256, [0, 256], facecolor='b', edgecolor='b')
-            plt.legend(('cdf', 'r', 'g', 'b'), loc='upper left')
-        else:
-            agr = np.array(new_image).flatten()
-            plt.hist(agr, 256, [0, 256], facecolor='grey', edgecolor='grey')
-            plt.legend(('cdf', 'grey'), loc='upper left')
-
-        plt.plot(cdf_normalized, color='y')
-        plt.show()
 
     @logging
     def __randomNoise(self):
@@ -915,143 +851,37 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
     @logging
     def __ffTransform(self):
+        new_image = self.__convertInit()
 
-        img = np.array(self.new_image.convert("L"))
-        f = np.fft.fft2(img)
+        thread = Convert_Object(new_image, Convert_Object.FFT_OP,parent=self)
+        self.__getConvertThread(thread)
 
-        fshift = np.fft.fftshift(f)  # 将频谱对称轴从左上角移至中心
-
-        magnitude_spectrum = 20 * np.log(np.abs(fshift))
-        rows, cols = img.shape
-        crow, ccol = int(rows / 2), int(cols / 2)
-        fshift[crow - 30:crow + 30, ccol - 30:ccol + 30] = 0
-        #去中心化
-        f_ishift = np.fft.ifftshift(fshift)
-        img_back = np.fft.ifft2(f_ishift)
-        img_back = np.abs(img_back)
-
-        plt.subplot(221), plt.imshow(img, cmap='gray')
-        plt.title('输入图'), plt.xticks([]), plt.yticks([])
-        plt.subplot(222), plt.imshow(magnitude_spectrum, cmap='gray')
-        plt.title('幅度谱'), plt.xticks([]), plt.yticks([])
-        plt.subplot(223), plt.imshow(img_back, cmap='gray')  # 恢复图像
-        plt.title('fft'), plt.xticks([]), plt.yticks([])
-        plt.subplot(224), plt.imshow(np.angle(f_ishift), cmap='gray')
-        plt.title('相位谱'), plt.xticks([]), plt.yticks([])
-        plt.show()
 
     @logging
+    def __iffTransform(self):
+        new_image = self.__convertInit()
+
+        thread = Convert_Object(new_image, Convert_Object.IFFT_OP,parent=self)
+        self.__getConvertThread(thread)
+
+
+    # @AutoSet
+    @logging
     def __hideInfoInImg(self):
+        new_image = self.__convertInit()
 
-        carrier_image = self.__convertInit()
-        print(carrier_image)
-        if carrier_image.mode=="L":
-            hide_image = Image.new(carrier_image.mode, carrier_image.size)
-        else:
-            hide_image = Image.new(carrier_image.mode, carrier_image.size,color=(0,0,0))
-
-        textDraw = ImageDraw.Draw(hide_image)
-        # 计算要写入的大小
-        plainText = self.hideInfoEdit.toPlainText()
-        length = len(plainText)
-        # 计算输入信息的字体大小
-        carrier_image_arr = np.array(carrier_image)
-        plt.subplot(421)
-
-        plt.axis("off")
-        plt.title("原图")
-        plt.imshow(carrier_image,cmap="gray")
-        channels = int(self.channelsLabel.text())
-        height, width = carrier_image_arr.shape[:2]
-        size = self.fontSizeEdit.text()
-        fontSize = 50 if size == '' else int(size)
-        font = ImageFont.truetype(r"C:\Windows\Fonts\Arial\arial.ttf", size=fontSize)
-
-        # 自动换行
-        textList = list(plainText)
-        fontLength = fontSize * length
-
-        if fontLength >= width:
-            for i in range(width, fontLength, width):
-                textList.insert(i, "\n")
-            plainText = ''.join(textList)
-        if channels >= 3:
-            color = (123, 12, 200)
-        else:
-            color = 100
-        textDraw.text((0, height // 3), plainText, font=font, fill=color)
-
-        # plt.imshow(hide_image)
-        # plt.show()
-        if channels >= 3:
-            for i in range(height):
-                for j in range(width):
-                    # 把整幅图的B通道全设置为偶数
-                    if carrier_image_arr[i, j, 0] % 2 == 1:
-                        carrier_image_arr[i, j, 0] -= 1
-                    if carrier_image_arr[i, j, 1] % 2 == 1:
-                        carrier_image_arr[i, j, 1] -= 1
-                    if carrier_image_arr[i, j, 1] % 2 == 1:
-                        carrier_image_arr[i, j, 1] -= 1
-        else:
-            for i in range(height):
-                for j in range(width):
-                    # 把整幅图的B通道全设置为偶数
-                    if carrier_image_arr[i, j] % 2 == 1:
-                        carrier_image_arr[i, j] -= 1
-        plt.subplot(422)
-        plt.title("隐藏后")
-        plt.axis("off")
-        plt.imshow(carrier_image_arr,cmap="gray")
-        #开始还原
-        hide_image_arr = np.array(hide_image)
-        if channels >= 3:
-            for i in range(height):
-                for j in range(width):
-                    if hide_image_arr[i, j,0]== color[0]:
-                        carrier_image_arr[i, j, 0] += 1
-                    if hide_image_arr[i, j,1] == color[1]:
-                        carrier_image_arr[i, j, 1] += 1
-                    if hide_image_arr[i, j,2] == color[2]:
-                        carrier_image_arr[i, j, 2] += 1
-        else:
-            for i in range(height):
-                for j in range(width):
-                    if hide_image_arr[i, j] == color:
-                        carrier_image_arr[i, j] += 1
+        thread = Convert_Object(new_image, Convert_Object.HIDE_INFO_OP,parent=self)
+        self.__getConvertThread(thread)
 
 
-        self.new_image = Image.fromarray(carrier_image_arr)
+    @logging
+    def deHideInfoImg(self):
+        new_image = self.__convertInit()
 
-        img = Image.new(carrier_image.mode, carrier_image.size)
-        img = np.array(img)
-        h, w = img.shape[:2]
-        # 新建一张图用来放解出来的信息
-        hideInfoImg = np.zeros((h, w, 3), np.uint8)
-        if channels >= 3:
-            for i in range(h):
-                for j in range(w):
-                    if carrier_image_arr[i, j, 0] % 2 == 1:
-                        hideInfoImg[i, j, 0] = color[0]
-                        hideInfoImg[i, j, 1] = color[1]
-                        hideInfoImg[i, j, 2] = color[2]
-        else:
-            for i in range(h):
-                for j in range(w):
-                    # 发现B通道为奇数则为信息的内容
-                    if carrier_image_arr[i, j] % 2 == 1:
-                        hideInfoImg[i, j] = color
+        thread = Convert_Object(new_image, Convert_Object.DEHIDE_INFO_OP,parent=self)
+        self.__getConvertThread(thread)
 
-        plt.subplot(423)
-        plt.axis("off")
-        plt.title("隐藏的信息")
-        plt.imshow(hide_image_arr,cmap="gray")
 
-        plt.subplot(424)
-        plt.axis("off")
-        plt.title("还原的信息")
-        plt.imshow(hideInfoImg,cmap="gray")
-        plt.show()
     @AutoSet
     @logging
     def __ArnoldImg(self):
@@ -1119,7 +949,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         h=self.vdHeightEdit.text()
         h=64 if h=="" else int(h)
         bg=self.vdBgEdit.text()
-        bg=tuple(np.random.randint(255,size=3))
+        bg=tuple(np.random.randint(255,size=3)) if bg=="" else eval(bg)
         text=self.vdTextEdit.text()
 
         _char=[chr(i) for i in range(ord('A'),ord('Z')+1)]+[str(i) for i in range(10)]

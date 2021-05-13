@@ -1,0 +1,6 @@
+[DEBUG]:2021-05-08 12:30:57.993473 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 12:30:58.383923 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 12:30:58.383923 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 12:30:58.392707 ToolsWindow entered func **__getImgInfo** args=() kwargs={} 
+ToolsWindow->__getImgInfo:setData() missing 1 required positional argument: 'color'
+[DEBUG]:2021-05-08 12:30:58.480547 ToolsWindow entered func **showError** args=("[DEBUG]:2021-05-08 12:30:57.993473 ToolsWindow entered func **__init__** args=() kwargs={} \n[DEBUG]:2021-05-08 12:30:58.383923 ToolsWindow entered func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 12:30:58.383923 ToolsWindow leaved func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 12:30:58.392707 ToolsWindow entered func **__getImgInfo** args=() kwargs={} \nToolsWindow->__getImgInfo:setData() missing 1 required positional argument: 'color'\n",) kwargs={} 

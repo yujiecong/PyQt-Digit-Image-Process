@@ -1,0 +1,12 @@
+[DEBUG]:2021-05-08 11:23:14.931019 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 11:23:15.278475 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 11:23:15.279451 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 11:23:15.290187 ToolsWindow entered func **__getImgInfo** args=() kwargs={} 
+[DEBUG]:2021-05-08 11:23:15.374124 ToolsWindow leaved func **__getImgInfo** args=() kwargs={} 
+[DEBUG]:2021-05-08 11:23:15.375100 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 11:23:17.974217 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 11:23:17.974217 ToolsWindow entered func **__hideInfoInImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 11:23:17.974217 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 11:23:18.017130 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+ToolsWindow->__hideInfoInImg:'latin-1' codec can't encode character '\u2764' in position 11: ordinal not in range(256)
+[DEBUG]:2021-05-08 11:23:18.019083 ToolsWindow entered func **showError** args=("[DEBUG]:2021-05-08 11:23:14.931019 ToolsWindow entered func **__init__** args=() kwargs={} \n[DEBUG]:2021-05-08 11:23:15.278475 ToolsWindow entered func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 11:23:15.279451 ToolsWindow leaved func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 11:23:15.290187 ToolsWindow entered func **__getImgInfo** args=() kwargs={} \n[DEBUG]:2021-05-08 11:23:15.374124 ToolsWindow leaved func **__getImgInfo** args=() kwargs={} \n[DEBUG]:2021-05-08 11:23:15.375100 ToolsWindow leaved func **__init__** args=() kwargs={} \n[AUTO-SET]:2021-05-08 11:23:17.974217 ToolsWindow entered func **wrapper** args=(False,) kwargs={}\n[DEBUG]:2021-05-08 11:23:17.974217 ToolsWindow entered func **__hideInfoInImg** args=() kwargs={} \n[DEBUG]:2021-05-08 11:23:17.974217 ToolsWindow entered func **__convertInit** args=() kwargs={} \n[DEBUG]:2021-05-08 11:23:18.017130 ToolsWindow leaved func **__convertInit** args=() kwargs={} \nToolsWindow->__hideInfoInImg:'latin-1' codec can't encode character '\\u2764' in position 11: ordinal not in range(256)\n",) kwargs={} 

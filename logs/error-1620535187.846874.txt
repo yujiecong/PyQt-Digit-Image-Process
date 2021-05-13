@@ -1,0 +1,11 @@
+[DEBUG]:2021-05-09 12:39:21.894085 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:39:22.209893 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:39:22.214773 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:39:22.214773 ToolsWindow entered func **__readImg** args=('img/QQ½ØÍ¼20210428202605.png',) kwargs={} 
+[DEBUG]:2021-05-09 12:39:22.321156 ToolsWindow leaved func **__readImg** args=('img/QQ½ØÍ¼20210428202605.png',) kwargs={} 
+[DEBUG]:2021-05-09 12:39:22.321156 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[AUTO-SET]:2021-05-09 12:39:25.107256 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-09 12:39:25.107256 ToolsWindow entered func **__ArnoldImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:39:25.107256 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:39:25.152151 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+ToolsWindow->__ArnoldImg:'Image' object is not subscriptable

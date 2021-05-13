@@ -1,0 +1,3 @@
+[DEBUG]:2021-05-08 18:57:36.770959 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:57:36.871690 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+ToolsWindow->__ifftTransform:'NoneType' object has no attribute 'convert'

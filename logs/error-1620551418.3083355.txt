@@ -1,0 +1,5 @@
+[DEBUG]:2021-05-09 17:10:14.414029 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-09 17:10:14.724965 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-09 17:10:14.728869 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-09 17:10:14.728869 ToolsWindow entered func **__readImg** args=('img/QQ½ØÍ¼20210428202605.png',) kwargs={} 
+ToolsWindow->__readImg:name 'pg' is not defined

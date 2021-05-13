@@ -1,0 +1,5 @@
+[DEBUG]:2021-05-08 12:32:06.515012 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 12:32:06.894618 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 12:32:06.895594 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+ToolsWindow->__init__:setPen
+[DEBUG]:2021-05-08 12:32:06.994197 ToolsWindow entered func **showError** args=('[DEBUG]:2021-05-08 12:32:06.515012 ToolsWindow entered func **__init__** args=() kwargs={} \n[DEBUG]:2021-05-08 12:32:06.894618 ToolsWindow entered func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 12:32:06.895594 ToolsWindow leaved func **__specificConn** args=() kwargs={} \nToolsWindow->__init__:setPen\n',) kwargs={} 

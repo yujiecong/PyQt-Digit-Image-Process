@@ -1,0 +1,11 @@
+[DEBUG]:2021-05-08 18:51:54.464911 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:51:54.800754 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:51:54.804743 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:51:54.914450 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 18:51:57.222954 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 18:51:57.222954 ToolsWindow entered func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:51:57.222954 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:51:57.265991 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:51:57.282945 ToolsWindow leaved func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:51:57.282945 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+ToolsWindow->__setDemoImg:cannot write mode F as PNG

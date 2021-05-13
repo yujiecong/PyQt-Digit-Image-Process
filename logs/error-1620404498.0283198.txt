@@ -1,0 +1,13 @@
+[DEBUG]:2021-05-08 00:19:24.624422 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 00:19:24.939649 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 00:19:24.940619 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 00:19:24.948600 ToolsWindow entered func **__getImgInfo** args=() kwargs={} 
+[DEBUG]:2021-05-08 00:19:25.030413 ToolsWindow leaved func **__getImgInfo** args=() kwargs={} 
+[DEBUG]:2021-05-08 00:19:25.030413 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 00:19:50.306344 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 00:19:50.306344 ToolsWindow entered func **__hideInfoInImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 00:19:50.306344 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 00:19:50.350239 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 00:19:50.666363 ToolsWindow leaved func **__hideInfoInImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 00:19:50.666363 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+ToolsWindow->__setDemoImg:'numpy.ndarray' object has no attribute 'save'[DEBUG]:2021-05-08 00:19:50.666363 ToolsWindow entered func **showError** args=("[DEBUG]:2021-05-08 00:19:24.624422 ToolsWindow entered func **__init__** args=() kwargs={} \n[DEBUG]:2021-05-08 00:19:24.939649 ToolsWindow entered func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 00:19:24.940619 ToolsWindow leaved func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 00:19:24.948600 ToolsWindow entered func **__getImgInfo** args=() kwargs={} \n[DEBUG]:2021-05-08 00:19:25.030413 ToolsWindow leaved func **__getImgInfo** args=() kwargs={} \n[DEBUG]:2021-05-08 00:19:25.030413 ToolsWindow leaved func **__init__** args=() kwargs={} \n[AUTO-SET]:2021-05-08 00:19:50.306344 ToolsWindow entered func **wrapper** args=(False,) kwargs={}\n[DEBUG]:2021-05-08 00:19:50.306344 ToolsWindow entered func **__hideInfoInImg** args=() kwargs={} \n[DEBUG]:2021-05-08 00:19:50.306344 ToolsWindow entered func **__convertInit** args=() kwargs={} \n[DEBUG]:2021-05-08 00:19:50.350239 ToolsWindow leaved func **__convertInit** args=() kwargs={} \n[DEBUG]:2021-05-08 00:19:50.666363 ToolsWindow leaved func **__hideInfoInImg** args=() kwargs={} \n[DEBUG]:2021-05-08 00:19:50.666363 ToolsWindow entered func **__setDemoImg** args=() kwargs={} \nToolsWindow->__setDemoImg:'numpy.ndarray' object has no attribute 'save'",) kwargs={} 

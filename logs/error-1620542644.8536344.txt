@@ -1,0 +1,16 @@
+[DEBUG]:2021-05-09 14:43:39.894866 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 14:43:40.037391 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 14:43:40.037391 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 14:43:40.080428 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[AUTO-SET]:2021-05-09 14:43:41.290790 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-09 14:43:41.290790 ToolsWindow entered func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-09 14:43:41.290790 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 14:43:41.337638 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 14:43:41.356212 ToolsWindow leaved func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-09 14:43:41.356212 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 14:43:41.363012 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[AUTO-SET]:2021-05-09 14:43:42.572187 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-09 14:43:42.572187 ToolsWindow entered func **__iffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-09 14:43:42.572187 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 14:43:42.579996 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+ToolsWindow->__iffTransform:Cannot handle this data type: (1, 1), <c16

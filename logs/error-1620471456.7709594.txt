@@ -1,0 +1,15 @@
+[DEBUG]:2021-05-08 18:56:30.019765 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:56:30.354960 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:56:30.358949 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:56:30.473642 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 18:56:32.956795 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 18:56:32.956795 ToolsWindow entered func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:56:32.956795 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:56:33.000678 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:56:33.017665 ToolsWindow leaved func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:56:33.017665 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:56:33.020624 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 18:56:34.602033 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 18:56:34.602033 ToolsWindow entered func **__ifftTransform** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:56:34.602033 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+ToolsWindow->__convertInit:[Errno 2] No such file or directory: 'D:\\ccrepository\\zhku\\digit-img-process\\PyQt-Digit-Image-Process/cache_img/1620471394-602033.tiff'

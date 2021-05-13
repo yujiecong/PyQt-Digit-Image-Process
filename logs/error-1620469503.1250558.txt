@@ -1,0 +1,20 @@
+[DEBUG]:2021-05-08 18:23:48.745260 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:23:49.057443 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:23:49.060435 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:23:49.171139 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 18:23:51.415553 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 18:23:51.415553 ToolsWindow entered func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:23:51.415553 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:23:51.459437 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:23:51.478415 ToolsWindow leaved func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:23:51.478415 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:23:51.522267 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:24:59.017079 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:24:59.181640 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 18:25:00.838580 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 18:25:00.838580 ToolsWindow entered func **__ifftTransform** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:25:00.838580 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:25:00.883617 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:25:00.897580 ToolsWindow leaved func **__ifftTransform** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:25:00.897580 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+ToolsWindow->__setDemoImg:'numpy.ndarray' object has no attribute 'save'

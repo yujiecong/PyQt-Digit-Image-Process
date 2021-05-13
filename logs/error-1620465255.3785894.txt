@@ -1,0 +1,9 @@
+[DEBUG]:2021-05-08 17:13:53.513647 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 17:13:53.822414 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 17:13:53.826319 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 17:13:53.936721 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 17:13:56.650469 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 17:13:56.650469 ToolsWindow entered func **__histogramBalanced** args=() kwargs={} 
+[DEBUG]:2021-05-08 17:13:56.650469 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 17:13:56.694388 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+ToolsWindow->__histogramBalanced:not supported for this image mode

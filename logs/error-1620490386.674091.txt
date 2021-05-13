@@ -1,0 +1,299 @@
+[DEBUG]:2021-05-09 00:10:46.352642 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:10:47.283153 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:10:47.287142 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:10:47.398844 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:05.108928 ToolsWindow entered func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:05.108928 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:05.111919 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:05.111919 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CC9E4690D8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:05.111919 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CC9E4690D8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:05.111919 ToolsWindow leaved func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:05.503842 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:05.503842 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:05.505836 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:05.593601 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:09.163747 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:09.258493 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:12.574677 ToolsWindow entered func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:12.574677 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:12.577670 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:12.577670 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:12.577670 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:12.577670 ToolsWindow leaved func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:12.581688 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:12.582657 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:12.584678 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:12.667466 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:18.908358 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:18.993131 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:28.516417 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:28.516417 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:28.519409 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:28.519409 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:28.519409 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:28.519409 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:28.549350 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:28.549350 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:28.553342 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:28.636097 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:29.628323 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:29.628323 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:29.634336 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:29.634336 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:29.634336 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:29.634336 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:29.665222 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:29.665222 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:29.669242 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:29.752021 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.229551 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.229551 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.234538 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.234538 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.234538 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.234538 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.265425 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.265425 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.269414 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.352193 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.748466 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.748466 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.753453 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.754449 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.754449 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.754449 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.784370 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.784370 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.789397 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:30.869177 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.220445 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.220445 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.226430 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.226430 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.226430 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.226430 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.257350 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.257350 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.262333 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.347107 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.789255 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.789255 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.794242 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.794242 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.795239 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.795239 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.825160 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.825160 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.829149 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:31.910959 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.212062 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.212062 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.218071 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.218071 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.218071 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.218071 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.247998 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.247998 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.251982 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.333761 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.628518 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.628518 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.634531 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.634531 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.634531 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.634531 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.664422 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.664422 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.668441 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:32.750193 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.076114 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.076114 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.082987 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.082987 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.082987 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.082987 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.112906 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.112906 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.117894 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.197783 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.516228 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.516228 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.523208 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.523208 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.523208 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.523208 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.554126 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.554126 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.559113 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.642922 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.950041 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.950041 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.956065 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.956065 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.956065 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.956065 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.985945 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.985945 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:33.989963 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.073745 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.445796 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.445796 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.451780 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.451780 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.451780 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.451780 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.480703 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.481700 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.485689 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:34.570463 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:35.124633 ToolsWindow entered func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:35.124633 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:35.130616 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:35.130616 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:35.130616 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582F78>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:35.130616 ToolsWindow leaved func **__randomNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:35.159569 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:35.159569 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:35.164525 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:35.244343 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:38.468641 ToolsWindow entered func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:38.468641 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:38.474626 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:38.474626 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586948>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:38.474626 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586948>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:38.474626 ToolsWindow leaved func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:38.487591 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:38.487591 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:38.491580 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:38.579375 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:39.429531 ToolsWindow entered func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:39.429531 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:39.435514 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:39.436511 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:39.436511 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2582EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:39.436511 ToolsWindow leaved func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:39.448512 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:39.449477 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:39.453466 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:39.538239 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.356112 ToolsWindow entered func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.356112 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.362126 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.362126 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586948>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.362126 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586948>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.362126 ToolsWindow leaved func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.375091 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.376058 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.380078 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.463855 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.980585 ToolsWindow entered func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.980585 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.986569 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.986569 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.986569 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.986569 ToolsWindow leaved func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.999535 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:44.999535 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.003553 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.084337 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.461842 ToolsWindow entered func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.461842 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.467826 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.467826 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586948>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.467826 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586948>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.467826 ToolsWindow leaved func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.479823 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.479823 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.484810 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.567588 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.956756 ToolsWindow entered func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.956756 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.962740 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.962740 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.962740 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.962740 ToolsWindow leaved func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.976673 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.976673 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:45.980663 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.061476 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.420806 ToolsWindow entered func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.420806 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.426760 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.426760 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586948>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.426760 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586948>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.426760 ToolsWindow leaved func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.439726 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.439726 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.443715 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.526495 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.972304 ToolsWindow entered func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.972304 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.979253 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.979253 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.979253 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586EE8>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.979253 ToolsWindow leaved func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.993215 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.993215 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:46.998202 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.082008 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.445902 ToolsWindow entered func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.445902 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.451886 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.451886 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586948>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.451886 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000001CCB2586948>,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.451886 ToolsWindow leaved func **__gaussianNoise** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.464877 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.464877 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.468865 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:47.553614 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:50.539712 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:50.628536 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:50.732556 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:50.817357 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:50.892133 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:50.982914 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.056690 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.155425 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.212273 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.301064 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.415728 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.504491 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.591261 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.679053 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.789323 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.877089 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:51.980202 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:52.067966 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:52.196250 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:52.285042 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:52.420363 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:52.509125 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:52.676339 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:52.768093 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:52.876119 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:52.963776 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.048711 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.159403 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.228209 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.315985 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.428761 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.518552 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.628229 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.717023 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.804756 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.893548 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:53.988316 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:54.079101 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:54.204311 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:54.295098 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:54.412754 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:54.498573 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:54.621382 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:54.708150 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:54.924374 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:56.159977 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[AUTO-SET]:2021-05-09 00:12:59.853607 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-09 00:12:59.853607 ToolsWindow entered func **__hideInfoInImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:59.853607 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 00:12:59.856600 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+ToolsWindow->__hideInfoInImg:function takes exactly 1 argument (3 given)

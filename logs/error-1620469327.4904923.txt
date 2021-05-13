@@ -1,0 +1,9 @@
+[DEBUG]:2021-05-08 18:22:00.655448 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:22:01.015485 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:22:01.020471 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:22:01.130178 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 18:22:03.648976 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 18:22:03.648976 ToolsWindow entered func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:22:03.648976 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:22:03.692858 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+ToolsWindow->__ffTransform:'_typedict' object is not callable

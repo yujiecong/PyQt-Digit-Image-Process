@@ -1,0 +1,5 @@
+[DEBUG]:2021-05-10 13:26:44.771901 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-10 13:26:45.086176 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-10 13:26:45.091053 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-10 13:26:45.091053 ToolsWindow entered func **__readImg** args=('img/QQ½ØÍ¼20210428202605.png',) kwargs={} 
+ToolsWindow->__readImg:not all arguments converted during string formatting

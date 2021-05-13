@@ -1,0 +1,10 @@
+[DEBUG]:2021-05-09 19:05:30.239578 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-09 19:05:30.545035 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-09 19:05:30.548939 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-09 19:05:30.548939 ToolsWindow entered func **__readImg** args=('img/QQ½ØÍ¼20210428202605.png',) kwargs={} 
+ToolsWindow->__readImg:GLError(
+	err = 1282,
+	description = b'\xce\xde\xd0\xa7\xb2\xd9\xd7\xf7',
+	baseOperation = glGetString,
+	cArguments = (GL_VERSION,)
+)

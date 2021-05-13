@@ -1,0 +1,34 @@
+[DEBUG]:2021-05-08 18:33:47.243782 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:33:48.569734 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:33:49.273863 ToolsWindow entered func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:33:49.273863 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:33:49.317776 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:33:49.317776 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000024C28BD9438>,) kwargs={} 
+[DEBUG]:2021-05-08 18:33:49.317776 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000024C28BD9438>,) kwargs={} 
+[DEBUG]:2021-05-08 18:33:49.317776 ToolsWindow leaved func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:33:57.620522 ToolsWindow entered func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:33:57.620522 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:33:57.665401 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:33:57.665401 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000024C28BD9438>,) kwargs={} 
+[DEBUG]:2021-05-08 18:33:57.665401 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000024C28BD9438>,) kwargs={} 
+[DEBUG]:2021-05-08 18:33:57.665401 ToolsWindow leaved func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:01.310674 ToolsWindow entered func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:01.310674 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:34:01.353559 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:34:01.353559 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000024C28BD9438>,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:01.354557 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000024C28BD9438>,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:01.354557 ToolsWindow leaved func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:02.674927 ToolsWindow entered func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:02.674927 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:34:02.717837 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:34:02.717837 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000024C28BD9438>,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:02.717837 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000024C28BD9438>,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:02.717837 ToolsWindow leaved func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:04.092517 ToolsWindow entered func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:04.092517 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:34:04.136396 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:34:04.136396 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000024C28BD9438>,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:04.136396 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000024C28BD9438>,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:04.136396 ToolsWindow leaved func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:34:04.898663 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+ToolsWindow->__withdraw:cannot write mode F as PNG

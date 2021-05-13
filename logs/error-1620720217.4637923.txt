@@ -1,0 +1,2 @@
+[DEBUG]:2021-05-11 16:03:37.297362 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+ToolsWindow->__withdraw:[Errno 22] Invalid argument

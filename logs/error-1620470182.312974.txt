@@ -1,0 +1,12 @@
+[DEBUG]:2021-05-08 18:36:18.624751 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:36:18.784354 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:36:18.892066 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:36:20.712733 ToolsWindow entered func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:36:20.712733 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:36:20.755647 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:36:20.755647 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x00000240BD07C678>,) kwargs={} 
+[DEBUG]:2021-05-08 18:36:20.755647 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x00000240BD07C678>,) kwargs={} 
+[DEBUG]:2021-05-08 18:36:20.756655 ToolsWindow leaved func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:36:20.759607 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:36:20.759607 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+ToolsWindow->__setDemoImg:cannot write mode F as PNG

@@ -1,0 +1,10 @@
+[DEBUG]:2021-05-10 00:25:03.893441 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-10 00:25:04.149755 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-10 00:25:04.153745 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-10 00:25:04.153745 ToolsWindow entered func **__readImg** args=('img/QQ½ØÍ¼20210428202605.png',) kwargs={} 
+[DEBUG]:2021-05-10 00:25:04.570631 ToolsWindow leaved func **__readImg** args=('img/QQ½ØÍ¼20210428202605.png',) kwargs={} 
+[DEBUG]:2021-05-10 00:25:04.571628 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-10 00:25:16.492815 ToolsWindow entered func **__screenShot** args=(<PyQt5.QtGui.QImage object at 0x0000021539015C18>,) kwargs={} 
+[DEBUG]:2021-05-10 00:25:16.494809 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-10 00:25:16.538692 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+ToolsWindow->__screenShot:[Errno 2] No such file or directory: 'D:\\ccrepository\\zhku\\digit-img-process\\PyQt-Digit-Image-Process/cache_img/1620577516-538693.png'

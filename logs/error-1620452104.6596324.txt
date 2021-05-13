@@ -1,0 +1,3 @@
+[DEBUG]:2021-05-08 13:23:03.107069 ToolsWindow entered func **__init__** args=() kwargs={} 
+ToolsWindow->__init__:'GLViewWidget' object has no attribute 'plot'
+[DEBUG]:2021-05-08 13:23:03.253521 ToolsWindow entered func **showError** args=("[DEBUG]:2021-05-08 13:23:03.107069 ToolsWindow entered func **__init__** args=() kwargs={} \nToolsWindow->__init__:'GLViewWidget' object has no attribute 'plot'\n",) kwargs={} 

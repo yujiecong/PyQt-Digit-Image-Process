@@ -1,0 +1,23 @@
+[DEBUG]:2021-05-08 01:06:21.730962 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:22.034177 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:22.035174 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:22.043184 ToolsWindow entered func **__getImgInfo** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:22.131956 ToolsWindow leaved func **__getImgInfo** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:22.132978 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 01:06:28.929740 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 01:06:28.929740 ToolsWindow entered func **__hideInfoInImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:28.929740 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:28.971657 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:29.290803 ToolsWindow leaved func **__hideInfoInImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:29.290803 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:29.336680 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:29.336680 ToolsWindow entered func **__getImgInfo** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:29.433460 ToolsWindow leaved func **__getImgInfo** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:32.159552 ToolsWindow entered func **__saveImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:36.656584 ToolsWindow leaved func **__saveImg** args=() kwargs={} 
+[AUTO-SET]:2021-05-08 01:06:37.854509 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-08 01:06:37.854509 ToolsWindow entered func **deHideInfoImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:37.854509 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 01:06:37.900417 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+ToolsWindow->deHideInfoImg:shape
+[DEBUG]:2021-05-08 01:06:37.901384 ToolsWindow entered func **showError** args=('[DEBUG]:2021-05-08 01:06:21.730962 ToolsWindow entered func **__init__** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:22.034177 ToolsWindow entered func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:22.035174 ToolsWindow leaved func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:22.043184 ToolsWindow entered func **__getImgInfo** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:22.131956 ToolsWindow leaved func **__getImgInfo** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:22.132978 ToolsWindow leaved func **__init__** args=() kwargs={} \n[AUTO-SET]:2021-05-08 01:06:28.929740 ToolsWindow entered func **wrapper** args=(False,) kwargs={}\n[DEBUG]:2021-05-08 01:06:28.929740 ToolsWindow entered func **__hideInfoInImg** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:28.929740 ToolsWindow entered func **__convertInit** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:28.971657 ToolsWindow leaved func **__convertInit** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:29.290803 ToolsWindow leaved func **__hideInfoInImg** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:29.290803 ToolsWindow entered func **__setDemoImg** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:29.336680 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:29.336680 ToolsWindow entered func **__getImgInfo** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:29.433460 ToolsWindow leaved func **__getImgInfo** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:32.159552 ToolsWindow entered func **__saveImg** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:36.656584 ToolsWindow leaved func **__saveImg** args=() kwargs={} \n[AUTO-SET]:2021-05-08 01:06:37.854509 ToolsWindow entered func **wrapper** args=(False,) kwargs={}\n[DEBUG]:2021-05-08 01:06:37.854509 ToolsWindow entered func **deHideInfoImg** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:37.854509 ToolsWindow entered func **__convertInit** args=() kwargs={} \n[DEBUG]:2021-05-08 01:06:37.900417 ToolsWindow leaved func **__convertInit** args=() kwargs={} \nToolsWindow->deHideInfoImg:shape\n',) kwargs={} 

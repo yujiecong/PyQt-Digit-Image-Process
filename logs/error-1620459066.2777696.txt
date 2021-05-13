@@ -1,0 +1,7 @@
+[DEBUG]:2021-05-08 15:30:56.149740 ToolsWindow entered func **__init__** args=() kwargs={} 
+ToolsWindow->__init__:GLError(
+	err = 1282,
+	description = b'\xce\xde\xd0\xa7\xb2\xd9\xd7\xf7',
+	baseOperation = glGetString,
+	cArguments = (GL_VERSION,)
+)

@@ -1,0 +1,45 @@
+[DEBUG]:2021-05-09 12:46:42.898217 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:46:43.209320 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:46:43.213226 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:46:43.213226 ToolsWindow entered func **__readImg** args=('img/QQ截图20210428202605.png',) kwargs={} 
+[DEBUG]:2021-05-09 12:46:43.322536 ToolsWindow leaved func **__readImg** args=('img/QQ截图20210428202605.png',) kwargs={} 
+[DEBUG]:2021-05-09 12:46:43.322536 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:46:57.789531 ToolsWindow entered func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 12:46:57.789531 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:46:57.791483 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:46:57.791483 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000025370F210D8>,) kwargs={} 
+[DEBUG]:2021-05-09 12:46:57.791483 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x0000025370F210D8>,) kwargs={} 
+[DEBUG]:2021-05-09 12:46:57.791483 ToolsWindow leaved func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 12:46:57.792459 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:46:57.792459 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:46:57.794411 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:46:57.897900 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:01.715319 ToolsWindow entered func **__saveImg** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 12:47:10.269181 ToolsWindow leaved func **__saveImg** args=(False,) kwargs={} 
+[DEBUG]:2021-05-09 12:47:11.667499 ToolsWindow entered func **__readImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:13.694956 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:13.696908 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:13.801355 ToolsWindow leaved func **__readImg** args=() kwargs={} 
+[AUTO-SET]:2021-05-09 12:47:18.387308 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-09 12:47:18.387308 ToolsWindow entered func **__ArnoldImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:18.387308 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:18.389229 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:18.437090 ToolsWindow leaved func **__ArnoldImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:18.437090 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:18.438029 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[AUTO-SET]:2021-05-09 12:47:19.155635 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-09 12:47:19.155635 ToolsWindow entered func **__DeArnoldImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:19.155635 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:19.157587 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:19.206419 ToolsWindow leaved func **__DeArnoldImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:19.206419 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:19.208352 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:33.101792 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:33.194548 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:33.578884 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:33.669644 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[AUTO-SET]:2021-05-09 12:47:40.043618 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-09 12:47:40.043618 ToolsWindow entered func **__resizeImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:40.043618 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:40.044595 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+ToolsWindow->__resizeImg:[WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\ccrepository\\zhku\\digit-img-process\\PyQt-Digit-Image-Process/cache_img/1620535660-0455709.bmp'

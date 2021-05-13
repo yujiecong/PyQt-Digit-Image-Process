@@ -1,0 +1,19 @@
+[DEBUG]:2021-05-11 15:55:37.559489 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:37.890557 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:37.895437 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:37.895437 ToolsWindow entered func **__readImg** args=('img/QQͼƬ20210510115737.jpg',) kwargs={} 
+[DEBUG]:2021-05-11 15:55:38.052602 ToolsWindow leaved func **__readImg** args=('img/QQͼƬ20210510115737.jpg',) kwargs={} 
+[DEBUG]:2021-05-11 15:55:38.052602 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:40.127067 ToolsWindow entered func **__readImg** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:44.790533 ToolsWindow leaved func **__readImg** args=() kwargs={} 
+[AUTO-SET]:2021-05-11 15:55:54.951861 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-11 15:55:54.951861 ToolsWindow entered func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:54.951861 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:54.994805 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:55.217364 ToolsWindow leaved func **__ffTransform** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:55.218341 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:55.225172 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:57.591681 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-11 15:55:57.853913 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-11 16:03:31.333131 ToolsWindow entered func **__saltAndPepperNoise** args=(False,) kwargs={} 
+ToolsWindow->__saltAndPepperNoise:[Errno 22] Invalid argument

@@ -1,0 +1,9 @@
+[DEBUG]:2021-05-10 13:46:16.141389 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-10 13:46:16.469377 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-10 13:46:16.474256 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-10 13:46:16.474256 ToolsWindow entered func **__readImg** args=('img/QQ½ØÍ¼20210428202605.png',) kwargs={} 
+[DEBUG]:2021-05-10 13:46:16.919342 ToolsWindow leaved func **__readImg** args=('img/QQ½ØÍ¼20210428202605.png',) kwargs={} 
+[DEBUG]:2021-05-10 13:46:16.919342 ToolsWindow leaved func **__init__** args=() kwargs={} 
+[AUTO-SET]:2021-05-10 13:46:21.868663 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-10 13:46:21.868663 ToolsWindow entered func **__createNewImg** args=() kwargs={} 
+ToolsWindow->__createNewImg:unrecognized image mode

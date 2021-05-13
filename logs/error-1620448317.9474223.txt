@@ -1,0 +1,6 @@
+[DEBUG]:2021-05-08 12:31:54.495493 ToolsWindow entered func **__init__** args=() kwargs={} 
+[DEBUG]:2021-05-08 12:31:54.866403 ToolsWindow entered func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 12:31:54.866403 ToolsWindow leaved func **__specificConn** args=() kwargs={} 
+[DEBUG]:2021-05-08 12:31:54.875189 ToolsWindow entered func **__getImgInfo** args=() kwargs={} 
+ToolsWindow->__getImgInfo:setPen
+[DEBUG]:2021-05-08 12:31:54.961104 ToolsWindow entered func **showError** args=('[DEBUG]:2021-05-08 12:31:54.495493 ToolsWindow entered func **__init__** args=() kwargs={} \n[DEBUG]:2021-05-08 12:31:54.866403 ToolsWindow entered func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 12:31:54.866403 ToolsWindow leaved func **__specificConn** args=() kwargs={} \n[DEBUG]:2021-05-08 12:31:54.875189 ToolsWindow entered func **__getImgInfo** args=() kwargs={} \nToolsWindow->__getImgInfo:setPen\n',) kwargs={} 

@@ -1,0 +1,11 @@
+[DEBUG]:2021-05-09 12:47:43.297890 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:43.389634 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:43.389634 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:43.391585 ToolsWindow leaved func **__setDemoImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:43.603533 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:43.693325 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[AUTO-SET]:2021-05-09 12:47:44.563032 ToolsWindow entered func **wrapper** args=(False,) kwargs={}
+[DEBUG]:2021-05-09 12:47:44.563032 ToolsWindow entered func **__resizeImg** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:44.563032 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-09 12:47:44.564984 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+ToolsWindow->__resizeImg:[WinError 32] 另一个程序正在使用此文件，进程无法访问。: 'D:\\ccrepository\\zhku\\digit-img-process\\PyQt-Digit-Image-Process/cache_img/1620535664-564984.bmp'

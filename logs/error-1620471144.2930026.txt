@@ -1,0 +1,12 @@
+[DEBUG]:2021-05-08 18:52:17.406740 ToolsWindow entered func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:52:17.494504 ToolsWindow leaved func **__withdraw** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:52:17.583268 ToolsWindow leaved func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:52:22.784636 ToolsWindow entered func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:52:22.784636 ToolsWindow entered func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:52:22.789623 ToolsWindow leaved func **__convertInit** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:52:22.789623 ToolsWindow entered func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000002DE7366FEE8>,) kwargs={} 
+[DEBUG]:2021-05-08 18:52:22.789623 ToolsWindow leaved func **__getConvertThread** args=(<Thread_Main.Convert_Object object at 0x000002DE7366FEE8>,) kwargs={} 
+[DEBUG]:2021-05-08 18:52:22.789623 ToolsWindow leaved func **__convertPattern** args=(False,) kwargs={} 
+[DEBUG]:2021-05-08 18:52:22.790620 ToolsWindow entered func **__threadSetImg** args=() kwargs={} 
+[DEBUG]:2021-05-08 18:52:22.790620 ToolsWindow entered func **__setDemoImg** args=() kwargs={} 
+ToolsWindow->__setDemoImg:cannot write mode F as JPEG

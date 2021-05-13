@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_ToolsWindow(object):
     def setupUi(self, ToolsWindow):
         ToolsWindow.setObjectName("ToolsWindow")
-        ToolsWindow.resize(1235, 660)
+        ToolsWindow.resize(1235, 656)
         ToolsWindow.setMouseTracking(False)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/navigation/鱼.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -30,16 +30,17 @@ class Ui_ToolsWindow(object):
         self.centralwidget = QtWidgets.QWidget(ToolsWindow)
         self.centralwidget.setMouseTracking(False)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayout_25 = QtWidgets.QVBoxLayout(self.centralwidget)
-        self.verticalLayout_25.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_25.setSpacing(0)
-        self.verticalLayout_25.setObjectName("verticalLayout_25")
+        self.horizontalLayout_7 = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_7.setSpacing(0)
+        self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.frame = QtWidgets.QFrame(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy)
+        self.frame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame.setObjectName("frame")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.frame)
         self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
@@ -60,7 +61,7 @@ class Ui_ToolsWindow(object):
         self.scrollArea_3.setAlignment(QtCore.Qt.AlignCenter)
         self.scrollArea_3.setObjectName("scrollArea_3")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 626, 638))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 635, 634))
         self.scrollAreaWidgetContents_3.setMouseTracking(True)
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.scrollAreaWidgetContents_3)
@@ -80,29 +81,16 @@ class Ui_ToolsWindow(object):
         self.horizontalLayout_2.addWidget(self.demoLabel)
         self.scrollArea_3.setWidget(self.scrollAreaWidgetContents_3)
         self.horizontalLayout_4.addWidget(self.scrollArea_3)
-        self.verticalLayout_25.addWidget(self.frame)
+        self.horizontalLayout_7.addWidget(self.frame)
         ToolsWindow.setCentralWidget(self.centralwidget)
         self.stBar = QtWidgets.QStatusBar(ToolsWindow)
         self.stBar.setObjectName("stBar")
         ToolsWindow.setStatusBar(self.stBar)
-        self.dockWidget = QtWidgets.QDockWidget(ToolsWindow)
-        self.dockWidget.setMinimumSize(QtCore.QSize(0, 0))
-        self.dockWidget.setStyleSheet("QDockWidget {\n"
-"    border: 1px solid lightgray;\n"
-"    titlebar-close-icon: url(:/navigation/close.svg);\n"
-"    titlebar-normal-icon: url(:/navigation/windows.svg);\n"
-"    font: 75 10pt \"微软雅黑\";\n"
-"\n"
-"}\n"
-"\n"
-"QDockWidget::title {\n"
-"    text-align: left; /* align the text to the left */\n"
-"    background: lightgray;\n"
-"}\n"
-"\n"
-"\n"
-"")
+        self.dockWidget = MyDockWidget(ToolsWindow)
+        self.dockWidget.setMinimumSize(QtCore.QSize(188, 225))
+        self.dockWidget.setStyleSheet("")
         self.dockWidget.setFloating(False)
+        self.dockWidget.setWindowTitle("")
         self.dockWidget.setObjectName("dockWidget")
         self.dockWidgetContents = QtWidgets.QWidget()
         self.dockWidgetContents.setObjectName("dockWidgetContents")
@@ -110,259 +98,6 @@ class Ui_ToolsWindow(object):
         self.horizontalLayout_14.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_14.setSpacing(0)
         self.horizontalLayout_14.setObjectName("horizontalLayout_14")
-        self.W = QtWidgets.QWidget(self.dockWidgetContents)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.W.sizePolicy().hasHeightForWidth())
-        self.W.setSizePolicy(sizePolicy)
-        self.W.setStyleSheet("")
-        self.W.setObjectName("W")
-        self.verticalLayout_16 = QtWidgets.QVBoxLayout(self.W)
-        self.verticalLayout_16.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_16.setSpacing(0)
-        self.verticalLayout_16.setObjectName("verticalLayout_16")
-        self.jump2EditingBtn = QtWidgets.QPushButton(self.W)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.jump2EditingBtn.sizePolicy().hasHeightForWidth())
-        self.jump2EditingBtn.setSizePolicy(sizePolicy)
-        self.jump2EditingBtn.setStyleSheet("QPushButton {\n"
-"    border: none;\n"
-"    border-radius: 15px;\n"
-"    background-color: transparent;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton:flat {\n"
-"    border: none; /* no border for a flat push button */\n"
-"}\n"
-"\n"
-"QPushButton:default {\n"
-"    border-color: navy; /* make the default button prominent */\n"
-"}\n"
-"QPushButton:open { /* when the button has its menu open */\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton::menu-indicator {\n"
-"    image: url(menu_indicator.png);\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: bottom right;\n"
-"}\n"
-"\n"
-"QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {\n"
-"    position: relative;\n"
-"    top: 2px; left: 2px; /* shift the arrow by 2 px */\n"
-"}")
-        self.jump2EditingBtn.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/navigation/签字.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.jump2EditingBtn.setIcon(icon1)
-        self.jump2EditingBtn.setIconSize(QtCore.QSize(32, 32))
-        self.jump2EditingBtn.setFlat(True)
-        self.jump2EditingBtn.setObjectName("jump2EditingBtn")
-        self.verticalLayout_16.addWidget(self.jump2EditingBtn, 0, QtCore.Qt.AlignHCenter)
-        self.jump2ConvertBtn = QtWidgets.QPushButton(self.W)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.jump2ConvertBtn.sizePolicy().hasHeightForWidth())
-        self.jump2ConvertBtn.setSizePolicy(sizePolicy)
-        self.jump2ConvertBtn.setStyleSheet("QPushButton {\n"
-"    border: none;\n"
-"    border-radius: 15px;\n"
-"    background-color: transparent;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton:flat {\n"
-"    border: none; /* no border for a flat push button */\n"
-"}\n"
-"\n"
-"QPushButton:default {\n"
-"    border-color: navy; /* make the default button prominent */\n"
-"}\n"
-"QPushButton:open { /* when the button has its menu open */\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton::menu-indicator {\n"
-"    image: url(menu_indicator.png);\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: bottom right;\n"
-"}\n"
-"\n"
-"QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {\n"
-"    position: relative;\n"
-"    top: 2px; left: 2px; /* shift the arrow by 2 px */\n"
-"}")
-        self.jump2ConvertBtn.setText("")
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/navigation/转换.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.jump2ConvertBtn.setIcon(icon2)
-        self.jump2ConvertBtn.setIconSize(QtCore.QSize(32, 32))
-        self.jump2ConvertBtn.setFlat(True)
-        self.jump2ConvertBtn.setObjectName("jump2ConvertBtn")
-        self.verticalLayout_16.addWidget(self.jump2ConvertBtn, 0, QtCore.Qt.AlignHCenter)
-        self.jump2EnhanceBtn = QtWidgets.QPushButton(self.W)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.jump2EnhanceBtn.sizePolicy().hasHeightForWidth())
-        self.jump2EnhanceBtn.setSizePolicy(sizePolicy)
-        self.jump2EnhanceBtn.setStyleSheet("QPushButton {\n"
-"    border: none;\n"
-"    border-radius: 15px;\n"
-"    background-color: transparent;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton:flat {\n"
-"    border: none; /* no border for a flat push button */\n"
-"}\n"
-"\n"
-"QPushButton:default {\n"
-"    border-color: navy; /* make the default button prominent */\n"
-"}\n"
-"QPushButton:open { /* when the button has its menu open */\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton::menu-indicator {\n"
-"    image: url(menu_indicator.png);\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: bottom right;\n"
-"}\n"
-"\n"
-"QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {\n"
-"    position: relative;\n"
-"    top: 2px; left: 2px; /* shift the arrow by 2 px */\n"
-"}")
-        self.jump2EnhanceBtn.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/navigation/智慧大脑2.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.jump2EnhanceBtn.setIcon(icon3)
-        self.jump2EnhanceBtn.setIconSize(QtCore.QSize(32, 32))
-        self.jump2EnhanceBtn.setFlat(True)
-        self.jump2EnhanceBtn.setObjectName("jump2EnhanceBtn")
-        self.verticalLayout_16.addWidget(self.jump2EnhanceBtn, 0, QtCore.Qt.AlignHCenter)
-        self.jump2GenerateBtn = QtWidgets.QPushButton(self.W)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.jump2GenerateBtn.sizePolicy().hasHeightForWidth())
-        self.jump2GenerateBtn.setSizePolicy(sizePolicy)
-        self.jump2GenerateBtn.setStyleSheet("QPushButton {\n"
-"    border: none;\n"
-"    border-radius: 15px;\n"
-"    background-color: transparent;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton:flat {\n"
-"    border: none; /* no border for a flat push button */\n"
-"}\n"
-"\n"
-"QPushButton:default {\n"
-"    border-color: navy; /* make the default button prominent */\n"
-"}\n"
-"QPushButton:open { /* when the button has its menu open */\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton::menu-indicator {\n"
-"    image: url(menu_indicator.png);\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: bottom right;\n"
-"}\n"
-"\n"
-"QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {\n"
-"    position: relative;\n"
-"    top: 2px; left: 2px; /* shift the arrow by 2 px */\n"
-"}")
-        self.jump2GenerateBtn.setText("")
-        icon4 = QtGui.QIcon()
-        icon4.addPixmap(QtGui.QPixmap(":/navigation/流程.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.jump2GenerateBtn.setIcon(icon4)
-        self.jump2GenerateBtn.setIconSize(QtCore.QSize(32, 32))
-        self.jump2GenerateBtn.setFlat(True)
-        self.jump2GenerateBtn.setObjectName("jump2GenerateBtn")
-        self.verticalLayout_16.addWidget(self.jump2GenerateBtn, 0, QtCore.Qt.AlignHCenter)
-        self.jump2InfoBtn = QtWidgets.QPushButton(self.W)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.jump2InfoBtn.sizePolicy().hasHeightForWidth())
-        self.jump2InfoBtn.setSizePolicy(sizePolicy)
-        self.jump2InfoBtn.setStyleSheet("QPushButton {\n"
-"    border: none;\n"
-"    border-radius: 15px;\n"
-"    background-color: transparent;\n"
-"\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton:flat {\n"
-"    border: none; /* no border for a flat push button */\n"
-"}\n"
-"\n"
-"QPushButton:default {\n"
-"    border-color: navy; /* make the default button prominent */\n"
-"}\n"
-"QPushButton:open { /* when the button has its menu open */\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton::menu-indicator {\n"
-"    image: url(menu_indicator.png);\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: bottom right;\n"
-"}\n"
-"\n"
-"QPushButton::menu-indicator:pressed, QPushButton::menu-indicator:open {\n"
-"    position: relative;\n"
-"    top: 2px; left: 2px; /* shift the arrow by 2 px */\n"
-"}")
-        self.jump2InfoBtn.setText("")
-        icon5 = QtGui.QIcon()
-        icon5.addPixmap(QtGui.QPixmap(":/navigation/数据对比.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.jump2InfoBtn.setIcon(icon5)
-        self.jump2InfoBtn.setIconSize(QtCore.QSize(32, 32))
-        self.jump2InfoBtn.setFlat(True)
-        self.jump2InfoBtn.setObjectName("jump2InfoBtn")
-        self.verticalLayout_16.addWidget(self.jump2InfoBtn)
-        self.horizontalLayout_14.addWidget(self.W)
         self.scrollArea = QtWidgets.QScrollArea(self.dockWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -376,7 +111,7 @@ class Ui_ToolsWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -5587, 250, 6179))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -3111, 323, 6337))
         self.scrollAreaWidgetContents.setStyleSheet("QWidget#scrollAreaWidgetContents{\n"
 "background-color: rgba(255, 255, 255,200);\n"
 "    \n"
@@ -739,68 +474,64 @@ class Ui_ToolsWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.saveTempCheck.sizePolicy().hasHeightForWidth())
         self.saveTempCheck.setSizePolicy(sizePolicy)
+        self.saveTempCheck.setMinimumSize(QtCore.QSize(0, 30))
         self.saveTempCheck.setStyleSheet("QCheckBox {\n"
-"    spacing: 5px;\n"
+"\n"
 "    background-color: rgb(44,49,61);\n"
 "    color: rgb(248, 248, 248);\n"
 "    font: 11pt \"微软雅黑\";\n"
-"    padding-left:30px;\n"
+"    padding-left:50px;\n"
 "    border-radius:10px;\n"
+"\n"
 "}\n"
 "\n"
 "QCheckBox::indicator {\n"
-"    width: 32px;\n"
-"    height: 32px;\n"
+"    width: 24px;\n"
+"    height: 24px;\n"
 "\n"
 "}\n"
 "QCheckBox::indicator:unchecked {\n"
-"    border-image: url(:/navigation/heartbroken.svg);\n"
+"    \n"
+"    border-image: url(:/navigation/未勾选.svg);\n"
 "}\n"
 "QCheckBox::indicator:checked {\n"
 "   \n"
-"    \n"
-"    border-image: url(:/navigation/heart.svg);\n"
+"    border-image: url(:/navigation/已勾选.svg);\n"
 "}\n"
 "\n"
 "")
         self.saveTempCheck.setChecked(False)
         self.saveTempCheck.setObjectName("saveTempCheck")
         self.verticalLayout_2.addWidget(self.saveTempCheck)
-        self.label_32 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(10)
-        self.label_32.setFont(font)
-        self.label_32.setWordWrap(True)
-        self.label_32.setObjectName("label_32")
-        self.verticalLayout_2.addWidget(self.label_32)
         self.autoStretchBox = QtWidgets.QCheckBox(self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.autoStretchBox.sizePolicy().hasHeightForWidth())
         self.autoStretchBox.setSizePolicy(sizePolicy)
+        self.autoStretchBox.setMinimumSize(QtCore.QSize(0, 30))
         self.autoStretchBox.setStyleSheet("QCheckBox {\n"
-"    spacing: 5px;\n"
+"\n"
 "    background-color: rgb(44,49,61);\n"
 "    color: rgb(248, 248, 248);\n"
 "    font: 11pt \"微软雅黑\";\n"
-"    padding-left:30px;\n"
+"    padding-left:50px;\n"
 "    border-radius:10px;\n"
+"\n"
 "}\n"
 "\n"
 "QCheckBox::indicator {\n"
-"    width: 32px;\n"
-"    height: 32px;\n"
+"    width: 24px;\n"
+"    height: 24px;\n"
 "\n"
 "}\n"
 "QCheckBox::indicator:unchecked {\n"
-"    border-image: url(:/navigation/heartbroken.svg);\n"
+"    \n"
+"    border-image: url(:/navigation/未勾选.svg);\n"
 "}\n"
 "QCheckBox::indicator:checked {\n"
 "   \n"
-"    \n"
-"    border-image: url(:/navigation/heart.svg);\n"
+"    border-image: url(:/navigation/已勾选.svg);\n"
 "}\n"
 "\n"
 "")
@@ -877,31 +608,33 @@ class Ui_ToolsWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.checkBox.sizePolicy().hasHeightForWidth())
         self.checkBox.setSizePolicy(sizePolicy)
+        self.checkBox.setMinimumSize(QtCore.QSize(0, 30))
         self.checkBox.setStyleSheet("QCheckBox {\n"
-"    spacing: 5px;\n"
+"\n"
 "    background-color: rgb(44,49,61);\n"
 "    color: rgb(248, 248, 248);\n"
-"    font: 8pt \"微软雅黑\";\n"
-"    padding-left:5px;\n"
+"    font: 9pt \"微软雅黑\";\n"
+"    padding-left:10px;\n"
 "    border-radius:10px;\n"
 "}\n"
 "\n"
 "QCheckBox::indicator {\n"
-"    width: 32px;\n"
-"    height: 32px;\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
 "\n"
 "}\n"
 "QCheckBox::indicator:unchecked {\n"
-"    border-image: url(:/navigation/heartbroken.svg);\n"
+"    \n"
+"    border-image: url(:/navigation/未勾选.svg);\n"
 "}\n"
 "QCheckBox::indicator:checked {\n"
 "   \n"
-"    \n"
-"    border-image: url(:/navigation/heart.svg);\n"
+"    border-image: url(:/navigation/已勾选.svg);\n"
 "}\n"
 "\n"
 "")
         self.checkBox.setChecked(False)
+        self.checkBox.setAutoExclusive(True)
         self.checkBox.setObjectName("checkBox")
         self.horizontalLayout_5.addWidget(self.checkBox)
         self.checkBox_2 = QtWidgets.QCheckBox(self.scrollAreaWidgetContents)
@@ -910,31 +643,33 @@ class Ui_ToolsWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.checkBox_2.sizePolicy().hasHeightForWidth())
         self.checkBox_2.setSizePolicy(sizePolicy)
+        self.checkBox_2.setMinimumSize(QtCore.QSize(0, 30))
         self.checkBox_2.setStyleSheet("QCheckBox {\n"
-"    spacing: 5px;\n"
+"\n"
 "    background-color: rgb(44,49,61);\n"
 "    color: rgb(248, 248, 248);\n"
-"    font: 8pt \"微软雅黑\";\n"
-"    padding-left:5px;\n"
+"    font: 9pt \"微软雅黑\";\n"
+"    padding-left:10px;\n"
 "    border-radius:10px;\n"
 "}\n"
 "\n"
 "QCheckBox::indicator {\n"
-"    width: 32px;\n"
-"    height: 32px;\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
 "\n"
 "}\n"
 "QCheckBox::indicator:unchecked {\n"
-"    border-image: url(:/navigation/heartbroken.svg);\n"
+"    \n"
+"    border-image: url(:/navigation/未勾选.svg);\n"
 "}\n"
 "QCheckBox::indicator:checked {\n"
 "   \n"
-"    \n"
-"    border-image: url(:/navigation/heart.svg);\n"
+"    border-image: url(:/navigation/已勾选.svg);\n"
 "}\n"
 "\n"
 "")
         self.checkBox_2.setChecked(True)
+        self.checkBox_2.setAutoExclusive(True)
         self.checkBox_2.setObjectName("checkBox_2")
         self.horizontalLayout_5.addWidget(self.checkBox_2)
         self.verticalLayout_7.addLayout(self.horizontalLayout_5)
@@ -1292,6 +1027,7 @@ class Ui_ToolsWindow(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.patternBox.sizePolicy().hasHeightForWidth())
         self.patternBox.setSizePolicy(sizePolicy)
+        self.patternBox.setFocusPolicy(QtCore.Qt.NoFocus)
         self.patternBox.setStyleSheet("QComboBox {\n"
 "    border:1px solid black;\n"
 "    padding: 1px 30px 1px 3px;\n"
@@ -1331,6 +1067,37 @@ class Ui_ToolsWindow(object):
         self.patternBox.addItem("")
         self.patternBox.addItem("")
         self.verticalLayout_18.addWidget(self.patternBox)
+        self.gammaGroupBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents)
+        self.gammaGroupBox.setObjectName("gammaGroupBox")
+        self.verticalLayout_30 = QtWidgets.QVBoxLayout(self.gammaGroupBox)
+        self.verticalLayout_30.setObjectName("verticalLayout_30")
+        self.gammaclineEdit = QtWidgets.QLineEdit(self.gammaGroupBox)
+        self.gammaclineEdit.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-radius:10px;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.gammaclineEdit.setObjectName("gammaclineEdit")
+        self.verticalLayout_30.addWidget(self.gammaclineEdit)
+        self.gammalineEdit = QtWidgets.QLineEdit(self.gammaGroupBox)
+        self.gammalineEdit.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-radius:10px;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.gammalineEdit.setObjectName("gammalineEdit")
+        self.verticalLayout_30.addWidget(self.gammalineEdit)
+        self.verticalLayout_18.addWidget(self.gammaGroupBox)
         self.thresholdBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents)
         self.thresholdBox.setObjectName("thresholdBox")
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.thresholdBox)
@@ -1375,6 +1142,269 @@ class Ui_ToolsWindow(object):
 "}")
         self.changePatternBtn.setObjectName("changePatternBtn")
         self.verticalLayout_2.addWidget(self.changePatternBtn)
+        self.newModelineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.newModelineEdit.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-radius:10px;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.newModelineEdit.setObjectName("newModelineEdit")
+        self.verticalLayout_2.addWidget(self.newModelineEdit)
+        self.newWidthlineEdit_3 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.newWidthlineEdit_3.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-radius:10px;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.newWidthlineEdit_3.setObjectName("newWidthlineEdit_3")
+        self.verticalLayout_2.addWidget(self.newWidthlineEdit_3)
+        self.newHeightlineEdit_4 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.newHeightlineEdit_4.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-radius:10px;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.newHeightlineEdit_4.setObjectName("newHeightlineEdit_4")
+        self.verticalLayout_2.addWidget(self.newHeightlineEdit_4)
+        self.newBglineEdit_5 = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.newBglineEdit_5.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-radius:10px;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.newBglineEdit_5.setObjectName("newBglineEdit_5")
+        self.verticalLayout_2.addWidget(self.newBglineEdit_5)
+        self.newImgBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.newImgBtn.sizePolicy().hasHeightForWidth())
+        self.newImgBtn.setSizePolicy(sizePolicy)
+        self.newImgBtn.setMinimumSize(QtCore.QSize(0, 40))
+        self.newImgBtn.setStyleSheet("QPushButton {\n"
+"    border: none;\n"
+"    border-radius: 20px;\n"
+"    background-color: rgb(100, 100, 100);\n"
+"\n"
+"    font: 12pt \"微软雅黑\";\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QPushButton:flat {\n"
+"    border: none; /* no border for a flat push button */\n"
+"}\n"
+"\n"
+"QPushButton:default {\n"
+"    border-color: navy; /* make the default button prominent */\n"
+"}")
+        self.newImgBtn.setObjectName("newImgBtn")
+        self.verticalLayout_2.addWidget(self.newImgBtn)
+        self.label_44 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label_44.sizePolicy().hasHeightForWidth())
+        self.label_44.setSizePolicy(sizePolicy)
+        self.label_44.setStyleSheet("QLabel{\n"
+"    \n"
+"    border:none;\n"
+"    border-bottom:1px solid black;\n"
+"    font: 75 16pt \"微软雅黑\";\n"
+"}")
+        self.label_44.setObjectName("label_44")
+        self.verticalLayout_2.addWidget(self.label_44)
+        self.verticalLayout_31 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_31.setSpacing(10)
+        self.verticalLayout_31.setObjectName("verticalLayout_31")
+        self.filterBox = QtWidgets.QComboBox(self.scrollAreaWidgetContents)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.filterBox.sizePolicy().hasHeightForWidth())
+        self.filterBox.setSizePolicy(sizePolicy)
+        self.filterBox.setStyleSheet("QComboBox {\n"
+"    border:1px solid black;\n"
+"    padding: 1px 30px 1px 3px;\n"
+"    border-radius:10px;\n"
+"    font: 75 italic 15pt \"Arial\";\n"
+"    background-color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    subcontrol-origin: padding;\n"
+"    subcontrol-position: top right;\n"
+"    width: 15px;\n"
+"\n"
+"    border-left-width: 1px;\n"
+"    border-left-color: darkgray;\n"
+"    border-left-style: solid; /* just a single line */\n"
+"    border-top-right-radius: 3px; /* same radius as the QComboBox */\n"
+"    border-bottom-right-radius: 3px;\n"
+"}\n"
+"QComboBox::down-arrow {\n"
+"\n"
+"    border-image: url(:/navigation/arrow down.svg);\n"
+"}\n"
+"")
+        self.filterBox.setObjectName("filterBox")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.filterBox.addItem("")
+        self.verticalLayout_31.addWidget(self.filterBox)
+        self.verticalLayout_27 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_27.setObjectName("verticalLayout_27")
+        self.radiusGroupBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents)
+        self.radiusGroupBox.setObjectName("radiusGroupBox")
+        self.verticalLayout_26 = QtWidgets.QVBoxLayout(self.radiusGroupBox)
+        self.verticalLayout_26.setObjectName("verticalLayout_26")
+        self.radiusEdit = QtWidgets.QLineEdit(self.radiusGroupBox)
+        self.radiusEdit.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-radius:10px;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.radiusEdit.setObjectName("radiusEdit")
+        self.verticalLayout_26.addWidget(self.radiusEdit)
+        self.verticalLayout_27.addWidget(self.radiusGroupBox)
+        self.convCoreBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents)
+        self.convCoreBox.setObjectName("convCoreBox")
+        self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.convCoreBox)
+        self.verticalLayout_13.setObjectName("verticalLayout_13")
+        self.sizeEdit = QtWidgets.QLineEdit(self.convCoreBox)
+        self.sizeEdit.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-radius:10px;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.sizeEdit.setObjectName("sizeEdit")
+        self.verticalLayout_13.addWidget(self.sizeEdit)
+        self.verticalLayout_27.addWidget(self.convCoreBox)
+        self.rankGroupBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents)
+        self.rankGroupBox.setObjectName("rankGroupBox")
+        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.rankGroupBox)
+        self.verticalLayout_8.setObjectName("verticalLayout_8")
+        self.rankEdit = QtWidgets.QLineEdit(self.rankGroupBox)
+        self.rankEdit.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-radius:10px;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.rankEdit.setObjectName("rankEdit")
+        self.verticalLayout_8.addWidget(self.rankEdit)
+        self.verticalLayout_27.addWidget(self.rankGroupBox)
+        self.verticalLayout_31.addLayout(self.verticalLayout_27)
+        self.filterBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.filterBtn.sizePolicy().hasHeightForWidth())
+        self.filterBtn.setSizePolicy(sizePolicy)
+        self.filterBtn.setMinimumSize(QtCore.QSize(0, 40))
+        self.filterBtn.setStyleSheet("QPushButton {\n"
+"    border: none;\n"
+"    border-radius: 20px;\n"
+"    background-color: rgb(100, 100, 100);\n"
+"\n"
+"    font: 12pt \"微软雅黑\";\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QPushButton:flat {\n"
+"    border: none; /* no border for a flat push button */\n"
+"}\n"
+"\n"
+"QPushButton:default {\n"
+"    border-color: navy; /* make the default button prominent */\n"
+"}")
+        self.filterBtn.setObjectName("filterBtn")
+        self.verticalLayout_31.addWidget(self.filterBtn)
+        self.customFilterBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.customFilterBtn.sizePolicy().hasHeightForWidth())
+        self.customFilterBtn.setSizePolicy(sizePolicy)
+        self.customFilterBtn.setMinimumSize(QtCore.QSize(0, 40))
+        self.customFilterBtn.setStyleSheet("QPushButton {\n"
+"    border: none;\n"
+"    border-radius: 20px;\n"
+"    background-color: rgb(100, 100, 100);\n"
+"\n"
+"    font: 12pt \"微软雅黑\";\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QPushButton:flat {\n"
+"    border: none; /* no border for a flat push button */\n"
+"}\n"
+"\n"
+"QPushButton:default {\n"
+"    border-color: navy; /* make the default button prominent */\n"
+"}")
+        self.customFilterBtn.setObjectName("customFilterBtn")
+        self.verticalLayout_31.addWidget(self.customFilterBtn)
+        self.verticalLayout_2.addLayout(self.verticalLayout_31)
         self.label_42 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -1567,183 +1597,6 @@ class Ui_ToolsWindow(object):
 "}")
         self.saltNoiseBtn.setObjectName("saltNoiseBtn")
         self.verticalLayout_2.addWidget(self.saltNoiseBtn)
-        self.label_44 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_44.sizePolicy().hasHeightForWidth())
-        self.label_44.setSizePolicy(sizePolicy)
-        self.label_44.setStyleSheet("QLabel{\n"
-"    \n"
-"    border:none;\n"
-"    border-bottom:1px solid black;\n"
-"    font: 75 16pt \"微软雅黑\";\n"
-"}")
-        self.label_44.setObjectName("label_44")
-        self.verticalLayout_2.addWidget(self.label_44)
-        self.verticalLayout_27 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_27.setObjectName("verticalLayout_27")
-        self.filterBox = QtWidgets.QComboBox(self.scrollAreaWidgetContents)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.filterBox.sizePolicy().hasHeightForWidth())
-        self.filterBox.setSizePolicy(sizePolicy)
-        self.filterBox.setStyleSheet("QComboBox {\n"
-"    border:1px solid black;\n"
-"    padding: 1px 30px 1px 3px;\n"
-"    border-radius:10px;\n"
-"    font: 75 italic 15pt \"Arial\";\n"
-"    background-color: rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QComboBox::drop-down {\n"
-"    subcontrol-origin: padding;\n"
-"    subcontrol-position: top right;\n"
-"    width: 15px;\n"
-"\n"
-"    border-left-width: 1px;\n"
-"    border-left-color: darkgray;\n"
-"    border-left-style: solid; /* just a single line */\n"
-"    border-top-right-radius: 3px; /* same radius as the QComboBox */\n"
-"    border-bottom-right-radius: 3px;\n"
-"}\n"
-"QComboBox::down-arrow {\n"
-"\n"
-"    border-image: url(:/navigation/arrow down.svg);\n"
-"}\n"
-"")
-        self.filterBox.setObjectName("filterBox")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.filterBox.addItem("")
-        self.verticalLayout_27.addWidget(self.filterBox)
-        self.radiusGroupBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents)
-        self.radiusGroupBox.setObjectName("radiusGroupBox")
-        self.verticalLayout_26 = QtWidgets.QVBoxLayout(self.radiusGroupBox)
-        self.verticalLayout_26.setObjectName("verticalLayout_26")
-        self.radiusEdit = QtWidgets.QLineEdit(self.radiusGroupBox)
-        self.radiusEdit.setStyleSheet("QLineEdit {\n"
-"    border:none;\n"
-"    border-radius:10px;\n"
-"    border-bottom:1px solid rgb(154, 154, 154);\n"
-"    padding: 0 8px;\n"
-"    background: white;\n"
-"    selection-background-color: darkgray;\n"
-"    font: 75 12pt \"微软雅黑\";\n"
-"\n"
-"}")
-        self.radiusEdit.setObjectName("radiusEdit")
-        self.verticalLayout_26.addWidget(self.radiusEdit)
-        self.verticalLayout_27.addWidget(self.radiusGroupBox)
-        self.convCoreBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents)
-        self.convCoreBox.setObjectName("convCoreBox")
-        self.verticalLayout_13 = QtWidgets.QVBoxLayout(self.convCoreBox)
-        self.verticalLayout_13.setObjectName("verticalLayout_13")
-        self.sizeEdit = QtWidgets.QLineEdit(self.convCoreBox)
-        self.sizeEdit.setStyleSheet("QLineEdit {\n"
-"    border:none;\n"
-"    border-radius:10px;\n"
-"    border-bottom:1px solid rgb(154, 154, 154);\n"
-"    padding: 0 8px;\n"
-"    background: white;\n"
-"    selection-background-color: darkgray;\n"
-"    font: 75 12pt \"微软雅黑\";\n"
-"\n"
-"}")
-        self.sizeEdit.setObjectName("sizeEdit")
-        self.verticalLayout_13.addWidget(self.sizeEdit)
-        self.verticalLayout_27.addWidget(self.convCoreBox)
-        self.rankGroupBox = QtWidgets.QGroupBox(self.scrollAreaWidgetContents)
-        self.rankGroupBox.setObjectName("rankGroupBox")
-        self.verticalLayout_8 = QtWidgets.QVBoxLayout(self.rankGroupBox)
-        self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.rankEdit = QtWidgets.QLineEdit(self.rankGroupBox)
-        self.rankEdit.setStyleSheet("QLineEdit {\n"
-"    border:none;\n"
-"    border-radius:10px;\n"
-"    border-bottom:1px solid rgb(154, 154, 154);\n"
-"    padding: 0 8px;\n"
-"    background: white;\n"
-"    selection-background-color: darkgray;\n"
-"    font: 75 12pt \"微软雅黑\";\n"
-"\n"
-"}")
-        self.rankEdit.setObjectName("rankEdit")
-        self.verticalLayout_8.addWidget(self.rankEdit)
-        self.verticalLayout_27.addWidget(self.rankGroupBox)
-        self.verticalLayout_2.addLayout(self.verticalLayout_27)
-        self.customFilterBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.customFilterBtn.sizePolicy().hasHeightForWidth())
-        self.customFilterBtn.setSizePolicy(sizePolicy)
-        self.customFilterBtn.setMinimumSize(QtCore.QSize(0, 40))
-        self.customFilterBtn.setStyleSheet("QPushButton {\n"
-"    border: none;\n"
-"    border-radius: 20px;\n"
-"    background-color: rgb(100, 100, 100);\n"
-"\n"
-"    font: 12pt \"微软雅黑\";\n"
-"    color: rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton:flat {\n"
-"    border: none; /* no border for a flat push button */\n"
-"}\n"
-"\n"
-"QPushButton:default {\n"
-"    border-color: navy; /* make the default button prominent */\n"
-"}")
-        self.customFilterBtn.setObjectName("customFilterBtn")
-        self.verticalLayout_2.addWidget(self.customFilterBtn)
-        self.filterBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.filterBtn.sizePolicy().hasHeightForWidth())
-        self.filterBtn.setSizePolicy(sizePolicy)
-        self.filterBtn.setMinimumSize(QtCore.QSize(0, 40))
-        self.filterBtn.setStyleSheet("QPushButton {\n"
-"    border: none;\n"
-"    border-radius: 20px;\n"
-"    background-color: rgb(100, 100, 100);\n"
-"\n"
-"    font: 12pt \"微软雅黑\";\n"
-"    color: rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton:flat {\n"
-"    border: none; /* no border for a flat push button */\n"
-"}\n"
-"\n"
-"QPushButton:default {\n"
-"    border-color: navy; /* make the default button prominent */\n"
-"}")
-        self.filterBtn.setObjectName("filterBtn")
-        self.verticalLayout_2.addWidget(self.filterBtn)
         self.label_45 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2108,6 +1961,18 @@ class Ui_ToolsWindow(object):
 "}")
         self.fontSizeEdit.setObjectName("fontSizeEdit")
         self.verticalLayout_23.addWidget(self.fontSizeEdit)
+        self.lineEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
+        self.lineEdit.setStyleSheet("QLineEdit {\n"
+"    border:none;\n"
+"    border-bottom:1px solid rgb(154, 154, 154);\n"
+"    padding: 0 8px;\n"
+"    background: white;\n"
+"    selection-background-color: darkgray;\n"
+"    font: 75 12pt \"微软雅黑\";\n"
+"\n"
+"}")
+        self.lineEdit.setObjectName("lineEdit")
+        self.verticalLayout_23.addWidget(self.lineEdit)
         self.verticalLayout_2.addLayout(self.verticalLayout_23)
         self.hideInfoBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
@@ -2139,6 +2004,36 @@ class Ui_ToolsWindow(object):
 "}")
         self.hideInfoBtn.setObjectName("hideInfoBtn")
         self.verticalLayout_2.addWidget(self.hideInfoBtn)
+        self.deHideInfoBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.deHideInfoBtn.sizePolicy().hasHeightForWidth())
+        self.deHideInfoBtn.setSizePolicy(sizePolicy)
+        self.deHideInfoBtn.setMinimumSize(QtCore.QSize(0, 40))
+        self.deHideInfoBtn.setStyleSheet("QPushButton {\n"
+"    border: none;\n"
+"    border-radius: 20px;\n"
+"    background-color: rgb(100, 100, 100);\n"
+"\n"
+"    font: 12pt \"微软雅黑\";\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QPushButton:flat {\n"
+"    border: none; /* no border for a flat push button */\n"
+"}\n"
+"\n"
+"QPushButton:default {\n"
+"    border-color: navy; /* make the default button prominent */\n"
+"}")
+        self.deHideInfoBtn.setObjectName("deHideInfoBtn")
+        self.verticalLayout_2.addWidget(self.deHideInfoBtn)
         self.label_52 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2282,36 +2177,6 @@ class Ui_ToolsWindow(object):
         self.label_61.setWordWrap(True)
         self.label_61.setObjectName("label_61")
         self.verticalLayout_2.addWidget(self.label_61)
-        self.histogramBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.histogramBtn.sizePolicy().hasHeightForWidth())
-        self.histogramBtn.setSizePolicy(sizePolicy)
-        self.histogramBtn.setMinimumSize(QtCore.QSize(0, 40))
-        self.histogramBtn.setStyleSheet("QPushButton {\n"
-"    border: none;\n"
-"    border-radius: 20px;\n"
-"    background-color: rgb(100, 100, 100);\n"
-"\n"
-"    font: 12pt \"微软雅黑\";\n"
-"    color: rgb(255, 255, 255);\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
-"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
-"}\n"
-"\n"
-"QPushButton:flat {\n"
-"    border: none; /* no border for a flat push button */\n"
-"}\n"
-"\n"
-"QPushButton:default {\n"
-"    border-color: navy; /* make the default button prominent */\n"
-"}")
-        self.histogramBtn.setObjectName("histogramBtn")
-        self.verticalLayout_2.addWidget(self.histogramBtn)
         self.histogramBalancedBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -2394,6 +2259,36 @@ class Ui_ToolsWindow(object):
 "}")
         self.fftBtn.setObjectName("fftBtn")
         self.verticalLayout_2.addWidget(self.fftBtn)
+        self.ifftBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.ifftBtn.sizePolicy().hasHeightForWidth())
+        self.ifftBtn.setSizePolicy(sizePolicy)
+        self.ifftBtn.setMinimumSize(QtCore.QSize(0, 40))
+        self.ifftBtn.setStyleSheet("QPushButton {\n"
+"    border: none;\n"
+"    border-radius: 20px;\n"
+"    background-color: rgb(100, 100, 100);\n"
+"\n"
+"    font: 12pt \"微软雅黑\";\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QPushButton:flat {\n"
+"    border: none; /* no border for a flat push button */\n"
+"}\n"
+"\n"
+"QPushButton:default {\n"
+"    border-color: navy; /* make the default button prominent */\n"
+"}")
+        self.ifftBtn.setObjectName("ifftBtn")
+        self.verticalLayout_2.addWidget(self.ifftBtn)
         self.line_3 = QtWidgets.QFrame(self.scrollAreaWidgetContents)
         self.line_3.setFrameShadow(QtWidgets.QFrame.Plain)
         self.line_3.setLineWidth(2)
@@ -2575,11 +2470,12 @@ class Ui_ToolsWindow(object):
         self.vdFontPathEdit = QtWidgets.QLineEdit(self.scrollAreaWidgetContents)
         self.vdFontPathEdit.setStyleSheet("QLineEdit {\n"
 "    border:none;\n"
+"    border-radius:10px;\n"
 "    border-bottom:1px solid rgb(154, 154, 154);\n"
 "    padding: 0 8px;\n"
 "    background: white;\n"
 "    selection-background-color: darkgray;\n"
-"    font: 75 8pt \"微软雅黑\";\n"
+"    font: 75 10pt \"微软雅黑\";\n"
 "\n"
 "}")
         self.vdFontPathEdit.setObjectName("vdFontPathEdit")
@@ -2728,7 +2624,7 @@ class Ui_ToolsWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.nameLabel.setFont(font)
-        self.nameLabel.setStyleSheet("color: rgb(46, 147, 255);")
+        self.nameLabel.setStyleSheet("")
         self.nameLabel.setWordWrap(True)
         self.nameLabel.setObjectName("nameLabel")
         self.horizontalLayout_6.addWidget(self.nameLabel)
@@ -2746,7 +2642,7 @@ class Ui_ToolsWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.widthLabel.setFont(font)
-        self.widthLabel.setStyleSheet("color: rgb(46, 147, 255);")
+        self.widthLabel.setStyleSheet("")
         self.widthLabel.setWordWrap(True)
         self.widthLabel.setObjectName("widthLabel")
         self.horizontalLayout_8.addWidget(self.widthLabel)
@@ -2764,7 +2660,7 @@ class Ui_ToolsWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.heightLabel.setFont(font)
-        self.heightLabel.setStyleSheet("color: rgb(46, 147, 255);")
+        self.heightLabel.setStyleSheet("")
         self.heightLabel.setWordWrap(True)
         self.heightLabel.setObjectName("heightLabel")
         self.horizontalLayout_9.addWidget(self.heightLabel)
@@ -2782,7 +2678,7 @@ class Ui_ToolsWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.formatLabel.setFont(font)
-        self.formatLabel.setStyleSheet("color: rgb(46, 147, 255);")
+        self.formatLabel.setStyleSheet("")
         self.formatLabel.setWordWrap(True)
         self.formatLabel.setObjectName("formatLabel")
         self.horizontalLayout_10.addWidget(self.formatLabel)
@@ -2803,7 +2699,7 @@ class Ui_ToolsWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.channelsLabel.setFont(font)
-        self.channelsLabel.setStyleSheet("color: rgb(46, 147, 255);")
+        self.channelsLabel.setStyleSheet("")
         self.channelsLabel.setWordWrap(True)
         self.channelsLabel.setObjectName("channelsLabel")
         self.horizontalLayout_11.addWidget(self.channelsLabel)
@@ -2821,7 +2717,7 @@ class Ui_ToolsWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.depthLabel.setFont(font)
-        self.depthLabel.setStyleSheet("color: rgb(46, 147, 255);")
+        self.depthLabel.setStyleSheet("")
         self.depthLabel.setWordWrap(True)
         self.depthLabel.setObjectName("depthLabel")
         self.horizontalLayout_12.addWidget(self.depthLabel)
@@ -2839,7 +2735,7 @@ class Ui_ToolsWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.patternLabel.setFont(font)
-        self.patternLabel.setStyleSheet("color: rgb(46, 147, 255);")
+        self.patternLabel.setStyleSheet("")
         self.patternLabel.setWordWrap(True)
         self.patternLabel.setObjectName("patternLabel")
         self.horizontalLayout_15.addWidget(self.patternLabel)
@@ -2857,7 +2753,7 @@ class Ui_ToolsWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.sizeLabel.setFont(font)
-        self.sizeLabel.setStyleSheet("color: rgb(46, 147, 255);")
+        self.sizeLabel.setStyleSheet("")
         self.sizeLabel.setWordWrap(True)
         self.sizeLabel.setObjectName("sizeLabel")
         self.horizontalLayout_16.addWidget(self.sizeLabel)
@@ -3045,85 +2941,56 @@ class Ui_ToolsWindow(object):
         self.horizontalLayout_21.addWidget(self.rmsLabel)
         self.verticalLayout_21.addLayout(self.horizontalLayout_21)
         self.verticalLayout_2.addLayout(self.verticalLayout_21)
-        self.label_72 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(14)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_72.setFont(font)
-        self.label_72.setObjectName("label_72")
-        self.verticalLayout_2.addWidget(self.label_72)
-        self.label_73 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(26)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_73.setFont(font)
-        self.label_73.setObjectName("label_73")
-        self.verticalLayout_2.addWidget(self.label_73)
-        self.label_74 = QtWidgets.QLabel(self.scrollAreaWidgetContents)
-        font = QtGui.QFont()
-        font.setFamily("微软雅黑")
-        font.setPointSize(10)
-        self.label_74.setFont(font)
-        self.label_74.setWordWrap(True)
-        self.label_74.setObjectName("label_74")
-        self.verticalLayout_2.addWidget(self.label_74)
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout_14.addWidget(self.scrollArea)
         self.dockWidget.setWidget(self.dockWidgetContents)
         ToolsWindow.addDockWidget(QtCore.Qt.DockWidgetArea(1), self.dockWidget)
-        self.dockWidget_2 = QtWidgets.QDockWidget(ToolsWindow)
-        self.dockWidget_2.setStyleSheet("QDockWidget {\n"
-"    border: 1px solid lightgray;\n"
-"    titlebar-close-icon: url(:/navigation/close.svg);\n"
-"    titlebar-normal-icon: url(:/navigation/windows.svg);\n"
-"    font: 75 10pt \"微软雅黑\";\n"
-"\n"
-"}\n"
-"\n"
-"QDockWidget::title {\n"
-"    text-align: left; /* align the text to the left */\n"
-"    background: lightgray;\n"
-"}\n"
-"\n"
-"\n"
-"")
+        self.dockWidget_2 = MyDockWidget(ToolsWindow)
+        self.dockWidget_2.setStyleSheet("")
+        self.dockWidget_2.setWindowTitle("")
         self.dockWidget_2.setObjectName("dockWidget_2")
         self.dockWidgetContents_3 = QtWidgets.QWidget()
         self.dockWidgetContents_3.setObjectName("dockWidgetContents_3")
         self.verticalLayout_28 = QtWidgets.QVBoxLayout(self.dockWidgetContents_3)
+        self.verticalLayout_28.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_28.setSpacing(0)
         self.verticalLayout_28.setObjectName("verticalLayout_28")
-        self.scrollArea_2 = QtWidgets.QScrollArea(self.dockWidgetContents_3)
-        self.scrollArea_2.setWidgetResizable(True)
-        self.scrollArea_2.setObjectName("scrollArea_2")
-        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, -445, 274, 1036))
-        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
-        self.verticalLayout_29 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_2)
-        self.verticalLayout_29.setObjectName("verticalLayout_29")
-        self.rwidget = ChartWidget(self.scrollAreaWidgetContents_2)
-        self.rwidget.setMinimumSize(QtCore.QSize(220, 250))
-        self.rwidget.setObjectName("rwidget")
-        self.verticalLayout_29.addWidget(self.rwidget)
-        self.gwidget = ChartWidget(self.scrollAreaWidgetContents_2)
-        self.gwidget.setMinimumSize(QtCore.QSize(220, 250))
-        self.gwidget.setObjectName("gwidget")
-        self.verticalLayout_29.addWidget(self.gwidget)
-        self.bwidget = ChartWidget(self.scrollAreaWidgetContents_2)
-        self.bwidget.setMinimumSize(QtCore.QSize(220, 250))
-        self.bwidget.setObjectName("bwidget")
-        self.verticalLayout_29.addWidget(self.bwidget)
-        self.graywidget = ChartWidget(self.scrollAreaWidgetContents_2)
-        self.graywidget.setMinimumSize(QtCore.QSize(220, 250))
-        self.graywidget.setObjectName("graywidget")
-        self.verticalLayout_29.addWidget(self.graywidget)
-        self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
-        self.verticalLayout_28.addWidget(self.scrollArea_2)
+        self.graphicsView_3 = ChartWidget2D(self.dockWidgetContents_3)
+        self.graphicsView_3.setMinimumSize(QtCore.QSize(0, 0))
+        self.graphicsView_3.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.graphicsView_3.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.graphicsView_3.setObjectName("graphicsView_3")
+        self.verticalLayout_28.addWidget(self.graphicsView_3)
+        self.graphicsView_6 = ChartWidget2D(self.dockWidgetContents_3)
+        self.graphicsView_6.setMinimumSize(QtCore.QSize(0, 0))
+        self.graphicsView_6.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.graphicsView_6.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.graphicsView_6.setObjectName("graphicsView_6")
+        self.verticalLayout_28.addWidget(self.graphicsView_6)
+        self.verticalLayout_28.setStretch(0, 1)
+        self.verticalLayout_28.setStretch(1, 1)
         self.dockWidget_2.setWidget(self.dockWidgetContents_3)
         ToolsWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.dockWidget_2)
+        self.dockWidget_3 = MyDockWidget(ToolsWindow)
+        self.dockWidget_3.setStyleSheet("")
+        self.dockWidget_3.setWindowTitle("")
+        self.dockWidget_3.setObjectName("dockWidget_3")
+        self.dockWidgetContents_2 = QtWidgets.QWidget()
+        self.dockWidgetContents_2.setObjectName("dockWidgetContents_2")
+        self.verticalLayout_25 = QtWidgets.QVBoxLayout(self.dockWidgetContents_2)
+        self.verticalLayout_25.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_25.setSpacing(0)
+        self.verticalLayout_25.setObjectName("verticalLayout_25")
+        self._3DWidget = ChartWidget3D(self.dockWidgetContents_2)
+        self._3DWidget.setMinimumSize(QtCore.QSize(0, 300))
+        self._3DWidget.setObjectName("_3DWidget")
+        self.verticalLayout_29 = QtWidgets.QVBoxLayout(self._3DWidget)
+        self.verticalLayout_29.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayout_29.setSpacing(0)
+        self.verticalLayout_29.setObjectName("verticalLayout_29")
+        self.verticalLayout_25.addWidget(self._3DWidget)
+        self.dockWidget_3.setWidget(self.dockWidgetContents_2)
+        ToolsWindow.addDockWidget(QtCore.Qt.DockWidgetArea(2), self.dockWidget_3)
         self.actionopen_file = QtWidgets.QAction(ToolsWindow)
         self.actionopen_file.setObjectName("actionopen_file")
         self.actionsave_file = QtWidgets.QAction(ToolsWindow)
@@ -3135,7 +3002,6 @@ class Ui_ToolsWindow(object):
     def retranslateUi(self, ToolsWindow):
         _translate = QtCore.QCoreApplication.translate
         ToolsWindow.setWindowTitle(_translate("ToolsWindow", "MainWindow"))
-        self.dockWidget.setWindowTitle(_translate("ToolsWindow", "图像操作界面"))
         self.label_17.setText(_translate("ToolsWindow", "图像编辑"))
         self.label_18.setText(_translate("ToolsWindow", "Image editing yes."))
         self.label_19.setText(_translate("ToolsWindow", "在此之前,你可以先读取一张照片,展开一段旅程,或者使用快捷键Ctrl+Alt+E全屏截图"))
@@ -3160,7 +3026,6 @@ class Ui_ToolsWindow(object):
         self.label_43.setText(_translate("ToolsWindow", "全局选项"))
         self.label_31.setText(_translate("ToolsWindow", "你想看看自动保存是什么样子的吗?"))
         self.saveTempCheck.setText(_translate("ToolsWindow", "   保存临时图片"))
-        self.label_32.setText(_translate("ToolsWindow", "你想看看每次都还原图片原本大小是什么样子的吗"))
         self.autoStretchBox.setText(_translate("ToolsWindow", "   还原图片大小"))
         self.label_34.setText(_translate("ToolsWindow", "图像调整"))
         self.label_33.setText(_translate("ToolsWindow", "听说你想调分辨率了,你也要高清无码吗?"))
@@ -3188,9 +3053,9 @@ class Ui_ToolsWindow(object):
         self.label_57.setText(_translate("ToolsWindow", "图像变换"))
         self.label_36.setText(_translate("ToolsWindow", "Image Converting Yes."))
         self.label_56.setText(_translate("ToolsWindow", "也许,你应该多角度看一张图片"))
-        self.patternBox.setItemText(0, _translate("ToolsWindow", "1bit二值化"))
-        self.patternBox.setItemText(1, _translate("ToolsWindow", "灰度化"))
-        self.patternBox.setItemText(2, _translate("ToolsWindow", "调色盘"))
+        self.patternBox.setItemText(0, _translate("ToolsWindow", "1"))
+        self.patternBox.setItemText(1, _translate("ToolsWindow", "L"))
+        self.patternBox.setItemText(2, _translate("ToolsWindow", "P"))
         self.patternBox.setItemText(3, _translate("ToolsWindow", "RGB"))
         self.patternBox.setItemText(4, _translate("ToolsWindow", "RGBA"))
         self.patternBox.setItemText(5, _translate("ToolsWindow", "CMYK"))
@@ -3200,16 +3065,16 @@ class Ui_ToolsWindow(object):
         self.patternBox.setItemText(9, _translate("ToolsWindow", "图像反转"))
         self.patternBox.setItemText(10, _translate("ToolsWindow", "对数变换"))
         self.patternBox.setItemText(11, _translate("ToolsWindow", "伽马变换"))
+        self.gammaGroupBox.setTitle(_translate("ToolsWindow", "伽马参数 s=cr^y"))
+        self.gammaclineEdit.setPlaceholderText(_translate("ToolsWindow", "伽马常数 默认为1"))
+        self.gammalineEdit.setPlaceholderText(_translate("ToolsWindow", "伽马值"))
         self.thresholdBox.setTitle(_translate("ToolsWindow", "阈值"))
         self.changePatternBtn.setText(_translate("ToolsWindow", "图像变换"))
-        self.label_42.setText(_translate("ToolsWindow", "图像噪声"))
-        self.randomEdit.setPlaceholderText(_translate("ToolsWindow", "默认5000个像素点"))
-        self.randomNoiseBtn.setText(_translate("ToolsWindow", "随机噪声"))
-        self.meanEdit.setPlaceholderText(_translate("ToolsWindow", "均值 默认0.1"))
-        self.sigmaEdit.setPlaceholderText(_translate("ToolsWindow", "标准差 默认0.1"))
-        self.gaussianNoiseBtn.setText(_translate("ToolsWindow", "高斯噪声"))
-        self.saltEdit.setPlaceholderText(_translate("ToolsWindow", "噪声比例 默认0.1 最高1"))
-        self.saltNoiseBtn.setText(_translate("ToolsWindow", "椒盐噪声"))
+        self.newModelineEdit.setPlaceholderText(_translate("ToolsWindow", "Image 格式 默认与上面格式相同"))
+        self.newWidthlineEdit_3.setPlaceholderText(_translate("ToolsWindow", "新图片宽度 默认128"))
+        self.newHeightlineEdit_4.setPlaceholderText(_translate("ToolsWindow", "新图片高度 默认128"))
+        self.newBglineEdit_5.setPlaceholderText(_translate("ToolsWindow", "新图片填充色 默认(0,0,0)"))
+        self.newImgBtn.setText(_translate("ToolsWindow", "图像创建"))
         self.label_44.setText(_translate("ToolsWindow", "图像滤波"))
         self.filterBox.setItemText(0, _translate("ToolsWindow", "高斯模糊"))
         self.filterBox.setItemText(1, _translate("ToolsWindow", "均值滤波"))
@@ -3231,8 +3096,16 @@ class Ui_ToolsWindow(object):
         self.sizeEdit.setPlaceholderText(_translate("ToolsWindow", "size 默认 3x3"))
         self.rankGroupBox.setTitle(_translate("ToolsWindow", "等级参数"))
         self.rankEdit.setPlaceholderText(_translate("ToolsWindow", "rank 默认3"))
-        self.customFilterBtn.setText(_translate("ToolsWindow", "自定义卷积核"))
         self.filterBtn.setText(_translate("ToolsWindow", "开始滤波"))
+        self.customFilterBtn.setText(_translate("ToolsWindow", "自定义卷积核"))
+        self.label_42.setText(_translate("ToolsWindow", "图像噪声"))
+        self.randomEdit.setPlaceholderText(_translate("ToolsWindow", "默认5000个像素点"))
+        self.randomNoiseBtn.setText(_translate("ToolsWindow", "随机噪声"))
+        self.meanEdit.setPlaceholderText(_translate("ToolsWindow", "均值 默认0.1"))
+        self.sigmaEdit.setPlaceholderText(_translate("ToolsWindow", "标准差 默认0.1"))
+        self.gaussianNoiseBtn.setText(_translate("ToolsWindow", "高斯噪声"))
+        self.saltEdit.setPlaceholderText(_translate("ToolsWindow", "噪声比例 默认0.1 最高1"))
+        self.saltNoiseBtn.setText(_translate("ToolsWindow", "椒盐噪声"))
         self.label_45.setText(_translate("ToolsWindow", "图像画家"))
         self.label_46.setText(_translate("ToolsWindow", "注意一定要放下画笔才能有效哦"))
         self.penBtn.setText(_translate("ToolsWindow", "拿起画笔"))
@@ -3261,9 +3134,11 @@ class Ui_ToolsWindow(object):
         self.alphaCompositeBtn.setText(_translate("ToolsWindow", "图像通道合成"))
         self.label_49.setText(_translate("ToolsWindow", "图像隐藏"))
         self.label_60.setText(_translate("ToolsWindow", "也许,一张意义不明的图片,包含着一句表白"))
-        self.hideInfoEdit.setPlainText(_translate("ToolsWindow", "I LOVE YOU ❤"))
+        self.hideInfoEdit.setPlainText(_translate("ToolsWindow", "我爱你有种左灯右行的冲突"))
         self.fontSizeEdit.setPlaceholderText(_translate("ToolsWindow", "字体大小 默认50"))
-        self.hideInfoBtn.setText(_translate("ToolsWindow", "隐藏"))
+        self.lineEdit.setPlaceholderText(_translate("ToolsWindow", "字体路径,默认微软雅黑"))
+        self.hideInfoBtn.setText(_translate("ToolsWindow", "图片隐写"))
+        self.deHideInfoBtn.setText(_translate("ToolsWindow", "图片解密"))
         self.label_52.setText(_translate("ToolsWindow", "Arnold变换"))
         self.label_70.setText(_translate("ToolsWindow", "心意变了,爱没变"))
         self.aArnoldEdit.setPlaceholderText(_translate("ToolsWindow", "加密参数 a 默认是1"))
@@ -3273,11 +3148,11 @@ class Ui_ToolsWindow(object):
         self.ArnoldBtn_2.setText(_translate("ToolsWindow", "Arnold反变换"))
         self.label_50.setText(_translate("ToolsWindow", "图像直方图"))
         self.label_61.setText(_translate("ToolsWindow", "在这灰度的分布里,蕴含着许多秘密"))
-        self.histogramBtn.setText(_translate("ToolsWindow", "图像直方图"))
         self.histogramBalancedBtn.setText(_translate("ToolsWindow", "图像均衡"))
         self.label_51.setText(_translate("ToolsWindow", "图像频域"))
         self.label_62.setText(_translate("ToolsWindow", "频域就像一个错位时空,与时域相拥"))
-        self.fftBtn.setText(_translate("ToolsWindow", "图像频域变换"))
+        self.fftBtn.setText(_translate("ToolsWindow", "图像fft"))
+        self.ifftBtn.setText(_translate("ToolsWindow", "图像ifft"))
         self.label_58.setText(_translate("ToolsWindow", "图像增强"))
         self.label_41.setText(_translate("ToolsWindow", "Image Enhance Yes."))
         self.label_63.setText(_translate("ToolsWindow", "喜怒哀乐"))
@@ -3331,12 +3206,10 @@ class Ui_ToolsWindow(object):
         self.stddevLabel.setText(_translate("ToolsWindow", "TextLabel"))
         self.label_16.setText(_translate("ToolsWindow", "均方根"))
         self.rmsLabel.setText(_translate("ToolsWindow", "TextLabel"))
-        self.label_72.setText(_translate("ToolsWindow", "Image Visualization Yes."))
-        self.label_73.setText(_translate("ToolsWindow", "图像可视化"))
-        self.label_74.setText(_translate("ToolsWindow", "图像 其实就是一个多个通道的波"))
-        self.dockWidget_2.setWindowTitle(_translate("ToolsWindow", "可视化界面"))
         self.actionopen_file.setText(_translate("ToolsWindow", "打开文件"))
         self.actionsave_file.setText(_translate("ToolsWindow", "保存文件"))
-from ChartView import ChartWidget
+from ChartWidget2D import ChartWidget2D
+from ChartWidget3D import ChartWidget3D
 from DemoLabel import DemoLabel
+from MyDockWidget import MyDockWidget
 import assets.btn_rc
