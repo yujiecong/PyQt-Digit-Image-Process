@@ -1,0 +1,33 @@
+
+zpython:S1192›"\Define a constant instead of duplicating this literal "é€‰æ‹©å¦ä¸€å¼ å›¾ç‰‡èåˆ" 3 times.(£áµıÿÿÿÿ
+;python:S125q"Remove this commented out code.(£Å°¸şÿÿÿÿ
+mpython:S3776†"TRefactor this function to reduce its Cognitive Complexity from 31 to the 15 allowed.(Ğ²Ò›
+npython:S1542§"PRename function "updateInfo" to match the regular expression ^[a-z_][a-z0-9_]*$.(Ÿš×¼ûÿÿÿÿ
+7python:S125Ç"Remove this commented out code.(ğ‘“…
+qpython:S1542Ø"SRename function "filterChanged" to match the regular expression ^[a-z_][a-z0-9_]*$.(£İÅÜûÿÿÿÿ
+spython:S1542â"URename function "editingFinished" to match the regular expression ^[a-z_][a-z0-9_]*$.(€üİÏøÿÿÿÿ
+Cpython:S1481ø"%Remove the unused local variable "e".(¼–¯¸ÿÿÿÿÿ
+6python:S125—"Remove this commented out code.(Å©Û
+mpython:S3776Ÿ"TRefactor this function to reduce its Cognitive Complexity from 20 to the 15 allowed.(–”¦­
+5python:S2772Î"Remove this unneeded "pass".(ã‘Û¾
+<python:S125Ê"Remove this commented out code.(‡”ÆÎûÿÿÿÿ
+hpython:S1542í"ORename function "deleteObj" to match the regular expression ^[a-z_][a-z0-9_]*$.(¯ï¡¼
+<python:S125ô"Remove this commented out code.(Ü™ãÏûÿÿÿÿ
+upython:S117è"XRename this local variable "imgPath" to match the regular expression ^[_a-z][a-z0-9_]*$.(™Ğ¨¬øÿÿÿÿ
+`python:S1763ş"GDelete this unreachable code or refactor the code to make it reachable.(ÙãŞŸ
+Vpython:S112ü">Replace this generic exception class with a more specific one.(ñŸşø
+7python:S125Ù"Remove this commented out code.(¼±“é
+Apython:S108‚")Either remove or fill this block of code.(ã‘Û¾
+qpython:S117"YRename this local variable "otherImg" to match the regular expression ^[_a-z][a-z0-9_]*$.(ƒ ÿÉ
+qpython:S117–"YRename this local variable "pastePos" to match the regular expression ^[_a-z][a-z0-9_]*$.(Å¬ÿ
+qpython:S117ª"YRename this local variable "otherImg" to match the regular expression ^[_a-z][a-z0-9_]*$.(ƒ ÿÉ
+qpython:S117µ"YRename this local variable "otherImg" to match the regular expression ^[_a-z][a-z0-9_]*$.(ƒ ÿÉ
+qpython:S117À"YRename this local variable "otherImg" to match the regular expression ^[_a-z][a-z0-9_]*$.(ƒ ÿÉ
+spython:S117å"VRename this local variable "newBg" to match the regular expression ^[_a-z][a-z0-9_]*$.(•‹ƒŠıÿÿÿÿ
+rpython:S117ã"ZRename this local variable "newHeight" to match the regular expression ^[_a-z][a-z0-9_]*$.(Ø™Ğ°
+qpython:S117â"YRename this local variable "newWidth" to match the regular expression ^[_a-z][a-z0-9_]*$.(šã†ş
+qpython:S117È"YRename this local variable "fontSize" to match the regular expression ^[_a-z][a-z0-9_]*$.(şÊÙ
+vpython:S117Õ"YRename this local variable "textDraw" to match the regular expression ^[_a-z][a-z0-9_]*$.(íßøÿÿÿÿ
+xpython:S117Ê"[Rename this local variable "vdFontPath" to match the regular expression ^[_a-z][a-z0-9_]*$.(¢Øó—üÿÿÿÿ
+>python:S1481Ã"%Remove the unused local variable "i".(¨’µÍ
+7python:S125Ç"Remove this commented out code.(Ÿ»Ì¿

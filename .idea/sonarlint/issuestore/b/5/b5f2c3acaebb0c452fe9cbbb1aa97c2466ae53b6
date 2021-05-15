@@ -1,0 +1,30 @@
+
+python:S101"hRename class "Convert_Object" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(≠›Ê‚
+Zpython:S5720è"<Rename "this" to "self" or add the missing "self" parameter.(Ê±Ó€˙ˇˇˇˇ
+Zpython:S5720û"<Rename "this" to "self" or add the missing "self" parameter.(¥â∆éˇˇˇˇˇ
+Zpython:S5720¨"<Rename "this" to "self" or add the missing "self" parameter.(çØ‚√¯ˇˇˇˇ
+Upython:S5720∞"<Rename "this" to "self" or add the missing "self" parameter.(Œå©°
+opython:S117ì"WRename this local variable "fftArr" to match the regular expression ^[_a-z][a-z0-9_]*$.(⁄Û ß
+upython:S117î"XRename this local variable "ifftArr" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÛïÉ£ˇˇˇˇˇ
+ppython:S117ö"XRename this local variable "ifftImg" to match the regular expression ^[_a-z][a-z0-9_]*$.(àΩª†
+<python:S125º"Remove this commented out code.(°‹Ü÷¯ˇˇˇˇ
+vpython:S117˝"YRename this local variable "fontSize" to match the regular expression ^[_a-z][a-z0-9_]*$.(⁄˛Ã€˚ˇˇˇˇ
+rpython:S117˜"ZRename this local variable "plainText" to match the regular expression ^[_a-z][a-z0-9_]*$.(¬Î˚≈
+vpython:S117˘"YRename this local variable "textDraw" to match the regular expression ^[_a-z][a-z0-9_]*$.(Å˘≠˝˘ˇˇˇˇ
+<python:S125ı"Remove this commented out code.(Ê˛éâ˝ˇˇˇˇ
+7python:S125å"Remove this commented out code.(é∆ëÁ
+wpython:S117–"ZRename this local variable "fontColor" to match the regular expression ^[_a-z][a-z0-9_]*$.(±ﬁΩÆ˚ˇˇˇˇ
+7python:S125·"Remove this commented out code.(‚‘Õπ
+spython:S117õ"[Rename this local variable "convertIdx" to match the regular expression ^[_a-z][a-z0-9_]*$.(û÷‘≈
+mpython:S3776ô"TRefactor this function to reduce its Cognitive Complexity from 34 to the 15 allowed.(ŒÓ¯è
+<python:S125†"Remove this commented out code.(•∫Ï®¯ˇˇˇˇ
+wpython:S117Ÿ"ZRename this local variable "filterIdx" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÏÔ†…˘ˇˇˇˇ
+Cpython:S1481É"%Remove the unused local variable "i".(ï±≈–˝ˇˇˇˇ
+Cpython:S1481ã"%Remove the unused local variable "i".(ï±≈–˝ˇˇˇˇ
+ppython:S117ï"YRename this local variable "imageArr" to match the regular expression ^[_a-z][a-z0-9_]*$.(Œﬁë:
+spython:S117ò"VRename this local variable "img_X" to match the regular expression ^[_a-z][a-z0-9_]*$.(……◊Ãˇˇˇˇˇ
+spython:S117ò"VRename this local variable "img_Y" to match the regular expression ^[_a-z][a-z0-9_]*$.(……◊Ãˇˇˇˇˇ
+npython:S117ô"VRename this local variable "img_Z" to match the regular expression ^[_a-z][a-z0-9_]*$.(–›…Ñ
+<python:S125¶"Remove this commented out code.(≠€ìèˇˇˇˇˇ
+<python:S125´"Remove this commented out code.(«ææ¯ˇˇˇˇ
+ppython:S117∂"YRename this local variable "imageArr" to match the regular expression ^[_a-z][a-z0-9_]*$.(Œﬁë:

@@ -236,9 +236,9 @@
         <property name="geometry">
          <rect>
           <x>0</x>
-          <y>-3111</y>
+          <y>-3888</y>
           <width>323</width>
-          <height>6337</height>
+          <height>6392</height>
          </rect>
         </property>
         <property name="styleSheet">
@@ -3254,7 +3254,43 @@ QPushButton:default {
 }</string>
            </property>
            <property name="text">
-            <string>图片隐写</string>
+            <string>文本隐写</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="hideImgBtn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(100, 100, 100);
+
+	font: 12pt &quot;微软雅黑&quot;;
+	color: rgb(255, 255, 255);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                      stop: 0 #dadbde, stop: 1 #f6f7fa);
+}
+
+QPushButton:flat {
+    border: none; /* no border for a flat push button */
+}
+
+QPushButton:default {
+    border-color: navy; /* make the default button prominent */
+}</string>
+           </property>
+           <property name="text">
+            <string>图像隐写</string>
            </property>
           </widget>
          </item>

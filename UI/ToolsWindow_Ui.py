@@ -111,7 +111,7 @@ class Ui_ToolsWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -3111, 323, 6337))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -3968, 323, 6392))
         self.scrollAreaWidgetContents.setStyleSheet("QWidget#scrollAreaWidgetContents{\n"
 "background-color: rgba(255, 255, 255,200);\n"
 "    \n"
@@ -2004,6 +2004,31 @@ class Ui_ToolsWindow(object):
 "}")
         self.hideInfoBtn.setObjectName("hideInfoBtn")
         self.verticalLayout_2.addWidget(self.hideInfoBtn)
+        self.hideImgBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
+        self.hideImgBtn.setMinimumSize(QtCore.QSize(0, 40))
+        self.hideImgBtn.setStyleSheet("QPushButton {\n"
+"    border: none;\n"
+"    border-radius: 20px;\n"
+"    background-color: rgb(100, 100, 100);\n"
+"\n"
+"    font: 12pt \"微软雅黑\";\n"
+"    color: rgb(255, 255, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QPushButton:flat {\n"
+"    border: none; /* no border for a flat push button */\n"
+"}\n"
+"\n"
+"QPushButton:default {\n"
+"    border-color: navy; /* make the default button prominent */\n"
+"}")
+        self.hideImgBtn.setObjectName("hideImgBtn")
+        self.verticalLayout_2.addWidget(self.hideImgBtn)
         self.deHideInfoBtn = QtWidgets.QPushButton(self.scrollAreaWidgetContents)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
@@ -3137,7 +3162,8 @@ class Ui_ToolsWindow(object):
         self.hideInfoEdit.setPlainText(_translate("ToolsWindow", "我爱你有种左灯右行的冲突"))
         self.fontSizeEdit.setPlaceholderText(_translate("ToolsWindow", "字体大小 默认50"))
         self.lineEdit.setPlaceholderText(_translate("ToolsWindow", "字体路径,默认微软雅黑"))
-        self.hideInfoBtn.setText(_translate("ToolsWindow", "图片隐写"))
+        self.hideInfoBtn.setText(_translate("ToolsWindow", "文本隐写"))
+        self.hideImgBtn.setText(_translate("ToolsWindow", "图像隐写"))
         self.deHideInfoBtn.setText(_translate("ToolsWindow", "图片解密"))
         self.label_52.setText(_translate("ToolsWindow", "Arnold变换"))
         self.label_70.setText(_translate("ToolsWindow", "心意变了,爱没变"))
