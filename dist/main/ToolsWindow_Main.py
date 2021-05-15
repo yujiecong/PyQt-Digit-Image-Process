@@ -310,12 +310,9 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         elif a0.key()==Qt.Key_Space:
             self.dockWidget.show() if not self.dockWidget.isVisible() else self.dockWidget.hide()
             self.dockWidget_2.show() if not self.dockWidget_2.isVisible() else self.dockWidget_2.hide()
+            self.dockWidget_3.show() if not self.dockWidget_3.isVisible() else self.dockWidget_3.hide()
+
         # QMainWindow.keyPressEvent(self,a0)
-
-
-
-
-
 
     """
     图像编辑开始
@@ -353,121 +350,134 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             self.obj=None
             if self.autoStretchBox.isChecked():
                 self.demoLabel.setRestore()
-            self.__getImgInfo()
+            self.__UpdateImgInfo()
         else:
             QMessageBox.warning(self, '警告', '没东西撤回了亲')
 
-    # @logging
-    def __getImgInfo(self):
-
-        im = self.new_image
-
-        arr = np.array(im)
-
-        if len(arr.shape) == 2:
-            width, height = arr.shape
-            channels = 1
-        else:
-            width, height, channels = arr.shape
-        # self.nameLabel.setText(self.demoLabel.imgPath)
-
-        self.widthLabel.setText(str(height))
-        self.heightLabel.setText(str(width))
-        self.channelsLabel.setText(str(channels))
-        self.nameLabel.setText(self.demoLabel.imgPath.split('/')[-1])
-        self.formatLabel.setText(self.demoLabel.format)
-        stat = ImageStat.Stat(im)
-        self.extremaLabel.setText(str(stat._getextrema()))
-        self.pixelsNumLabel.setText(str(stat._getcount()))
-        self.pixelsSumLabel.setText(str(stat._getsum()))
-
-        self.averageLabel.setText(str(stat._getmean()))
-
-        # if np.mean(stat._getmean())<30:
-        #     self._3DWidget.w.setBackgroundColor((222,222,222))
-
-        #根据平均rgb 设置背景颜色
-        if len(stat._getmean())>=3:
-            rgb=stat._getmean()[:3]
-
-            rgb=list(map(int,rgb))
-
-            fontColor = (255 - rgb[0], 255 -rgb[1], 222)
-
-            rgba=f"background-color:rgba{(rgb[0],rgb[1],rgb[2],233)};"
-            self.scrollAreaWidgetContents_3.setStyleSheet(rgba)
-            style="QWidget#scrollAreaWidgetContents{%s}QLabel{%s}"%(rgba,f"color:rgb{fontColor};")
-            self.scrollAreaWidgetContents.setStyleSheet(style)
-            self.stBar.setStyleSheet(rgba+f"color:rgb{fontColor};")
-
-            self.scrollArea.setStyleSheet("QScrollBar:vertical{%s}"%rgba)
-            dockstyle="""
-            QDockWidget::title {
-                %s
-            }
-            """%rgba
-            self.dockWidget.setStyleSheet(dockstyle)
-            self.dockWidget_2.setStyleSheet(dockstyle)
-            self.dockWidget_3.setStyleSheet(dockstyle)
-            # self._3DWidget.w.setBackgroundColor(rgb)
-            # self.centralwidget.setStyleSheet(rgba)
+    @logging
+    def __UpdateImgInfo(self):
 
 
-        else:
-            g=stat._getmean()[0]
-            g=int(g)
-            # self._3DWidget.w.setBackgroundColor((g, g, g,100))
-            self.scrollAreaWidgetContents_3.setStyleSheet(f"background-color:rgba{(g, g, g,100)}")
-            ga=f"background-color:rgba{(255-g, 255-g, 255-g,100)}"
-            style="QWidget#scrollAreaWidgetContents{%s}QLabel{%s}"%(ga,f"color:rgb{ga};")
-            self.scrollAreaWidgetContents.setStyleSheet(style)
-            self.scrollArea.setStyleSheet("QScrollBar:vertical{%s}" % ga)
-            self.stBar.setStyleSheet(ga)
+        self.obj = Convert_Object(self.new_image, Convert_Object.UPDATE_OP,parent=self)
+        self.thr = QThread(self)
+        self.obj.moveToThread(self.thr)
+        def deleteObj():
+            self.thr.exit(0)
+            self.obj.deleteLater()
+            self.obj=None
+        self.obj.finished.connect(deleteObj)
+        self.thr.start()
+        self.thr.started.connect(self.obj.run)
+        # self.new_image = self.obj.new_image.copy()
 
-            docks="""
-            QDockWidget::title {
-                %s
-            }
-            """ % ga
-            self.dockWidget.setStyleSheet(docks)
-            self.dockWidget_2.setStyleSheet(docks)
-            self.dockWidget_3.setStyleSheet(docks)
-        self._3DWidget.w.clear()
-        self._3DWidget.setData(im)
-
-        self.medianLabel.setText(str(stat._getmedian()))
-        self.rmsLabel.setText(str(stat._getrms()))
-        self.varLabel.setText(str(stat._getvar()))
-        self.stddevLabel.setText(str(stat._getstddev()))
-
-        self.depthLabel.setText(str(self.demoLabel.drawImg.depth()))
-        self.patternLabel.setText(str(im.mode))
-        self.sizeLabel.setText(f"({width},{height})")
-
-
-
-
-
-        hist =im.histogram() #np.reciprocal(np.array(),dtype=)
-        # im.getpi
-        if channels >= 3:
-
-            self.graphicsView_6.hide()
-            self.graphicsView_3.show()
-            self.graphicsView_3.plot.clear()
-            self.graphicsView_3.plot.setXRange(0, 256)
-            self.graphicsView_3.setData(hist[:256],'r')
-            self.graphicsView_3.setData(hist[256:512],'g')
-            self.graphicsView_3.setData(hist[512:768],'b')
-
-
-        elif channels == 1:
-            self.graphicsView_3.hide()
-            self.graphicsView_6.show()
-            self.graphicsView_6.plot.clear()
-            self.graphicsView_6.plot.setXRange(0, 256)
-
-            self.graphicsView_6.setData(hist,(200,200,200))
+        # im = self.new_image
+        #
+        # arr = np.array(im)
+        #
+        # if len(arr.shape) == 2:
+        #     width, height = arr.shape
+        #     channels = 1
+        # else:
+        #     width, height, channels = arr.shape
+        # # self.nameLabel.setText(self.demoLabel.imgPath)
+        #
+        # self.widthLabel.setText(str(height))
+        # self.heightLabel.setText(str(width))
+        # self.channelsLabel.setText(str(channels))
+        # self.nameLabel.setText(self.demoLabel.imgPath.split('/')[-1])
+        # self.formatLabel.setText(self.demoLabel.format)
+        # stat = ImageStat.Stat(im)
+        # self.extremaLabel.setText(str(stat._getextrema()))
+        # self.pixelsNumLabel.setText(str(stat._getcount()))
+        # self.pixelsSumLabel.setText(str(stat._getsum()))
+        #
+        # self.averageLabel.setText(str(stat._getmean()))
+        #
+        # # if np.mean(stat._getmean())<30:
+        # #     self._3DWidget.w.setBackgroundColor((222,222,222))
+        #
+        # #根据平均rgb 设置背景颜色
+        # if len(stat._getmean())>=3:
+        #     rgb=stat._getmean()[:3]
+        #
+        #     rgb=list(map(int,rgb))
+        #
+        #     fontColor = (255 - rgb[0], 255 -rgb[1], 222)
+        #
+        #     rgba=f"background-color:rgba{(rgb[0],rgb[1],rgb[2],233)};"
+        #     self.scrollAreaWidgetContents_3.setStyleSheet(rgba)
+        #     style="QWidget#scrollAreaWidgetContents{%s}QLabel{%s}"%(rgba,f"color:rgb{fontColor};")
+        #     self.scrollAreaWidgetContents.setStyleSheet(style)
+        #     self.stBar.setStyleSheet(rgba+f"color:rgb{fontColor};")
+        #
+        #     self.scrollArea.setStyleSheet("QScrollBar:vertical{%s}"%rgba)
+        #     dockstyle="""
+        #     QDockWidget::title {
+        #         %s
+        #     }
+        #     """%rgba
+        #     self.dockWidget.setStyleSheet(dockstyle)
+        #     self.dockWidget_2.setStyleSheet(dockstyle)
+        #     self.dockWidget_3.setStyleSheet(dockstyle)
+        #     # self._3DWidget.w.setBackgroundColor(rgb)
+        #     # self.centralwidget.setStyleSheet(rgba)
+        #
+        #
+        # else:
+        #     g=stat._getmean()[0]
+        #     g=int(g)
+        #     # self._3DWidget.w.setBackgroundColor((g, g, g,100))
+        #     self.scrollAreaWidgetContents_3.setStyleSheet(f"background-color:rgba{(g, g, g,100)}")
+        #     ga=f"background-color:rgba{(255-g, 255-g, 255-g,100)}"
+        #     style="QWidget#scrollAreaWidgetContents{%s}QLabel{%s}"%(ga,f"color:rgb{ga};")
+        #     self.scrollAreaWidgetContents.setStyleSheet(style)
+        #     self.scrollArea.setStyleSheet("QScrollBar:vertical{%s}" % ga)
+        #     self.stBar.setStyleSheet(ga)
+        #
+        #     docks="""
+        #     QDockWidget::title {
+        #         %s
+        #     }
+        #     """ % ga
+        #     self.dockWidget.setStyleSheet(docks)
+        #     self.dockWidget_2.setStyleSheet(docks)
+        #     self.dockWidget_3.setStyleSheet(docks)
+        # self._3DWidget.w.clear()
+        # self._3DWidget.setData(im)
+        #
+        # self.medianLabel.setText(str(stat._getmedian()))
+        # self.rmsLabel.setText(str(stat._getrms()))
+        # self.varLabel.setText(str(stat._getvar()))
+        # self.stddevLabel.setText(str(stat._getstddev()))
+        #
+        # self.depthLabel.setText(str(self.demoLabel.drawImg.depth()))
+        # self.patternLabel.setText(str(im.mode))
+        # self.sizeLabel.setText(f"({width},{height})")
+        #
+        #
+        #
+        #
+        #
+        # hist =im.histogram() #np.reciprocal(np.array(),dtype=)
+        # # im.getpi
+        # if channels >= 3:
+        #
+        #     self.graphicsView_6.hide()
+        #     self.graphicsView_3.show()
+        #     self.graphicsView_3.plot.clear()
+        #     self.graphicsView_3.plot.setXRange(0, 256)
+        #     self.graphicsView_3.setData(hist[:256],'r')
+        #     self.graphicsView_3.setData(hist[256:512],'g')
+        #     self.graphicsView_3.setData(hist[512:768],'b')
+        #
+        #
+        # elif channels == 1:
+        #     self.graphicsView_3.hide()
+        #     self.graphicsView_6.show()
+        #     self.graphicsView_6.plot.clear()
+        #     self.graphicsView_6.plot.setXRange(0, 256)
+        #
+        #     self.graphicsView_6.setData(hist,(200,200,200))
 
 
 
@@ -489,7 +499,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             self.widthEdit.setText(str(self.demoLabel.drawImg.width()))
             self.heightEdit.setText(str(self.demoLabel.drawImg.height()))
 
-            self.__getImgInfo()
+            self.__UpdateImgInfo()
     @logging
     def __convertInit(self):
         img = self.demoLabel.drawImg
@@ -530,8 +540,10 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
         self.new_image = self.obj.new_image.copy()
         self.thr.exit(0)
+        self.obj.deleteLater()
+        self.obj=None
         self.__setDemoImg()
-        self.__getImgInfo()
+        self.__UpdateImgInfo()
 
 
 
@@ -554,7 +566,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.demoLabel.setImg(QImage(fn),fn)
         if not self.getGlobalValue("SAVE_TEMP"):
             os.remove(fn)
-        self.__getImgInfo()
+        self.__UpdateImgInfo()
 
     @logging
     def __screenShot(self,img):
@@ -569,7 +581,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
             os.remove(fn)
         if self.autoStretchBox.isChecked():
             self.demoLabel.setRestore()
-        self.__getImgInfo()
+        self.__UpdateImgInfo()
 
     @logging
     def __copyImg(self):
@@ -711,7 +723,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         if not self.getGlobalValue("SAVE_TEMP"):
             os.remove(fn)
         self.__setDemoImg()
-        self.__getImgInfo()
+        self.__UpdateImgInfo()
     @logging
     def __penDownImg(self):
         self.__convertInit()
@@ -761,7 +773,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         thread = Convert_Object(new_image, Convert_Object.CONVERT_OP)
         thread.filename=self.getTempFileName()
         self.__getConvertThread(thread)
-
+    @AutoSet
     @logging
     def __customizeFilter(self):
         new_image = self.__convertInit()
@@ -775,7 +787,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
                                0 if not offset else int(offset)))
         self.customDialog.plainTextEdit.setPlainText(self.customDialog.plainTextEdit.toPlainText())
         self.new_image = new_image
-        self.__setDemoImg()
+
 
     @logging
     def __customFliter(self):
@@ -833,135 +845,39 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         new_image = self.__convertInit()
 
         self.__getConvertThread(Convert_Object(new_image, Convert_Object.SALT_NOISE_OP))
-    @AutoSet
+
     @logging
     def __ffTransform(self):
-        new_image=self.__convertInit()
-        img = np.array(new_image.convert("L"))
-        f = np.fft.fft2(img)
-        fshift = np.fft.fftshift(f)  # 将频谱对称轴从左上角移至中心
-        self.fftImg=fshift
-        magnitude_spectrum = 20 * np.log(np.abs(fshift))
-        # self.formatBox.setCurrentIndex(FORMAT_MODE.modeDict["tiff"])
-        fn=self.getGlobalValue("FFT_DIR")+"outfft.txt"
-        np.savetxt(fn,fshift.T.view(float))
-        magnitude_spectrum=magnitude_spectrum.astype('uint8')
-        self.new_image=Image.fromarray(magnitude_spectrum)
+        new_image = self.__convertInit()
 
-    @AutoSet
+        thread = Convert_Object(new_image, Convert_Object.FFT_OP,parent=self)
+        self.__getConvertThread(thread)
+
+
     @logging
     def __iffTransform(self):
-        self.__convertInit()
-        fn = self.getGlobalValue("FFT_DIR") + "outfft.txt"
-        fftArr = np.loadtxt(fn).view(complex).T
-        ifftArr=np.fft.ifftshift(fftArr)
-        ifftArr=np.fft.ifft2(ifftArr)
-        ifftArr=np.abs(ifftArr)
+        new_image = self.__convertInit()
 
-        ifftArr = ifftArr.astype('uint8')
-
-        ifftImg=Image.fromarray(ifftArr)
-
-        self.new_image=ifftImg
+        thread = Convert_Object(new_image, Convert_Object.IFFT_OP,parent=self)
+        self.__getConvertThread(thread)
 
 
-    @AutoSet
+    # @AutoSet
     @logging
     def __hideInfoInImg(self):
+        new_image = self.__convertInit()
 
-        carrier_image = self.__convertInit().copy()
-
-        channels = int(self.channelsLabel.text())
-        if channels >= 3:
-            hide_image = Image.new(carrier_image.mode, carrier_image.size,color=(0,0,0))
-        else:
-            hide_image = Image.new(carrier_image.mode, carrier_image.size)
-        carrier_image_arr = np.array(carrier_image)
+        thread = Convert_Object(new_image, Convert_Object.HIDE_INFO_OP,parent=self)
+        self.__getConvertThread(thread)
 
 
-        # 计算要写入的大小
-        plainText = self.hideInfoEdit.toPlainText()
-
-        textDraw = ImageDraw.Draw(hide_image)
-        height, width = carrier_image_arr.shape[:2]
-
-        size = self.fontSizeEdit.text()
-        fontSize = 50 if size == '' else int(size)
-        font = ImageFont.truetype(r"C:\Windows\Fonts\微软雅黑\msyhbd.ttc", size=fontSize)
-        color = 255
-        if channels>=3:
-            self.formatBox.setCurrentIndex(FORMAT_MODE.modeDict["png"])
-            textDraw.text((0, height // 3), plainText, font=font, fill=(color,color,color))
-        else:
-            textDraw.text((0, height // 3), plainText, font=font, fill=color)
-
-        if channels >= 3:
-            for i in range(height):
-                for j in range(width):
-                    # 把整幅图的B通道全设置为偶数
-                    if carrier_image_arr[i, j, 2] % 2 == 1:
-                        carrier_image_arr[i, j,2] -= 1
-
-        else:
-            for i in range(height):
-                for j in range(width):
-                    # 把整幅图的灰度通道全设置为偶数
-                    if carrier_image_arr[i, j] % 2 == 1:
-                        carrier_image_arr[i, j] -= 1
-
-
-        hide_image_arr = np.array(hide_image)
-        if channels >= 3:
-            for i in range(height):
-                for j in range(width):
-
-                    if tuple(hide_image_arr[i, j,:3]) == (color,color,color):
-
-                        carrier_image_arr[i, j, 2] += 1
-        else:
-            for i in range(height):
-                for j in range(width):
-
-                    if hide_image_arr[i, j] == color:
-                        carrier_image_arr[i, j] += 1
-
-        self.new_image=Image.fromarray(carrier_image_arr)
-    @AutoSet
     @logging
     def deHideInfoImg(self):
+        new_image = self.__convertInit()
 
-        # 开始还原]
-        hide_image = self.__convertInit()
+        thread = Convert_Object(new_image, Convert_Object.DEHIDE_INFO_OP,parent=self)
+        self.__getConvertThread(thread)
 
-        hide_image_arr = np.array(hide_image)
-        print(hide_image_arr)
-        channels = int(self.channelsLabel.text())
-        height, width = hide_image_arr.shape[:2]
-        color = 255
-        h, w = height,width
-        if channels >= 3:
-            hideInfoImg = np.zeros((h, w,3), np.uint8)
-        else:
-            hideInfoImg = np.zeros((h, w), np.uint8)
-
-
-        if channels >= 3:
-            for i in range(h):
-                for j in range(w):
-                    if hide_image_arr[i, j, 2] % 2 == 1:
-                        hideInfoImg[i, j,0] = color
-                        hideInfoImg[i, j,1] = color
-                        hideInfoImg[i, j,2] = color
-
-        else:
-            for i in range(h):
-                for j in range(w):
-                    # 发现B通道为奇数则为信息的内容
-                    if hide_image_arr[i, j] % 2 == 1:
-                        hideInfoImg[i, j] = color
-
-
-        self.new_image = Image.fromarray(hideInfoImg)
 
     @AutoSet
     @logging
@@ -1030,7 +946,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         h=self.vdHeightEdit.text()
         h=64 if h=="" else int(h)
         bg=self.vdBgEdit.text()
-        bg=tuple(np.random.randint(255,size=3))
+        bg=tuple(np.random.randint(255,size=3)) if bg=="" else eval(bg)
         text=self.vdTextEdit.text()
 
         _char=[chr(i) for i in range(ord('A'),ord('Z')+1)]+[str(i) for i in range(10)]

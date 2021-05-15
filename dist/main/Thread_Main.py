@@ -8,6 +8,8 @@ import time
 
 import numpy as np
 from PIL import Image, ImageFilter, ImageChops, ImageStat
+from PIL import ImageDraw
+from PIL import ImageFont
 from PyQt5.QtCore import QObject, pyqtSignal
 
 import datetime
@@ -26,6 +28,12 @@ class Convert_Object(QObject):
     SALT_NOISE_OP = 4
     CHOPS_OP = 5
     UPDATE_OP=6
+    FFT_OP=7
+    IFFT_OP=71
+
+
+    HIDE_INFO_OP=8
+    DEHIDE_INFO_OP=81
     DEBUG = False
     finished = pyqtSignal()
     para = {"GS_MEAD": .1,
@@ -65,7 +73,9 @@ class Convert_Object(QObject):
                     f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} leaved thread-func **{func.__name__}** args={args} kwargs={kwargs}")
                 return f
             except Exception as e:
+
                 self.errorFlag = f"{type(self).__name__}->{func.__name__}:{e.__str__()}"
+                print(self.errorFlag)
 
         return wrapper
 
@@ -118,13 +128,139 @@ class Convert_Object(QObject):
             self.chops()
         elif self.__op==self.UPDATE_OP:
             self.update()
-
+        elif self.__op==self.HIDE_INFO_OP:
+            self.hideInfo()
+        elif self.__op==self.DEHIDE_INFO_OP:
+            self.deHideInfo()
+        elif self.__op==self.FFT_OP:
+            self.fft()
         self.finished.emit()
-
-    def update(this):
+    @thread_logging
+    def ifft(this):
         self=this.parent()
 
-        im = self.new_image
+        fn = self.getGlobalValue("FFT_DIR") + "outfft.txt"
+        fftArr = np.loadtxt(fn).view(complex).T
+        ifftArr=np.fft.ifftshift(fftArr)
+        ifftArr=np.fft.ifft2(ifftArr)
+        ifftArr=np.abs(ifftArr)
+
+        ifftArr = ifftArr.astype('uint8')
+
+        ifftImg=Image.fromarray(ifftArr)
+
+        this.new_image=ifftImg
+    @thread_logging
+    def fft(this):
+        self=this.parent()
+        new_image=this.new_image
+        img = np.array(new_image.convert("L"))
+        f = np.fft.fft2(img)
+        fshift = np.fft.fftshift(f)  # 将频谱对称轴从左上角移至中心
+        self.fftImg=fshift
+        magnitude_spectrum = 20 * np.log(np.abs(fshift))
+        # self.formatBox.setCurrentIndex(FORMAT_MODE.modeDict["tiff"])
+        fn=self.getGlobalValue("FFT_DIR")+"outfft.txt"
+        np.savetxt(fn,fshift.T.view(float))
+        magnitude_spectrum=magnitude_spectrum.astype('uint8')
+        this.new_image=Image.fromarray(magnitude_spectrum)
+    @thread_logging
+    def deHideInfo(this):
+        # 开始还原]
+        self=this.parent()
+        hide_image = this.new_image
+        hide_image_arr = np.array(hide_image)
+        channels = int(self.channelsLabel.text())
+        height, width = hide_image_arr.shape[:2]
+        color = 255
+        h, w = height,width
+        if channels >= 3:
+            hideInfoImg = np.zeros((h, w,3), np.uint8)
+        else:
+            hideInfoImg = np.zeros((h, w), np.uint8)
+
+
+        if channels >= 3:
+            for i in range(h):
+                for j in range(w):
+                    if hide_image_arr[i, j, 2] % 2 == 1:
+                        hideInfoImg[i, j,0] = color
+                        hideInfoImg[i, j,1] = color
+                        hideInfoImg[i, j,2] = color
+
+        else:
+            for i in range(h):
+                for j in range(w):
+                    # 发现B通道为奇数则为信息的内容
+                    if hide_image_arr[i, j] % 2 == 1:
+                        hideInfoImg[i, j] = color
+
+
+        this.new_image = Image.fromarray(hideInfoImg)
+
+    @thread_logging
+    def hideInfo(self):
+        parent=self.parent()
+        carrier_image = self.new_image
+
+        channels = int(parent.channelsLabel.text())
+        if channels >= 3:
+            hide_image = Image.new(carrier_image.mode, carrier_image.size, color=(0, 0, 0))
+        else:
+            hide_image = Image.new(carrier_image.mode, carrier_image.size)
+        carrier_image_arr = np.array(carrier_image)
+
+        # 计算要写入的大小
+        plainText = parent.hideInfoEdit.toPlainText()
+
+        textDraw = ImageDraw.Draw(hide_image)
+        height, width = carrier_image_arr.shape[:2]
+
+        size = parent.fontSizeEdit.text()
+        fontSize = 50 if size == '' else int(size)
+        font = ImageFont.truetype(r"C:\Windows\Fonts\微软雅黑\msyhbd.ttc", size=fontSize)
+        color = 255
+        if channels >= 3:
+            parent.formatBox.setCurrentIndex(Global_Main.FORMAT_MODE.modeDict["png"])
+            textDraw.text((0, height // 3), plainText, font=font, fill=(color, color, color))
+        else:
+            textDraw.text((0, height // 3), plainText, font=font, fill=color)
+
+        if channels >= 3:
+            for i in range(height):
+                for j in range(width):
+                    # 把整幅图的B通道全设置为偶数
+                    if carrier_image_arr[i, j, 2] % 2 == 1:
+                        carrier_image_arr[i, j, 2] -= 1
+
+        else:
+            for i in range(height):
+                for j in range(width):
+                    # 把整幅图的灰度通道全设置为偶数
+                    if carrier_image_arr[i, j] % 2 == 1:
+                        carrier_image_arr[i, j] -= 1
+
+        hide_image_arr = np.array(hide_image)
+        if channels >= 3:
+            for i in range(height):
+                for j in range(width):
+
+                    if tuple(hide_image_arr[i, j, :3]) == (color, color, color):
+                        carrier_image_arr[i, j, 2] += 1
+        else:
+            for i in range(height):
+                for j in range(width):
+
+                    if hide_image_arr[i, j] == color:
+                        carrier_image_arr[i, j] += 1
+
+        self.new_image = Image.fromarray(carrier_image_arr)
+    @thread_logging
+    def update(this):
+
+        self=this.parent()
+
+        im = this.new_image
 
         arr = np.array(im)
 
@@ -159,7 +295,7 @@ class Convert_Object(QObject):
             style="QWidget#scrollAreaWidgetContents{%s}QLabel{%s}"%(rgba,f"color:rgb{fontColor};")
             self.scrollAreaWidgetContents.setStyleSheet(style)
             self.stBar.setStyleSheet(rgba+f"color:rgb{fontColor};")
-            self.W.setStyleSheet(rgba)
+
             self.scrollArea.setStyleSheet("QScrollBar:vertical{%s}"%rgba)
             dockstyle="""
             QDockWidget::title {
@@ -181,7 +317,7 @@ class Convert_Object(QObject):
             self.scrollAreaWidgetContents.setStyleSheet(style)
             self.scrollArea.setStyleSheet("QScrollBar:vertical{%s}" % ga)
             self.stBar.setStyleSheet(ga)
-            self.W.setStyleSheet(ga)
+
             docks="""
             QDockWidget::title {
                 %s
@@ -199,8 +335,6 @@ class Convert_Object(QObject):
         self.depthLabel.setText(str(self.demoLabel.drawImg.depth()))
         self.patternLabel.setText(str(im.mode))
         self.sizeLabel.setText(f"({width},{height})")
-
-
 
         self._3DWidget.w.clear()
         self._3DWidget.setData(im)
@@ -225,7 +359,7 @@ class Convert_Object(QObject):
             self.graphicsView_6.plot.setXRange(0, 256)
 
             self.graphicsView_6.setData(hist,(200,200,200))
-        pass
+
     @thread_logging
     def convert(self):
 
@@ -237,6 +371,7 @@ class Convert_Object(QObject):
             for i in range(self.new_image.height):
                 for j in range(self.new_image.width):
                     arr[i][j] = 255 if arr[i][j] >= self.threshold else 0
+
             self.new_image = Image.fromarray(arr)
 
         elif convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_L:

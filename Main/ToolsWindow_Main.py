@@ -310,12 +310,9 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         elif a0.key()==Qt.Key_Space:
             self.dockWidget.show() if not self.dockWidget.isVisible() else self.dockWidget.hide()
             self.dockWidget_2.show() if not self.dockWidget_2.isVisible() else self.dockWidget_2.hide()
+            self.dockWidget_3.show() if not self.dockWidget_3.isVisible() else self.dockWidget_3.hide()
+
         # QMainWindow.keyPressEvent(self,a0)
-
-
-
-
-
 
     """
     图像编辑开始

@@ -371,6 +371,7 @@ class Convert_Object(QObject):
             for i in range(self.new_image.height):
                 for j in range(self.new_image.width):
                     arr[i][j] = 255 if arr[i][j] >= self.threshold else 0
+
             self.new_image = Image.fromarray(arr)
 
         elif convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_L:
