@@ -7,9 +7,9 @@ class CustomFilter(QDialog,Ui_CustomFilterDialog):
     def __init__(self,*args,**kwargs):
         super().__init__(*args, **kwargs)
         self.setupUi(self)
-        self.x33="""[1, 1, 1,
-1, -8, 1,
-1, 1, 1]"""
+        self.x33="""[-1, -1, 0,
+-1, 0, 0,
+0, 1, 1]"""
         self.x55="""[1,  1,  1,  1,  1,
 1,  0,  0,  0,  1,
 1,  0,  0,  0,  1,

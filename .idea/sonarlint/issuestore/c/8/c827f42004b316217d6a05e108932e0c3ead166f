@@ -4,187 +4,187 @@ cpython:S1192Ç"KDefine a constant instead of duplicating this literal "QLabe
 mpython:S1192¼"ODefine a constant instead of duplicating this literal "QLineEdit {\n" 34 times.(ò×”¶ıÿÿÿÿ
 opython:S1192§"QDefine a constant instead of duplicating this literal "QPushButton {\n" 32 times.(Ô‰¶Ñüÿÿÿÿ
 gpython:S1192´"NDefine a constant instead of duplicating this literal "QComboBox {\n" 5 times.(Ï¬ûû
-ppython:S116Ö"XRename this field "verticalLayout_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(àğ“•
-rpython:S116á"ZRename this field "horizontalLayout_8" to match the regular expression ^[_a-z][_a-z0-9]*$.(è¸‘§
-spython:S116À"[Rename this field "horizontalLayout_20" to match the regular expression ^[_a-z][_a-z0-9]*$.(´œ¬Ú
-mpython:S116ğ"URename this field "deHideInfoBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÓÂ
-tpython:S116"\Rename this field "histogramBalancedBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(‘Çó
-kpython:S116±"SRename this field "bArnoldEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(”óıÒ
-jpython:S116æ"RRename this field "vdTextEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(£…Å
-ipython:S116ª"QRename this field "pasteEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÑÚ«
-hpython:S116ó"PRename this field "vdBgEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(Û´Œœ
-jpython:S116»"RRename this field "offsetEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ƒ­“
-hpython:S116G"QRename this field "demoLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(Æ©†ó
-dpython:S116V"MRename this field "stBar" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ç¹²Ñ
-rpython:S116Ï"ZRename this field "horizontalLayout_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(•­¾Ù
-ppython:S116¬"XRename this field "verticalLayout_9" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÇëÔ¬
-qpython:S116ª"YRename this field "verticalLayout_24" to match the regular expression ^[_a-z][_a-z0-9]*$.(ªä½Ğ
-wpython:S116a"[Rename this field "horizontalLayout_14" to match the regular expression ^[_a-z][_a-z0-9]*$.(«Ú€Ğşÿÿÿÿ
-jpython:S116
-"SRename this field "convCoreBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(°óp
-xpython:S116…"[Rename this field "horizontalLayout_10" to match the regular expression ^[_a-z][_a-z0-9]*$.(®Ù›µıÿÿÿÿ
-spython:S116¿"VRename this field "vdFontPathEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(¯±åÛøÿÿÿÿ
-ppython:S116Ä"XRename this field "horizontalLayout" to match the regular expression ^[_a-z][_a-z0-9]*$.(›‰½³
-qpython:S116¨"YRename this field "verticalLayout_17" to match the regular expression ^[_a-z][_a-z0-9]*$.(ªúîÁ
-qpython:S116¤"TRename this field "resizeImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(„àòøÿÿÿÿ
-spython:S116š"[Rename this field "horizontalLayout_11" to match the regular expression ^[_a-z][_a-z0-9]*$.(Êƒ¸
-hpython:S116È"PRename this field "chopsBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(­Ìàƒ
-mpython:S116¿"URename this field "gammalineEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(€ø¬Õ
-npython:S116­	"QRename this field "newImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(¥°Ûşÿÿÿÿ
-qpython:S116Ù"YRename this field "verticalLayout_10" to match the regular expression ^[_a-z][_a-z0-9]*$.(çÚ®Î
-wpython:S116Ï"ZRename this field "horizontalLayout_6" to match the regular expression ^[_a-z][_a-z0-9]*$.(“„¤øÿÿÿÿ
-kpython:S116ù"SRename this field "heightLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(—‹Ûÿ
-qpython:S116Ù"TRename this field "vdHeightEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ê´ı¸şÿÿÿÿ
-qpython:S116²"TRename this field "averageLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(‹­»Âÿÿÿÿÿ
-hpython:S116÷"PRename this field "penUpBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(½€––
-qpython:S116 "TRename this field "fontSizeEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ï¥¹ıÿÿÿÿ
-ppython:S116³"XRename this field "verticalLayout_7" to match the regular expression ^[_a-z][_a-z0-9]*$.(‰¨ƒ
-ppython:S116¹"SRename this field "hideInfoBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(À¿Üëûÿÿÿÿ
-fpython:S116Ñ"NRename this field "fftBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ä¾§ì
-tpython:S116»"\Rename this field "dockWidgetContents_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(¢Éµş
-jpython:S116×"RRename this field "hideImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÔûæÒ
-opython:S116È"RRename this field "heightEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(÷ó©şúÿÿÿÿ
-kpython:S116Ã"TRename this field "contrastEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(Í§»z
-spython:S116¾"[Rename this field "horizontalLayout_15" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ğà›ñ
-vpython:S116Ä"YRename this field "verticalLayout_29" to match the regular expression ^[_a-z][_a-z0-9]*$.(¾Œêíûÿÿÿÿ
-wpython:S116†	"ZRename this field "newWidthlineEdit_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(ä÷ĞÂøÿÿÿÿ
-opython:S116"RRename this field "randomEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(»åàêıÿÿÿÿ
-hpython:S116Æ"PRename this field "meanEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(§¨
-opython:S116 	"WRename this field "newBglineEdit_5" to match the regular expression ^[_a-z][_a-z0-9]*$.(°‹ìÌ
-npython:S116à"VRename this field "rotatationEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(åğßÅ
-upython:S116š"XRename this field "verticalLayout_5" to match the regular expression ^[_a-z][_a-z0-9]*$.(°ç’şÿÿÿÿ
-xpython:S116ì"[Rename this field "horizontalLayout_23" to match the regular expression ^[_a-z][_a-z0-9]*$.(˜÷²Òıÿÿÿÿ
-ppython:S116î"XRename this field "gaussianNoiseBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÒşÓ
-hpython:S116º"PRename this field "blendBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(€Åû
-qpython:S116£"YRename this field "verticalLayout_28" to match the regular expression ^[_a-z][_a-z0-9]*$.(°æÀ¾
-ppython:S116Ù	"YRename this field "verticalLayout_31" to match the regular expression ^[_a-z][_a-z0-9]*$.( ìc
-npython:S116®"QRename this field "scaleEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ƒ‚™áøÿÿÿÿ
-xpython:S116Ğ"[Rename this field "horizontalLayout_16" to match the regular expression ^[_a-z][_a-z0-9]*$.(ù‹Âœşÿÿÿÿ
-spython:S116Œ
-"VRename this field "radiusGroupBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ÿäùÿùÿÿÿÿ
-qpython:S116¾"YRename this field "verticalLayout_21" to match the regular expression ^[_a-z][_a-z0-9]*$.(­­•
+tpython:S116¾"WRename this field "ArnoldTimesEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(¥÷™äûÿÿÿÿ
 spython:S116†"VRename this field "pixelsNumLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ã¥›üøÿÿÿÿ
-npython:S116"QRename this field "expandBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(³—Ïöúÿÿÿÿ
-npython:S116¤"VRename this field "randomNoiseBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(œğÀ¼
-opython:S116 "RRename this field "readImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ìú‰Çüÿÿÿÿ
-ppython:S116ı"SRename this field "withdrawBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ê±‰âşÿÿÿÿ
-gpython:S116ï"ORename this field "ifftBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(Éæë†
-kpython:S116"SRename this field "generateBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(†¸
-vpython:S116Œ"YRename this field "verticalLayout_23" to match the regular expression ^[_a-z][_a-z0-9]*$.(õ—Á»ùÿÿÿÿ
+qpython:S116Œ"YRename this field "verticalLayout_22" to match the regular expression ^[_a-z][_a-z0-9]*$.(¿ï¿
+npython:S116•"VRename this field "verticalLayout" to match the regular expression ^[_a-z][_a-z0-9]*$.(íˆÁ
+ppython:S116¹"SRename this field "hideInfoBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(À¿Üëûÿÿÿÿ
+vpython:S116Â"YRename this field "verticalLayout_19" to match the regular expression ^[_a-z][_a-z0-9]*$.(âš‰Úüÿÿÿÿ
+vpython:S116¶"YRename this field "verticalLayout_11" to match the regular expression ^[_a-z][_a-z0-9]*$.(¬ë½½úÿÿÿÿ
+opython:S116"RRename this field "randomEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(»åàêıÿÿÿÿ
 ppython:S116½"YRename this field "verticalLayout_25" to match the regular expression ^[_a-z][_a-z0-9]*$.(çäü
-npython:S116Û"VRename this field "expandSizeEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(şÙÑâ
-qpython:S116Ø"YRename this field "alphaCompositeBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.( ØÛÉ
-ypython:S116¡"\Rename this field "dockWidgetContents_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(ïÕöÚüÿÿÿÿ
-npython:S116µ"QRename this field "widthEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ï©Ë¶ıÿÿÿÿ
-jpython:S116
-"RRename this field "radiusEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(àÔõâ
-qpython:S116Š
-"YRename this field "verticalLayout_27" to match the regular expression ^[_a-z][_a-z0-9]*$.(ª³ÊŸ
+qpython:S116Ä"TRename this field "patternLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ã”ıÍıÿÿÿÿ
+npython:S116e"RRename this field "scrollArea" to match the regular expression ^[_a-z][_a-z0-9]*$.(Êà«üÿÿÿÿ
+jpython:S116²"RRename this field "depthLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ñ‡ı³
+qpython:S116¨"YRename this field "verticalLayout_17" to match the regular expression ^[_a-z][_a-z0-9]*$.(ªúîÁ
+opython:S116Ö"RRename this field "saveImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(¨É¤İúÿÿÿÿ
+qpython:S116"TRename this field "dockWidget_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(î›”÷ıÿÿÿÿ
+kpython:S116"SRename this field "generateBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(†¸
+vpython:S116!"ZRename this field "horizontalLayout_7" to match the regular expression ^[_a-z][_a-z0-9]*$.(õµ¥åşÿÿÿÿ
+ipython:S116Ù"QRename this field "sigmaEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(š®àœ
+mpython:S116¾"PRename this field "pasteBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÔşÓ‘şÿÿÿÿ
+kpython:S116Ã"TRename this field "contrastEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(Í§»z
+jpython:S116€"RRename this field "vdFontEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ª¡Àú
+qpython:S116¢"TRename this field "saltNoiseBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ú¦Û“øÿÿÿÿ
+spython:S116À"[Rename this field "horizontalLayout_20" to match the regular expression ^[_a-z][_a-z0-9]*$.(´œ¬Ú
+upython:S116®"XRename this field "verticalLayout_6" to match the regular expression ^[_a-z][_a-z0-9]*$.(¯ü×ƒùÿÿÿÿ
+mpython:S116ö"PRename this field "chopsBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÌÂ¡ûıÿÿÿÿ
+tpython:S116"\Rename this field "histogramBalancedBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(‘Çó
+npython:S116º"QRename this field "mirrorBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(‚È‚öüÿÿÿÿ
 qpython:S116
 "YRename this field "verticalLayout_26" to match the regular expression ^[_a-z][_a-z0-9]*$.(ö¸Ë±
-xpython:S116¬"[Rename this field "horizontalLayout_12" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ïûğøúÿÿÿÿ
-lpython:S116°
-"TRename this field "rankGroupBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(÷¥âÕ
-xpython:S116å"[Rename this field "horizontalLayout_13" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ä›™Åøÿÿÿÿ
-npython:S116•"VRename this field "verticalLayout" to match the regular expression ^[_a-z][_a-z0-9]*$.(íˆÁ
-ipython:S116Á"QRename this field "_3DWidget" to match the regular expression ^[_a-z][_a-z0-9]*$.(èÊìÅ
-opython:S116€"RRename this field "checkBox_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(ŞËÅ·ûÿÿÿÿ
-kpython:S116‹"SRename this field "formatLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÔˆÒş
-jpython:S116²"RRename this field "depthLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ñ‡ı³
 upython:S116"XRename this field "verticalLayout_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(å´øÎıÿÿÿÿ
-vpython:S116!"ZRename this field "horizontalLayout_7" to match the regular expression ^[_a-z][_a-z0-9]*$.(õµ¥åşÿÿÿÿ
-xpython:S116û"[Rename this field "horizontalLayout_17" to match the regular expression ^[_a-z][_a-z0-9]*$.(µÎä©ıÿÿÿÿ
-npython:S116e"RRename this field "scrollArea" to match the regular expression ^[_a-z][_a-z0-9]*$.(Êà«üÿÿÿÿ
-qpython:S116ô"TRename this field "changeRotBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ûå²öûÿÿÿÿ
-qpython:S116"TRename this field "hideInfoEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(÷Â”öûÿÿÿÿ
-wpython:S116ó"ZRename this field "horizontalLayout_9" to match the regular expression ^[_a-z][_a-z0-9]*$.(”£áøÿÿÿÿ
-tpython:S116¾"WRename this field "ArnoldTimesEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(¥÷™äûÿÿÿÿ
-spython:S116­"VRename this field "graphicsView_6" to match the regular expression ^[_a-z][_a-z0-9]*$.(®Û˜½ùÿÿÿÿ
-vpython:S116°"YRename this field "verticalLayout_30" to match the regular expression ^[_a-z][_a-z0-9]*$.(–ìèûÿÿÿÿÿ
-upython:S116®"XRename this field "verticalLayout_6" to match the regular expression ^[_a-z][_a-z0-9]*$.(¯ü×ƒùÿÿÿÿ
+jpython:S116»"RRename this field "offsetEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ƒ­“
+mpython:S116ğ"URename this field "deHideInfoBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÓÂ
+hpython:S116È"PRename this field "chopsBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(­Ìàƒ
+xpython:S116ì"[Rename this field "horizontalLayout_23" to match the regular expression ^[_a-z][_a-z0-9]*$.(˜÷²Òıÿÿÿÿ
+opython:S116 "RRename this field "readImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ìú‰Çüÿÿÿÿ
+qpython:S116Ù"TRename this field "vdHeightEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ê´ı¸şÿÿÿÿ
+spython:S116Œ
+"VRename this field "radiusGroupBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ÿäùÿùÿÿÿÿ
+ipython:S116Õ"QRename this field "nameLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(À­¤˜
+npython:S116¬"VRename this field "blendAlphaEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(İ»ÈŸ
+spython:S116œ"VRename this field "pixelsSumLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(…¢¹½ùÿÿÿÿ
+npython:S116Ü	"QRename this field "filterBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(°ıçıÿÿÿÿ
+upython:S116š"XRename this field "verticalLayout_5" to match the regular expression ^[_a-z][_a-z0-9]*$.(°ç’şÿÿÿÿ
+ipython:S116Á"QRename this field "_3DWidget" to match the regular expression ^[_a-z][_a-z0-9]*$.(èÊìÅ
+ypython:S116?"bRename this field "scrollAreaWidgetContents_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(‡Ì¾à
+hpython:S116ó"PRename this field "vdBgEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(Û´Œœ
+qpython:S116Ø"YRename this field "alphaCompositeBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.( ØÛÉ
+qpython:S116 "TRename this field "fontSizeEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ï¥¹ıÿÿÿÿ
+spython:S116²"VRename this field "gammaclineEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(’Ô¿Ûúÿÿÿÿ
+qpython:S116²"TRename this field "averageLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(‹­»Âÿÿÿÿÿ
+ppython:S116³"XRename this field "verticalLayout_7" to match the regular expression ^[_a-z][_a-z0-9]*$.(‰¨ƒ
+spython:S116š"[Rename this field "horizontalLayout_11" to match the regular expression ^[_a-z][_a-z0-9]*$.(Êƒ¸
+ppython:S116Û"XRename this field "changePatternBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ëŠÜœ
+qpython:S116C"ZRename this field "horizontalLayout_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(½÷¦è
+npython:S116"QRename this field "expandBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(³—Ïöúÿÿÿÿ
+xpython:S116å"[Rename this field "horizontalLayout_13" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ä›™Åøÿÿÿÿ
+spython:S116¿"VRename this field "vdFontPathEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(¯±åÛøÿÿÿÿ
+opython:S116Æ"RRename this field "fillImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(­ğÍ…şÿÿÿÿ
 vpython:S116 
 "YRename this field "verticalLayout_13" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÇşÂåÿÿÿÿÿ
-ipython:S116­"QRename this field "formatBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(¬æ›É
-ipython:S116Ö"QRename this field "sizeLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ú§ı¹
-mpython:S116¾"PRename this field "pasteBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÔşÓ‘şÿÿÿÿ
-mpython:S116ö"PRename this field "chopsBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÌÂ¡ûıÿÿÿÿ
-lpython:S116·"TRename this field "dockWidget_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(•´±ı
-opython:S116î"WRename this field "expandColorEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ë°«ò
-npython:S116Ü	"QRename this field "filterBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(°ıçıÿÿÿÿ
-qpython:S116_"ZRename this field "dockWidgetContents" to match the regular expression ^[_a-z][_a-z0-9]*$.(­†«ë
-npython:S116Ã
-"QRename this field "filterBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(™ƒ…£üÿÿÿÿ
-qpython:S116"TRename this field "dockWidget_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(î›”÷ıÿÿÿÿ
-qpython:S116Ä"TRename this field "patternLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ã”ıÍıÿÿÿÿ
-vpython:S116ã"YRename this field "verticalLayout_20" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ğí¹§ÿÿÿÿÿ
-opython:S116Ö"RRename this field "saveImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(¨É¤İúÿÿÿÿ
-qpython:S116Í"YRename this field "verticalLayout_14" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÀÔ€÷
-npython:S116¬"VRename this field "blendAlphaEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(İ»ÈŸ
-ppython:S116Û"XRename this field "changePatternBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ëŠÜœ
-npython:S116Ë"QRename this field "ArnoldBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(çÆœøÿÿÿÿ
-vpython:S116Â"YRename this field "verticalLayout_19" to match the regular expression ^[_a-z][_a-z0-9]*$.(âš‰Úüÿÿÿÿ
-opython:S116ç"RRename this field "widthLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ƒÌ¡ºÿÿÿÿÿ
-mpython:S116 "URename this field "channelsLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ü‘¦°
-kpython:S116Ì"SRename this field "vdWidthEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ŒŠ§‡
-qpython:S116-"ZRename this field "horizontalLayout_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(ûÎÙã
-rpython:S116ê"URename this field "sharpnessEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(¡³íÀüÿÿÿÿ
-opython:S116ì"RRename this field "copyImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ê¦ô¬ıÿÿÿÿ
-tpython:S116ù"WRename this field "newModelineEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(…Ì­¹úÿÿÿÿ
-tpython:S116Ò"WRename this field "thresholdSlider" to match the regular expression ^[_a-z][_a-z0-9]*$.(üî‡‰ûÿÿÿÿ
-kpython:S116÷"SRename this field "stddevLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ãƒÌÿ
-hpython:S116"PRename this field "saltEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ˆí²Ú
-mpython:S116×"URename this field "saveTempCheck" to match the regular expression ^[_a-z][_a-z0-9]*$.(›ÚÆ·
-npython:S116º"QRename this field "mirrorBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(‚È‚öüÿÿÿÿ
-spython:S116‘"[Rename this field "horizontalLayout_18" to match the regular expression ^[_a-z][_a-z0-9]*$.(í™¿å
-kpython:S116¤"SRename this field "aArnoldEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(²»Š†
-mpython:S116§"VRename this field "graphicsView_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÛÒ–s
-qpython:S116Œ"YRename this field "verticalLayout_22" to match the regular expression ^[_a-z][_a-z0-9]*$.(¿ï¿
-spython:S116œ"VRename this field "pixelsSumLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(…¢¹½ùÿÿÿÿ
-opython:S116€"RRename this field "patternBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(­±‰Íşÿÿÿÿ
-xpython:S116“	"[Rename this field "newHeightlineEdit_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(…Ë·úÿÿÿÿ
-ipython:S116Õ"QRename this field "nameLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(À­¤˜
-mpython:S116£"VRename this field "restoreSizeBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ğ¢á[
-qpython:S116¢"TRename this field "saltNoiseBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ú¦Û“øÿÿÿÿ
-spython:S116²"VRename this field "gammaclineEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(’Ô¿Ûúÿÿÿÿ
-opython:S116Æ"RRename this field "fillImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(­ğÍ…şÿÿÿÿ
-npython:S116×"VRename this field "brightnessEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ê‘äÜ
-rpython:S116Û"ZRename this field "horizontalLayout_5" to match the regular expression ^[_a-z][_a-z0-9]*$.(­‘Ãğ
-mpython:S116´
-"PRename this field "rankEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(¦ÊÔüÿÿÿÿ
-ipython:S116°"QRename this field "colorEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(¦áÀô
-jpython:S116ş"RRename this field "enhanceBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÇÅü™
-kpython:S1161"TRename this field "scrollArea_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(Öòë˜
-spython:S116ú"VRename this field "autoStretchBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(ŸÖ†¡ûÿÿÿÿ
-npython:S116á
-"WRename this field "customFilterBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(¯­ø%
-jpython:S116€"RRename this field "vdFontEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ª¡Àú
-|python:S116q"`Rename this field "scrollAreaWidgetContents" to match the regular expression ^[_a-z][_a-z0-9]*$.(„Ûª÷şÿÿÿÿ
-ypython:S116?"bRename this field "scrollAreaWidgetContents_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(‡Ì¾à
-rpython:S116®"URename this field "gammaGroupBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÿŸ¤™ıÿÿÿÿ
 xpython:S116§"[Rename this field "horizontalLayout_19" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÁÄ¥äüÿÿÿÿ
-lpython:S116Í"TRename this field "thresholdBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(åû¾Ï
-qpython:S116C"ZRename this field "horizontalLayout_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(½÷¦è
-hpython:S116İ"PRename this field "checkBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(ááÓ‚
-opython:S116y"XRename this field "verticalLayout_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(èÛÏê
+hpython:S116º"PRename this field "blendBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(€Åû
+dpython:S116V"MRename this field "stBar" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ç¹²Ñ
+ppython:S116î"XRename this field "gaussianNoiseBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÒşÓ
+rpython:S116Ï"ZRename this field "horizontalLayout_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(•­¾Ù
+kpython:S116¤"SRename this field "aArnoldEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(²»Š†
+qpython:S116˜"YRename this field "verticalLayout_15" to match the regular expression ^[_a-z][_a-z0-9]*$.(ªõö
+vpython:S116ı"YRename this field "verticalLayout_18" to match the regular expression ^[_a-z][_a-z0-9]*$.( Å»Šÿÿÿÿÿ
+npython:S116¤"VRename this field "randomNoiseBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(œğÀ¼
 upython:S116²
 "XRename this field "verticalLayout_8" to match the regular expression ^[_a-z][_a-z0-9]*$.(¿á™Âıÿÿÿÿ
-qpython:S116ğ"TRename this field "extremaLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(‡—²ÿÿÿÿÿ
-kpython:S116Ù"NRename this field "penBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(²Ñºÿÿÿÿÿ
-jpython:S116é"SRename this field "ArnoldBtn_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(‹ãùn
-npython:S116Y"RRename this field "dockWidget" to match the regular expression ^[_a-z][_a-z0-9]*$.(Îà§öÿÿÿÿÿ
+hpython:S116÷"PRename this field "penUpBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(½€––
+hpython:S116Æ"PRename this field "meanEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(§¨
+opython:S116È"RRename this field "heightEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(÷ó©şúÿÿÿÿ
+qpython:S116Š
+"YRename this field "verticalLayout_27" to match the regular expression ^[_a-z][_a-z0-9]*$.(ª³ÊŸ
+ipython:S116­"QRename this field "formatBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(¬æ›É
+vpython:S116Ä"YRename this field "verticalLayout_29" to match the regular expression ^[_a-z][_a-z0-9]*$.(¾Œêíûÿÿÿÿ
+jpython:S116×"RRename this field "hideImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÔûæÒ
+spython:S116‘"[Rename this field "horizontalLayout_18" to match the regular expression ^[_a-z][_a-z0-9]*$.(í™¿å
+hpython:S116"PRename this field "saltEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ˆí²Ú
 hpython:S116á"PRename this field "varLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(éÑï§
+opython:S116î"WRename this field "expandColorEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ë°«ò
+wpython:S116ó"ZRename this field "horizontalLayout_9" to match the regular expression ^[_a-z][_a-z0-9]*$.(”£áøÿÿÿÿ
+hpython:S116G"QRename this field "demoLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(Æ©†ó
+ypython:S116¡"\Rename this field "dockWidgetContents_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(ïÕöÚüÿÿÿÿ
+npython:S116Û"VRename this field "expandSizeEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(şÙÑâ
+lpython:S116Í"TRename this field "thresholdBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(åû¾Ï
+qpython:S116ª"YRename this field "verticalLayout_24" to match the regular expression ^[_a-z][_a-z0-9]*$.(ªä½Ğ
+xpython:S116¬"[Rename this field "horizontalLayout_12" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ïûğøúÿÿÿÿ
+mpython:S116£"VRename this field "restoreSizeBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ğ¢á[
+lpython:S116·"TRename this field "dockWidget_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(•´±ı
+xpython:S116…"[Rename this field "horizontalLayout_10" to match the regular expression ^[_a-z][_a-z0-9]*$.(®Ù›µıÿÿÿÿ
+jpython:S116é"SRename this field "ArnoldBtn_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(‹ãùn
+mpython:S116 "URename this field "channelsLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ü‘¦°
+ppython:S116Ä"XRename this field "horizontalLayout" to match the regular expression ^[_a-z][_a-z0-9]*$.(›‰½³
+spython:S116Ö"[Rename this field "horizontalLayout_22" to match the regular expression ^[_a-z][_a-z0-9]*$.(ºœÎã
+opython:S116y"XRename this field "verticalLayout_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(èÛÏê
+opython:S116ç"RRename this field "widthLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ƒÌ¡ºÿÿÿÿÿ
+qpython:S116½"YRename this field "verticalLayout_12" to match the regular expression ^[_a-z][_a-z0-9]*$.(€ÊÁ¾
+jpython:S116æ"RRename this field "vdTextEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(£…Å
+mpython:S116¿"URename this field "gammalineEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(€ø¬Õ
+mpython:S116"PRename this field "rmsLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ŒÊÄşÿÿÿÿ
+wpython:S116Ï"ZRename this field "horizontalLayout_6" to match the regular expression ^[_a-z][_a-z0-9]*$.(“„¤øÿÿÿÿ
+qpython:S116ô"TRename this field "changeRotBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ûå²öûÿÿÿÿ
+mpython:S116§"VRename this field "graphicsView_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÛÒ–s
+kpython:S116ù"SRename this field "heightLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(—‹Ûÿ
+tpython:S116»"\Rename this field "dockWidgetContents_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(¢Éµş
+vpython:S116Œ"YRename this field "verticalLayout_23" to match the regular expression ^[_a-z][_a-z0-9]*$.(õ—Á»ùÿÿÿÿ
+npython:S116®"QRename this field "scaleEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ƒ‚™áøÿÿÿÿ
+ipython:S116ª"QRename this field "pasteEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÑÚ«
+mpython:S116´
+"PRename this field "rankEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(¦ÊÔüÿÿÿÿ
+npython:S116Ë"QRename this field "ArnoldBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(çÆœøÿÿÿÿ
+kpython:S1161"TRename this field "scrollArea_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(Öòë˜
 kpython:S116Ë"SRename this field "medianLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ãï½
+ppython:S116Ö"XRename this field "verticalLayout_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(àğ“•
+|python:S116q"`Rename this field "scrollAreaWidgetContents" to match the regular expression ^[_a-z][_a-z0-9]*$.(„Ûª÷şÿÿÿÿ
+kpython:S116±"SRename this field "bArnoldEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(”óıÒ
+npython:S116Ã
+"QRename this field "filterBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(™ƒ…£üÿÿÿÿ
+xpython:S116û"[Rename this field "horizontalLayout_17" to match the regular expression ^[_a-z][_a-z0-9]*$.(µÎä©ıÿÿÿÿ
+kpython:S116÷"SRename this field "stddevLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ãƒÌÿ
+kpython:S116Ì"SRename this field "vdWidthEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ŒŠ§‡
+opython:S116€"RRename this field "checkBox_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(ŞËÅ·ûÿÿÿÿ
+qpython:S116£"YRename this field "verticalLayout_28" to match the regular expression ^[_a-z][_a-z0-9]*$.(°æÀ¾
+npython:S116Y"RRename this field "dockWidget" to match the regular expression ^[_a-z][_a-z0-9]*$.(Îà§öÿÿÿÿÿ
+gpython:S116ï"ORename this field "ifftBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(Éæë†
+npython:S116×"VRename this field "brightnessEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ê‘äÜ
+ppython:S116¬"XRename this field "verticalLayout_9" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÇëÔ¬
+npython:S116µ"QRename this field "widthEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ï©Ë¶ıÿÿÿÿ
+jpython:S116
+"SRename this field "convCoreBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(°óp
+jpython:S116ş"RRename this field "enhanceBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÇÅü™
+mpython:S116¬"PRename this field "lineEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ƒ»Ñüÿÿÿÿ
+qpython:S116Í"YRename this field "verticalLayout_14" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÀÔ€÷
+ppython:S116Ù	"YRename this field "verticalLayout_31" to match the regular expression ^[_a-z][_a-z0-9]*$.( ìc
+rpython:S116®"URename this field "gammaGroupBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÿŸ¤™ıÿÿÿÿ
+spython:S116ú"VRename this field "autoStretchBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(ŸÖ†¡ûÿÿÿÿ
+opython:S116€"RRename this field "patternBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(­±‰Íşÿÿÿÿ
 mpython:S116¢
 "PRename this field "sizeEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(‰«ÙÈÿÿÿÿÿ
-spython:S116Ö"[Rename this field "horizontalLayout_22" to match the regular expression ^[_a-z][_a-z0-9]*$.(ºœÎã
-qpython:S116˜"YRename this field "verticalLayout_15" to match the regular expression ^[_a-z][_a-z0-9]*$.(ªõö
-mpython:S116"PRename this field "rmsLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ŒÊÄşÿÿÿÿ
-qpython:S116½"YRename this field "verticalLayout_12" to match the regular expression ^[_a-z][_a-z0-9]*$.(€ÊÁ¾
-vpython:S116¶"YRename this field "verticalLayout_11" to match the regular expression ^[_a-z][_a-z0-9]*$.(¬ë½½úÿÿÿÿ
+opython:S116ì"RRename this field "copyImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ê¦ô¬ıÿÿÿÿ
+opython:S116 	"WRename this field "newBglineEdit_5" to match the regular expression ^[_a-z][_a-z0-9]*$.(°‹ìÌ
+npython:S116à"VRename this field "rotatationEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(åğßÅ
+qpython:S116Ù"YRename this field "verticalLayout_10" to match the regular expression ^[_a-z][_a-z0-9]*$.(çÚ®Î
+kpython:S116Ù"NRename this field "penBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(²Ñºÿÿÿÿÿ
+rpython:S116Û"ZRename this field "horizontalLayout_5" to match the regular expression ^[_a-z][_a-z0-9]*$.(­‘Ãğ
+ppython:S116ı"SRename this field "withdrawBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(ê±‰âşÿÿÿÿ
+qpython:S116"TRename this field "hideInfoEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(÷Â”öûÿÿÿÿ
+kpython:S116‹"SRename this field "formatLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÔˆÒş
+npython:S116­	"QRename this field "newImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(¥°Ûşÿÿÿÿ
+qpython:S116ğ"TRename this field "extremaLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(‡—²ÿÿÿÿÿ
+xpython:S116“	"[Rename this field "newHeightlineEdit_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(…Ë·úÿÿÿÿ
+qpython:S116-"ZRename this field "horizontalLayout_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(ûÎÙã
+vpython:S116°"YRename this field "verticalLayout_30" to match the regular expression ^[_a-z][_a-z0-9]*$.(–ìèûÿÿÿÿÿ
+rpython:S116á"ZRename this field "horizontalLayout_8" to match the regular expression ^[_a-z][_a-z0-9]*$.(è¸‘§
+qpython:S116¾"YRename this field "verticalLayout_21" to match the regular expression ^[_a-z][_a-z0-9]*$.(­­•
+wpython:S116a"[Rename this field "horizontalLayout_14" to match the regular expression ^[_a-z][_a-z0-9]*$.(«Ú€Ğşÿÿÿÿ
+ipython:S116Ö"QRename this field "sizeLabel" to match the regular expression ^[_a-z][_a-z0-9]*$.(ú§ı¹
+qpython:S116_"ZRename this field "dockWidgetContents" to match the regular expression ^[_a-z][_a-z0-9]*$.(­†«ë
+spython:S116­"VRename this field "graphicsView_6" to match the regular expression ^[_a-z][_a-z0-9]*$.(®Û˜½ùÿÿÿÿ
+jpython:S116
+"RRename this field "radiusEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(àÔõâ
+lpython:S116°
+"TRename this field "rankGroupBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(÷¥âÕ
+ipython:S116°"QRename this field "colorEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(¦áÀô
 spython:S116‚"[Rename this field "horizontalLayout_21" to match the regular expression ^[_a-z][_a-z0-9]*$.(ıığü
-vpython:S116ı"YRename this field "verticalLayout_18" to match the regular expression ^[_a-z][_a-z0-9]*$.( Å»Šÿÿÿÿÿ
-ipython:S116Ù"QRename this field "sigmaEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(š®àœ
-mpython:S116¬"PRename this field "lineEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(ƒ»Ñüÿÿÿÿ
+fpython:S116Ñ"NRename this field "fftBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ä¾§ì
+tpython:S116ù"WRename this field "newModelineEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(…Ì­¹úÿÿÿÿ
+qpython:S116¤"TRename this field "resizeImgBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(„àòøÿÿÿÿ
+xpython:S116Ğ"[Rename this field "horizontalLayout_16" to match the regular expression ^[_a-z][_a-z0-9]*$.(ù‹Âœşÿÿÿÿ
+hpython:S116İ"PRename this field "checkBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(ááÓ‚
+npython:S116á
+"WRename this field "customFilterBtn" to match the regular expression ^[_a-z][_a-z0-9]*$.(¯­ø%
+rpython:S116ê"URename this field "sharpnessEdit" to match the regular expression ^[_a-z][_a-z0-9]*$.(¡³íÀüÿÿÿÿ
+mpython:S116×"URename this field "saveTempCheck" to match the regular expression ^[_a-z][_a-z0-9]*$.(›ÚÆ·
+wpython:S116†	"ZRename this field "newWidthlineEdit_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(ä÷ĞÂøÿÿÿÿ
+tpython:S116Ò"WRename this field "thresholdSlider" to match the regular expression ^[_a-z][_a-z0-9]*$.(üî‡‰ûÿÿÿÿ
+spython:S116¾"[Rename this field "horizontalLayout_15" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ğà›ñ
+vpython:S116ã"YRename this field "verticalLayout_20" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ğí¹§ÿÿÿÿÿ
 „python:S101"hRename class "Ui_ToolsWindow" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.(Ë–ÜŠúÿÿÿÿ
 npython:S117"WRename this parameter "ToolsWindow" to match the regular expression ^[_a-z][a-z0-9_]*$.(µšğ
 rpython:S117&"[Rename this local variable "sizePolicy" to match the regular expression ^[_a-z][a-z0-9_]*$.(ğ¶ÀÌ

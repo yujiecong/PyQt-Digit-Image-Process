@@ -14,12 +14,14 @@ from PyQt5.QtCore import QObject, pyqtSignal
 
 import datetime
 
+from PyQt5.QtWidgets import QFileDialog
+
 import Global_Main
 
 
 class Convert_Object(QObject):
     """
-    线程不安全
+
     """
     CONVERT_OP = 0
     FILTER_OP = 1
@@ -33,6 +35,7 @@ class Convert_Object(QObject):
 
 
     HIDE_INFO_OP=8
+    HIDE_INFO_OP2=82
     DEHIDE_INFO_OP=81
     DEBUG = False
     finished = pyqtSignal()
@@ -68,14 +71,13 @@ class Convert_Object(QObject):
                     f = func(self, *args, **kwargs)
 
                 t2 = time.time()
-                print(f"[THREAD TIME COST]:{t2 - t1}")
+                print(f"[THREAD TIME COST]:{t2 - t1}s")
                 print(
                     f"[DEBUG]:{datetime.datetime.now()} {type(self).__name__} leaved thread-func **{func.__name__}** args={args} kwargs={kwargs}")
                 return f
             except Exception as e:
-
                 self.errorFlag = f"{type(self).__name__}->{func.__name__}:{e.__str__()}"
-                print(self.errorFlag)
+                self.parent().showError(self.errorFlag)
 
         return wrapper
 
@@ -129,7 +131,9 @@ class Convert_Object(QObject):
         elif self.__op==self.UPDATE_OP:
             self.update()
         elif self.__op==self.HIDE_INFO_OP:
-            self.hideInfo()
+            self.hideTextInfo()
+        elif self.__op==self.HIDE_INFO_OP2:
+            self.hideImgInfo()
         elif self.__op==self.DEHIDE_INFO_OP:
             self.deHideInfo()
         elif self.__op==self.FFT_OP:
@@ -158,7 +162,7 @@ class Convert_Object(QObject):
         f = np.fft.fft2(img)
         fshift = np.fft.fftshift(f)  # 将频谱对称轴从左上角移至中心
         self.fftImg=fshift
-        magnitude_spectrum = 20 * np.log(np.abs(fshift))
+        magnitude_spectrum = 20 * np.log(np.abs(fshift)) #提高亮度
         # self.formatBox.setCurrentIndex(FORMAT_MODE.modeDict["tiff"])
         fn=self.getGlobalValue("FFT_DIR")+"outfft.txt"
         np.savetxt(fn,fshift.T.view(float))
@@ -171,90 +175,131 @@ class Convert_Object(QObject):
         hide_image = this.new_image
         hide_image_arr = np.array(hide_image)
         channels = int(self.channelsLabel.text())
-        height, width = hide_image_arr.shape[:2]
-        color = 255
-        h, w = height,width
         if channels >= 3:
-            hideInfoImg = np.zeros((h, w,3), np.uint8)
+            decoded=np.bitwise_and(hide_image_arr[:,:,2], 1)
         else:
-            hideInfoImg = np.zeros((h, w), np.uint8)
+            decoded=np.bitwise_and(hide_image_arr, 1)
+
+        where=np.where( np.array(decoded) ==1, 255, 0).astype(np.uint8)
+        this.new_image = Image.fromarray(where)
 
 
-        if channels >= 3:
-            for i in range(h):
-                for j in range(w):
-                    if hide_image_arr[i, j, 2] % 2 == 1:
-                        hideInfoImg[i, j,0] = color
-                        hideInfoImg[i, j,1] = color
-                        hideInfoImg[i, j,2] = color
 
-        else:
-            for i in range(h):
-                for j in range(w):
-                    # 发现B通道为奇数则为信息的内容
-                    if hide_image_arr[i, j] % 2 == 1:
-                        hideInfoImg[i, j] = color
-
-
-        this.new_image = Image.fromarray(hideInfoImg)
+        # channels = int(self.channelsLabel.text())
+        # height, width = hide_image_arr.shape[:2]
+        # color = 255
+        # h, w = height,width
+        # if channels >= 3:
+        #     hideInfoImg = np.zeros((h, w,3), np.uint8)
+        # else:
+        #     hideInfoImg = np.zeros((h, w), np.uint8)
+        #
+        #
+        # if channels >= 3:
+        #     for i in range(h):
+        #         for j in range(w):
+        #             if hide_image_arr[i, j, 2] % 2 == 1:
+        #                 hideInfoImg[i, j,0] = color
+        #                 hideInfoImg[i, j,1] = color
+        #                 hideInfoImg[i, j,2] = color
+        #
+        # else:
+        #     for i in range(h):
+        #         for j in range(w):
+        #             # 发现B通道为奇数则为信息的内容
+        #             if hide_image_arr[i, j] % 2 == 1:
+        #                 hideInfoImg[i, j] = color
 
     @thread_logging
-    def hideInfo(self):
+    def hideImgInfo(self):
+        parent=self.parent()
+        parent.formatBox.setCurrentIndex(Global_Main.FORMAT_MODE.modeDict["png"])
+        carrier_image = self.new_image
+        path = QFileDialog.getOpenFileName(parent, "选择一张照片隐藏", ".", "*.*")
+        fn = path[0]
+        if not fn:
+            return
+        hide_image=Image.open(fn).resize((carrier_image.height,carrier_image.width))
+        hide_image=hide_image.convert("L")
+
+        hide_img_1= np.where(np.array(hide_image) > 128, 1, 0).astype(np.uint8)
+        # hide_image.show()
+        # Image.fromarray(hide_img_1).show()
+        # 最低位变为 0
+        lsb = np.bitwise_and(carrier_image, 0xFE)
+        channels = int(parent.channelsLabel.text())
+        if channels >= 3:
+            lsb[:,:,2]+= hide_img_1
+        else:
+            lsb += hide_img_1
+        self.new_image = Image.fromarray(lsb)
+        # 将 logo 拼接到最低位(其中一个通道，也可以保留3个通道)
+
+
+    @thread_logging
+    def hideTextInfo(self):
         parent=self.parent()
         carrier_image = self.new_image
 
-        channels = int(parent.channelsLabel.text())
-        if channels >= 3:
-            hide_image = Image.new(carrier_image.mode, carrier_image.size, color=(0, 0, 0))
-        else:
-            hide_image = Image.new(carrier_image.mode, carrier_image.size)
-        carrier_image_arr = np.array(carrier_image)
+        hide_image = Image.new('RGB', carrier_image.size)
+        # carrier_image_arr = np.array(carrier_image)
 
-        # 计算要写入的大小
         plainText = parent.hideInfoEdit.toPlainText()
 
         textDraw = ImageDraw.Draw(hide_image)
-        height, width = carrier_image_arr.shape[:2]
+        height, width = carrier_image.height,carrier_image.width
 
         size = parent.fontSizeEdit.text()
         fontSize = 50 if size == '' else int(size)
         font = ImageFont.truetype(r"C:\Windows\Fonts\微软雅黑\msyhbd.ttc", size=fontSize)
         color = 255
-        if channels >= 3:
-            parent.formatBox.setCurrentIndex(Global_Main.FORMAT_MODE.modeDict["png"])
-            textDraw.text((0, height // 3), plainText, font=font, fill=(color, color, color))
-        else:
-            textDraw.text((0, height // 3), plainText, font=font, fill=color)
+        textDraw.text((0, height // 3), plainText, font=font, fill=color)
 
-        if channels >= 3:
-            for i in range(height):
-                for j in range(width):
-                    # 把整幅图的B通道全设置为偶数
-                    if carrier_image_arr[i, j, 2] % 2 == 1:
-                        carrier_image_arr[i, j, 2] -= 1
+        hide_img_1= np.where(np.array(hide_image) > 128, 1, 0).astype(np.uint8)
 
-        else:
-            for i in range(height):
-                for j in range(width):
-                    # 把整幅图的灰度通道全设置为偶数
-                    if carrier_image_arr[i, j] % 2 == 1:
-                        carrier_image_arr[i, j] -= 1
+        lsb = np.bitwise_and(carrier_image, 0xFE)
 
-        hide_image_arr = np.array(hide_image)
-        if channels >= 3:
-            for i in range(height):
-                for j in range(width):
+        parent.formatBox.setCurrentIndex(Global_Main.FORMAT_MODE.modeDict["png"])
 
-                    if tuple(hide_image_arr[i, j, :3]) == (color, color, color):
-                        carrier_image_arr[i, j, 2] += 1
-        else:
-            for i in range(height):
-                for j in range(width):
 
-                    if hide_image_arr[i, j] == color:
-                        carrier_image_arr[i, j] += 1
+        lsb+= hide_img_1
 
-        self.new_image = Image.fromarray(carrier_image_arr)
+        self.new_image = Image.fromarray(lsb)
+        # if channels >= 3:
+        #     parent.formatBox.setCurrentIndex(Global_Main.FORMAT_MODE.modeDict["png"])
+        #     textDraw.text((0, height // 3), plainText, font=font, fill=(color, color, color))
+        # else:
+        #     textDraw.text((0, height // 3), plainText, font=font, fill=color)
+        #
+        # if channels >= 3:
+        #     for i in range(height):
+        #         for j in range(width):
+        #             # 把整幅图的B通道全设置为偶数
+        #             if carrier_image_arr[i, j, 2] % 2 == 1:
+        #                 carrier_image_arr[i, j, 2] -= 1
+        #
+        # else:
+        #     for i in range(height):
+        #         for j in range(width):
+        #             # 把整幅图的灰度通道全设置为偶数
+        #             if carrier_image_arr[i, j] % 2 == 1:
+        #                 carrier_image_arr[i, j] -= 1
+        #
+        # hide_image_arr = np.array(hide_image)
+        # if channels >= 3:
+        #     for i in range(height):
+        #         for j in range(width):
+        #
+        #             if tuple(hide_image_arr[i, j, :3]) == (color, color, color):
+        #                 carrier_image_arr[i, j, 2] += 1
+        # else:
+        #     for i in range(height):
+        #         for j in range(width):
+        #
+        #             if hide_image_arr[i, j] == color:
+        #                 carrier_image_arr[i, j] += 1
+
+
     @thread_logging
     def update(this):
 
@@ -368,10 +413,10 @@ class Convert_Object(QObject):
         if convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_1bit:
             self.new_image = self.new_image.convert("L")
             arr = np.array(self.new_image)
-            for i in range(self.new_image.height):
-                for j in range(self.new_image.width):
-                    arr[i][j] = 255 if arr[i][j] >= self.threshold else 0
-
+            # for i in range(self.new_image.height):
+            #     for j in range(self.new_image.width):
+            #         arr[i][j] = 255 if arr[i][j] >= self.threshold else 0
+            arr = np.where(arr> self.threshold, 255, 0).astype(np.uint8)
             self.new_image = Image.fromarray(arr)
 
         elif convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_L:
@@ -417,14 +462,9 @@ class Convert_Object(QObject):
         elif convertIdx == Global_Main.CONVERT_MODE.CONVERT_MODE_GAMA:
             c=self.getGlobalValue("GAMA_C")
             gamma=self.getGlobalValue("GAMMA")
+            self.new_image=np.array(self.new_image)
+            self.new_image = Image.fromarray(np.uint8(c * np.power(self.new_image, gamma)))
 
-            self.new_image = Image.fromarray(c * np.power(self.new_image.astype(int), gamma))
-
-            # lut = np.zeros(256, dtype=np.float32)
-            # for i in range(256):
-            #     lut[i] = c * i ** v
-            # output_img = cv2.LUT(img, lut)  # 像素灰度值的映射
-            # output_img = np.uint8(output_img + 0.5)
 
 
     @thread_logging

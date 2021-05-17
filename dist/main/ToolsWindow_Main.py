@@ -186,6 +186,7 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         # self.angleBtn.clicked.connect(self.__phaseImg)
 
         self.hideInfoBtn.clicked.connect(self.__hideInfoInImg)
+        self.hideImgBtn.clicked.connect(self.__hideImgInImg)
         self.deHideInfoBtn.clicked.connect(self.deHideInfoImg)
         self.ArnoldBtn.clicked.connect(self.__ArnoldImg)
         self.ArnoldBtn_2.clicked.connect(self.__DeArnoldImg)
@@ -780,11 +781,13 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
 
         kernal = eval(self.customDialog.plainTextEdit.toPlainText().replace("\n", ''))
         size = 3 if self.customDialog.comboBox.currentIndex() == 0 else 5
-        scale = self.customDialog.scaleEdit.text() or None
+        scale = self.customDialog.scaleEdit.text()
         offset = self.customDialog.offsetEdit.text()
+
         new_image = new_image.filter(
-            ImageFilter.Kernel((size, size), kernal, None if not scale else float(scale),
-                               0 if not offset else int(offset)))
+            ImageFilter.Kernel((size, size), kernal, None if scale=="" else float(scale),
+                               0 if offset=="" else int(offset)))
+
         self.customDialog.plainTextEdit.setPlainText(self.customDialog.plainTextEdit.toPlainText())
         self.new_image = new_image
 
@@ -862,7 +865,13 @@ class ToolsWindow(QMainWindow, Ui_ToolsWindow):
         self.__getConvertThread(thread)
 
 
-    # @AutoSet
+    @logging
+    def __hideImgInImg(self):
+        new_image = self.__convertInit()
+
+        thread = Convert_Object(new_image, Convert_Object.HIDE_INFO_OP2,parent=self)
+        self.__getConvertThread(thread)
+
     @logging
     def __hideInfoInImg(self):
         new_image = self.__convertInit()
